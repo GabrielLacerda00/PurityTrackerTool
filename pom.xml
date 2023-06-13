@@ -35,6 +35,7 @@
             <artifactId>org.eclipse.jgit</artifactId>
             <version>6.5.0.202303070854-r</version>
         </dependency>
+
     </dependencies>
 
 </project>
