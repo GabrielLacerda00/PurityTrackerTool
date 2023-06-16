@@ -92,7 +92,7 @@ public class refactoringMinerHandlerBetweenCommits {
 
             JsonArray leftSideLocations = ObjetoJson.getAsJsonArray("leftSideLocations");
             for (JsonElement locationElement : leftSideLocations) {
-                System.out.println("Left Side Location: ");
+                System.out.println("leftSideLocation: ");
                 pegaElementosOrigin(locationElement);
             }
         }

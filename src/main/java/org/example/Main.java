@@ -1,14 +1,25 @@
 package org.example;
 
+import org.example.refactoringMiner.refactoringMinerHandlerBetweenCommits;
 import org.example.refactoringTypes.renameMethodObject;
 import org.example.util.objectOutputRefactMiner;
 import org.example.guumTreeDiff.gumTeeDiffOutputHandler;
+import org.example.util.objectOutputRefactMiner;
 
 import java.util.ArrayList;
 
+
+
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello world!");
+
+    static objectOutputRefactMiner objectRMiner;
+    private static refactoringMinerHandlerBetweenCommits refactoringMinerHandler;
+    public static void main(String[] args) throws Exception {
+
+        refactoringMinerHandlerBetweenCommits.refactoringBetweenCommits("https://github.com/GabrielLacerda00/RenameMethodExample.git","45fa67dcec1f768d69da02374bb3c39fc2dc853b",
+                "e32e45cc0471ebc94573c9f687257387b74ac947");
+        objectRMiner = refactoringMinerHandlerBetweenCommits.getObjectRMiner();
+
     }
 
 

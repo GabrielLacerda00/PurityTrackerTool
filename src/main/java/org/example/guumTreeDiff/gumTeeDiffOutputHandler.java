@@ -40,7 +40,7 @@ public class gumTeeDiffOutputHandler {
 
         //C:\Users\gabri\versao01\RenameMethodExample
         //C:\Users\gabri\versao01\RenameMethodsExample\RenameMethodExample
-        String pathDir01 = "C:\\Users\\gabri\\versao01\\RenameMethodsExample\\RenameMethodExample";
+        String pathDir01 = "C:\\Users\\gabri\\versao01\\InlineMethodExample";
         //C:\Users\gabri\versao02\ExtractMethodExample
         //C:\Users\gabri\versao02\MoveMethodExample
 
@@ -51,13 +51,11 @@ public class gumTeeDiffOutputHandler {
 
         //C:\Users\gabri\versao02\RenameMethodExample
         //C:\Users\gabri\versao02\RenameMethodsExample\RenameMethodExample
-        String pathDir02 = "C:\\Users\\gabri\\versao02\\RenameMethodsExample\\RenameMethodExample";
+        String pathDir02 = "C:\\Users\\gabri\\versao02\\InlineMethodExample";
         ArrayList<String> filePaths1 = filePathFinderVersao01.getJavaFilePaths(pathDir01);
         ArrayList<String> filePaths2 = filePathFinderVersao02.getJavaFilePaths(pathDir02);
 
-
         int tamanho = Math.min(filePaths1.size(), filePaths2.size());
-
 
         for (int i = 0; i < tamanho; i++) {
             File file1 = new File(filePaths1.get(i));

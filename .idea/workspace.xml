@@ -5,19 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a0c258d2-3607-4dd8-9031-96f739d9116c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/guumTreeDiff/gumTeeDiffHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/guumTreeDiff/gumTeeDiffOutputHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/guumTreeDiff/gumtree-spoon-ast-diff-1.62-jar-with-dependencies.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/refactoringTypes/renameMethodObject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/util/TempObject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/util/filePathFinderVersao01.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/util/filePathFinderVersao02.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/util/objectOutputRefactMiner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/refactoringMiner/refactoringMinerHandlerBetweenCommits.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/refactoringMiner/refactoringMinerHandlerBetweenCommits.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/guumTreeDiff/gumTeeDiffOutputHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/guumTreeDiff/gumTeeDiffOutputHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +37,9 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "Fluxograma02",
-    "last_opened_file_path": "C:/Users/gabri/Downloads/gumtree-spoon-ast-diff-1.62-jar-with-dependencies.jar",
+    "last_opened_file_path": "C:/Users/gabri/GitHub-Gabriel_lacerda/PurityTrackerTool/PurityTrackerTool/src/main/java/org/example/guumTreeDiff/gumtree-spoon-ast-diff-1.62-jar-with-dependencies.jar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Libraries",
@@ -104,6 +96,7 @@
       <option name="presentableId" value="Default" />
       <updated>1686592125982</updated>
       <workItem from="1686592127096" duration="2000" />
+      <workItem from="1686697247022" duration="1537000" />
     </task>
     <servers />
   </component>
