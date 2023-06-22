@@ -36,13 +36,25 @@ public class refactoringMinerHandlerBetweenCommits {
 
     static objectOutputRefactMiner objectRMiner;
 
+    static ArrayList<objectOutputRefactMiner> objectsRMiners = new ArrayList<>();
+
     public static void main(String[] args) throws Exception {
+        //Renam method
+        /*refactoringBetweenCommits("https://github.com/GabrielLacerda00/RenameMethodExample.git","45fa67dcec1f768d69da02374bb3c39fc2dc853b",
+                "e32e45cc0471ebc94573c9f687257387b74ac947");*/
+        //Renames methods
+        refactoringBetweenCommits("https://github.com/GabrielLacerda00/RenameMethodExample.git","1aa1171a01937ad6655ceb193260ca4bd4308008",
+                "0ba9f3f29f3e5e14836e98cdb13eee3dd8ff7461");
 
-        refactoringBetweenCommits("https://github.com/GabrielLacerda00/RenameMethodExample.git","45fa67dcec1f768d69da02374bb3c39fc2dc853b",
-                "e32e45cc0471ebc94573c9f687257387b74ac947");
-
-        System.out.println(getObjectRMiner().toString());;
-
+        //System.out.println(getObjectRMiner().toString());;
+        /*for (objectOutputRefactMiner obj:
+                objectsRMiners) {
+            System.out.println(obj);
+        }*/
+        System.out.println("----------- Lista Objetos Rminer ---------- ");
+        for (objectOutputRefactMiner obj : objectsRMiners) {
+            System.out.println(obj);
+        }
 
     }
 
@@ -104,28 +116,10 @@ public class refactoringMinerHandlerBetweenCommits {
                 pegaElementosDestino(locationElement);
             }
         }
+        createAndAddObjectRMiner();
+
     }
 
-    /*private static void readJSON(Refactoring ref) {
-        JsonObject objetoJson = new JsonParser().parse(ref.toJSON()).getAsJsonObject();
-
-        String type = objetoJson.get("type").getAsString();
-        System.out.println("Type: " + type);
-        System.out.println("--------------------------------------------");
-
-        processaLocalizacoes(objetoJson, "leftSideLocations");
-        processaLocalizacoes(objetoJson, "rightSideLocations");
-    }
-
-    private static void processaLocalizacoes(JsonObject objetoJson, String chave) {
-        if (objetoJson.has(chave)) {
-            System.out.println(chave + ": ");
-            JsonArray arrayJson = objetoJson.getAsJsonArray(chave);
-            for (JsonElement elementoJson : arrayJson) {
-                pegaElementos(elementoJson);
-            }
-        }
-    }*/
 
     private static void pegaElementosOrigin(JsonElement meuJson){
 
@@ -133,7 +127,7 @@ public class refactoringMinerHandlerBetweenCommits {
 
         linhaDeOrigem = meuObj.get("startLine").getAsString();
         String codeElementType = meuObj.get("codeElementType").getAsString();
-        metodoOrigem = extractMethodDetails(meuObj.get("codeElement").getAsString());
+        metodoOrigem = extractMethodName(meuObj.get("codeElement").getAsString());
 
         System.out.println("startLine: " + linhaDeOrigem);
         System.out.println("codeElementType: " + codeElementType);
@@ -147,7 +141,7 @@ public class refactoringMinerHandlerBetweenCommits {
 
         linhaDeDestino = meuObj.get("startLine").getAsString();
         String codeElementType = meuObj.get("codeElementType").getAsString();
-        metodoDestino = extractMethodDetails(meuObj.get("codeElement").getAsString());
+        metodoDestino = extractMethodName(meuObj.get("codeElement").getAsString());
 
         System.out.println("startLine: " + linhaDeDestino);
         System.out.println("codeElementType: " + codeElementType);
@@ -156,32 +150,34 @@ public class refactoringMinerHandlerBetweenCommits {
 
     }
 
-    private static String extractMethodDetails(String param) {
 
-        String methodString = param;
-
+    private static String extractMethodName(String methodDefinition) {
         String result = "";
 
-        String regex = "([a-z]+) ([a-z]+)\\((.*)\\)";
+        String regex = "(\\w+)\\s*\\(";
         Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(methodString);
+        Matcher matcher = pattern.matcher(methodDefinition);
 
         if (matcher.find()) {
-            result += matcher.group(2);
-
-            String params = matcher.group(3);
-            String[] paramList = params.split(", ");
-            String[] paramTypes = new String[paramList.length];
-
-            for (int p = 0; p < paramList.length; p++) {
-                paramTypes[p] = paramList[p].split(" ")[1];
-            }
-            result += Arrays.toString(paramTypes);
+            result = matcher.group(1);
         }
+
         return result;
     }
 
     public static objectOutputRefactMiner getObjectRMiner() {
         return objectRMiner = new objectOutputRefactMiner(type, linhaDeOrigem, metodoOrigem, linhaDeDestino, metodoDestino);
+    }
+
+    public static ArrayList<objectOutputRefactMiner> getObjectsRMiners() {
+        for (objectOutputRefactMiner obj : objectsRMiners) {
+            System.out.println(obj);
+        }
+        return objectsRMiners;
+    }
+
+    public static void createAndAddObjectRMiner() {
+        objectOutputRefactMiner object = new objectOutputRefactMiner(type, linhaDeOrigem, metodoOrigem, linhaDeDestino, metodoDestino);
+        objectsRMiners.add(object);
     }
 }

@@ -38,9 +38,9 @@ public class TempObject {
 
     @Override
     public String toString() {
-        return "{" +
+        return
                 "type='" + type + '\''+
-                "lineOrigin='" + lineOrigin + '\'' +
+                ",lineOrigin='" + lineOrigin + '\'' +
                 ", nameMethodOrigin='" + nameMethodOrigin + '\'' +
                 ", lineDest='" + lineDest + '\'' +
                 ", nameMethodDst='" + nameMethodDst + '\'' +
@@ -53,6 +53,6 @@ public class TempObject {
     }
 
     public String toStringMethod(){
-        return "Update Method"+ toString();
+        return "Update Method{"+ toString();
     }
 }
