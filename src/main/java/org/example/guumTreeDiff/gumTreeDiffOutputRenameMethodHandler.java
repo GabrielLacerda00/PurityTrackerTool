@@ -4,9 +4,7 @@ import gumtree.spoon.AstComparator;
 import gumtree.spoon.diff.Diff;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.example.refactoringTypes.renameMethodObject;
@@ -19,7 +17,12 @@ import org.example.util.javaParserHandler;
 
 public class gumTreeDiffOutputRenameMethodHandler {
 
-    static ArrayList<String> list = new ArrayList<>();
+    static ArrayList<String> myListCallsSrc = new ArrayList<>();
+    static ArrayList<String> myListDeclarationsSrc = new ArrayList<>();
+
+    static ArrayList<String> myListCallsDst = new ArrayList<>();
+
+    static ArrayList<String> myListDeclarationsDst = new ArrayList<>();
 
     static ArrayList<TempObject> updateMethodsObjects = new ArrayList<TempObject>();
 
@@ -58,11 +61,11 @@ public class gumTreeDiffOutputRenameMethodHandler {
         ArrayList<String> filePaths2 = filePathFinderVersao02.getJavaFilePaths(pathDir02);
 
         javaParserHandler p1 = new javaParserHandler(pathDir01);
-        p1.getMethodsCalls();
-        p1.getMethodsDeclarations();
+        myListCallsSrc = p1.getMethodsCalls();
+        myListDeclarationsSrc = p1.getMethodsDeclarations();
         javaParserHandler p2 = new javaParserHandler(pathDir02);
-        p2.getMethodsCalls();
-        p2.getMethodsDeclarations();
+        myListCallsDst = p2.getMethodsCalls();
+        myListDeclarationsDst = p2.getMethodsDeclarations();
 
         int tamanho = Math.min(filePaths1.size(), filePaths2.size());
 
@@ -70,11 +73,11 @@ public class gumTreeDiffOutputRenameMethodHandler {
             File file1 = new File(filePaths1.get(i));
             File file2 = new File(filePaths2.get(i));
             result = new AstComparator().compare(file1, file2);
-
+            System.out.println(result.getRootOperations().get(0).toString());;
             extractDetailsUpdateMethod(result);
             extractDetailsInvocationMethod(result);
 
-           /* for (int x = 0; x < updateMethodsObjects.size(); x++) {
+            for (int x = 0; x < updateMethodsObjects.size(); x++) {
                 TempObject objUpdateMethod = updateMethodsObjects.get(x);
                 TempObject objUpdateInvocation = updateInvocationObjects.get(x);
                 renameMethodObject renameMethodObj = new renameMethodObject(objUpdateMethod, objUpdateInvocation);
@@ -84,7 +87,7 @@ public class gumTreeDiffOutputRenameMethodHandler {
             for (renameMethodObject ren:
                     renameMethodObjects) {
                 System.out.println(ren);
-            }*/
+            }
         }
        /*for (String var:
                 MyList) {
@@ -130,12 +133,19 @@ public class gumTreeDiffOutputRenameMethodHandler {
             String nameMethodOrigin = getInvocationSrc(result,var);
             String lineDest = getLineDestino(result,var);
             String nameMethodDst = getInvocationDst(result,var);
-            TempObject updateMethodObject = new TempObject(typeRename,lineOrigin,nameMethodOrigin,lineDest,nameMethodDst);
+
+
+            String checkedNameO = checkNamesMethodsDeclarationSRC(nameMethodOrigin);
+            String checkedNameDst = checkeNameMethodsDeclarationDst(nameMethodDst);
+
+            TempObject updateMethodObject = new TempObject(typeRename,lineOrigin,checkedNameO,lineDest,checkedNameDst);
             updateMethodsObjects.add(updateMethodObject);
             System.out.println(updateMethodObject.toStringMethod());
         }
         return updateMethodsObjects;
     }
+
+
 
     private static String getTypeRename(Diff result, int var) {
         String[] types =result.getRootOperations().get(var).getAction().getName().split("-");
@@ -154,9 +164,10 @@ public class gumTreeDiffOutputRenameMethodHandler {
             //Calculadora2.sum
 
             //adicionar nome da classe no nameMethod para compararmos aos arrays p1 e p2 e adicionar no obj
+            String checkedNameMethodSRC = checkNamesMethodsCallsSrc(nameMethodO);
+            String checkedNameMethodDST = checkNamesMethodsCallsDST(nameMethodD);
 
-
-            TempObject updateInvocationObject = new TempObject(typeeRename,lineO,nameMethodO,lineD,nameMethodD);
+            TempObject updateInvocationObject = new TempObject(typeeRename,lineO,checkedNameMethodSRC,lineD,checkedNameMethodDST);
             updateInvocationObjects.add(updateInvocationObject);
             System.out.println(updateInvocationObject.toStringInvocation());
         }
@@ -209,8 +220,43 @@ public class gumTreeDiffOutputRenameMethodHandler {
    public static ArrayList<renameMethodObject> getRenameMethodObjects() {
         return renameMethodObjects;
     }
+    private static String checkeNameMethodsDeclarationDst(String nameMethodDst) {
+        String strName = "";
+        for (String name: myListDeclarationsDst) {
+            if(name.contains(nameMethodDst)){
+                strName = name;
+            }
+        }
+        return strName;
+    }
 
-    public void
+    private static String checkNamesMethodsDeclarationSRC(String nameMethodO) {
+        String strName = "";
+        for (String name: myListDeclarationsSrc) {
+            if(name.contains(nameMethodO)){
+                strName = name;
+            }
+        }
+        return strName;
+    }
+    private static String checkNamesMethodsCallsDST(String nameMethod){
+        String strName = "";
+        for (String name: myListCallsDst) {
+            if (name.contains(nameMethod)){
+                strName = name;
+            }
+        }
+        return strName;
+    }
+    private static String checkNamesMethodsCallsSrc(String nameMethod){
+        String strName = "";
+        for (String name: myListCallsSrc) {
+            if (name.contains(nameMethod)){
+                strName = name;
+            }
+        }
+        return strName;
+    }
 
 
 }

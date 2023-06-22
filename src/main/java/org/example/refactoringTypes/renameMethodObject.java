@@ -3,7 +3,13 @@ package org.example.refactoringTypes;
 import org.example.util.TempObject;
 import org.example.util.objectOutputRefactMiner;
 
+import java.util.ArrayList;
+
 public class renameMethodObject {
+
+    private ArrayList<TempObject> updatesMethodsList = new ArrayList<>();
+
+    private ArrayList<TempObject> updateInvocationList = new ArrayList<>();
 
     private  TempObject updateMethodObj;
 
