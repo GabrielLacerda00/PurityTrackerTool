@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a0c258d2-3607-4dd8-9031-96f739d9116c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/refactoringTypes/inlineMethodObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/guumTreeDiff/gumTeeDiffOutputHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/guumTreeDiff/gumTreeDiffOutputRenameMethodHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/refactoringMiner/refactoringMinerHandlerBetweenCommits.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/refactoringMiner/refactoringMinerHandlerBetweenCommits.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/refactoringTypes/renameMethodObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/refactoringTypes/renameMethodObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/util/TempObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/util/TempObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/guumTreeDiff/gumTreeDiffOutputRenameMethodHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/guumTreeDiff/gumTreeDiffOutputRenameMethodHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/util/javaParserHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/util/javaParserHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,12 +93,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="gumTreeOutputInlineMethodHandler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.guumTreeDiff.gumTreeOutputInlineMethodHandler" />
+    <configuration name="javaParserHandler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.util.javaParserHandler" />
       <module name="PurityTrackerTool" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.guumTreeDiff.*" />
+          <option name="PATTERN" value="org.example.util.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -127,10 +122,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.gumTreeDiffOutputRenameMethodHandler" />
+        <item itemvalue="Application.javaParserHandler" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.refactoringMinerHandlerBetweenCommits" />
         <item itemvalue="Application.gumTreeDiffOutputInlineMethodHandler" />
-        <item itemvalue="Application.gumTreeOutputInlineMethodHandler" />
       </list>
     </recent_temporary>
   </component>
@@ -144,7 +139,7 @@
       <updated>1686592125982</updated>
       <workItem from="1686592127096" duration="2000" />
       <workItem from="1686697247022" duration="36036000" />
-      <workItem from="1687265850198" duration="33452000" />
+      <workItem from="1687265850198" duration="37612000" />
     </task>
     <servers />
   </component>

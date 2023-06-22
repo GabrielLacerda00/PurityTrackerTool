@@ -7,6 +7,7 @@ import com.github.javaparser.ast.expr.MethodCallExpr;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -16,20 +17,27 @@ import java.util.regex.Pattern;
 
 
 public class javaParserHandler {
-    static ArrayList<String> methodsCallsAndDeclarations = new ArrayList<>();
+    static ArrayList<String> methodsDeclarations = new ArrayList<>();
+    static ArrayList<String> methodsCalls = new ArrayList<>();
     static String className = "";
+
+    private String path;
     private static final Pattern CLASS_NAME_PATTERN = Pattern.compile("(public|protected|private)?\\s*class\\s+(\\w+)");
-    public static void main(String[] args) throws IOException {
-        callersHandler("C:\\Users\\gabri\\versao02\\RenameMethodExample");
+
+    public javaParserHandler(String path01) throws IOException {
+        this.path = path01;
+        run();
     }
-    public static void callersHandler(String pathh) throws IOException {
-        String directoryPath = pathh;
+
+    public void run() throws IOException {
+        String directoryPath = path;
         Files.walk(Paths.get(directoryPath))
                 .filter(Files::isRegularFile)
                 .filter(path -> path.toString().endsWith(".java"))
                 .forEach(javaParserHandler::processJavaFile);
 
-        addClassNameToCallersAndDeclarations(methodsCallsAndDeclarations,className);
+        addClassNameToCallersAndDeclarations(methodsDeclarations,className);
+        addClassNameToCallersAndDeclarations(methodsCalls,className);
     }
 
     private static void processJavaFile(Path path) {
@@ -46,13 +54,13 @@ public class javaParserHandler {
         @Override
         public void visit(MethodDeclaration n, Void arg) {
             super.visit(n, arg);
-            methodsCallsAndDeclarations.add(n.getNameAsString());
+            methodsDeclarations.add(n.getNameAsString());
             findeNameClass(n.getParentNode().toString());
         }
         @Override
         public void visit(MethodCallExpr n, Void arg) {
             super.visit(n, arg);
-            methodsCallsAndDeclarations.add(n.getNameAsString());
+            methodsCalls.add(n.getNameAsString());
         }
 
     }
@@ -70,5 +78,13 @@ public class javaParserHandler {
         for(int i = 0; i < list.size(); i++) {
             list.set(i, additionalText +"."+ list.get(i));
         }
+    }
+
+    public  ArrayList<String> getMethodsCalls() {
+        return methodsCalls;
+    }
+
+    public  ArrayList<String> getMethodsDeclarations() {
+        return methodsDeclarations;
     }
 }
