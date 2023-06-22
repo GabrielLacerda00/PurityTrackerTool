@@ -25,11 +25,11 @@ public class Main {
 
         objectsRMiner = refactoringMinerHandlerBetweenCommits.getObjectsRMiners();
         gumTreeDiffOutputRenameMethodHandler.main(args);
-        checkRenameMethod(objectsRMiner, gumTreeDiffOutputRenameMethodHandler.getRenameMethodObjects());
+        //checkRenameMethod(objectsRMiner, gumTreeDiffOutputRenameMethodHandler.getRenameMethodObjects());
 
     }
 
-    public static void checkRenameMethod(ArrayList<objectOutputRefactMiner> objectsRMiner, ArrayList<renameMethodObject> renameMethodObjects){
+   /* public static void checkRenameMethod(ArrayList<objectOutputRefactMiner> objectsRMiner, ArrayList<renameMethodObject> renameMethodObjects){
         for (int i = 0; i < objectsRMiner.size(); i++) {
             for (int j = i; j < renameMethodObjects.size() ; j++) {
                 if(renameMethodObjects.get(j).getUpdateMethodObj().getType().toLowerCase().equals("update method") && renameMethodObjects.get(j).getUpdateMethodObj().getNameMethodOrigin().equals(objectsRMiner.get(j).getNameMethodOrigin())
@@ -48,7 +48,7 @@ public class Main {
                 }
             }
         }
-    }
+    }*/
 
     public static void checkInlineMethod(ArrayList<objectOutputRefactMiner> objectsRMiner, ArrayList<renameMethodObject> renameMethodObjects){
 

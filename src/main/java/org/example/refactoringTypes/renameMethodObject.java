@@ -1,29 +1,26 @@
 package org.example.refactoringTypes;
 
+import it.unimi.dsi.fastutil.Arrays;
 import org.example.util.TempObject;
 import org.example.util.objectOutputRefactMiner;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class renameMethodObject {
-
-    private ArrayList<TempObject> updatesMethodsList = new ArrayList<>();
 
     private ArrayList<TempObject> updateInvocationList = new ArrayList<>();
 
     private  TempObject updateMethodObj;
 
-    private TempObject updateInvocationObj;
 
-    public renameMethodObject(TempObject updateMethodObj, TempObject updateInvocationObj){
+    public renameMethodObject(TempObject updateMethodObj){
        this.updateMethodObj = updateMethodObj;
-       this.updateInvocationObj = updateInvocationObj;
     }
 
-    public TempObject getUpdateInvocationObj() {
-        return updateInvocationObj;
+    public void setUpdateInvocationList(TempObject updateInvocationObj) {
+        this.updateInvocationList.add(updateInvocationObj);
     }
-
 
     public TempObject getUpdateMethodObj() {
         return updateMethodObj;
@@ -32,11 +29,11 @@ public class renameMethodObject {
 
     @Override
     public String toString() {
-        return "Rename Method{" +
+        return "'\n'Rename Method{" +
                 "Update Method"+
                 updateMethodObj+ '\'' +
                 "Update Invocation"+
-                updateInvocationObj+ '\'' +
+                updateInvocationList + '\'' +
                 '}';
     }
 }
