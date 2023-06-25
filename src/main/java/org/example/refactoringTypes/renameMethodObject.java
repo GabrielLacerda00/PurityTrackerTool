@@ -22,6 +22,10 @@ public class renameMethodObject {
         this.updateInvocationList.add(updateInvocationObj);
     }
 
+    public ArrayList<TempObject> getUpdateInvocationInList() {
+        return updateInvocationList;
+    }
+
     public TempObject getUpdateMethodObj() {
         return updateMethodObj;
     }
@@ -29,7 +33,7 @@ public class renameMethodObject {
 
     @Override
     public String toString() {
-        return "'\n'Rename Method{" +
+        return "\nRename Method{" +
                 "Update Method"+
                 updateMethodObj+ '\'' +
                 "Update Invocation"+

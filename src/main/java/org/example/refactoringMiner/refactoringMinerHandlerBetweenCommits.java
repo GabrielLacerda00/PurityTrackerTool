@@ -4,7 +4,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import org.example.refactoringTypes.renameMethodObject;
 import org.refactoringminer.api.Refactoring;
 import org.refactoringminer.api.RefactoringHandler;
 
@@ -15,12 +14,13 @@ import org.refactoringminer.rm1.GitHistoryRefactoringMinerImpl;
 import org.refactoringminer.util.GitServiceImpl;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.example.util.objectOutputRefactMiner;
+
+import org.example.util.objVersion01;
 
 public class refactoringMinerHandlerBetweenCommits {
 
@@ -38,19 +38,19 @@ public class refactoringMinerHandlerBetweenCommits {
 
     static ArrayList<objectOutputRefactMiner> objectsRMiners = new ArrayList<>();
 
+    static ArrayList<Object> versao01 = new ArrayList<>();
+
+    static ArrayList<Object> versao02 = new ArrayList<>();
+
     public static void main(String[] args) throws Exception {
         //Renam method
-        /*refactoringBetweenCommits("https://github.com/GabrielLacerda00/RenameMethodExample.git","45fa67dcec1f768d69da02374bb3c39fc2dc853b",
-                "e32e45cc0471ebc94573c9f687257387b74ac947");*/
+        refactoringBetweenCommits("https://github.com/GabrielLacerda00/RenameMethodExample.git","45fa67dcec1f768d69da02374bb3c39fc2dc853b",
+                "e32e45cc0471ebc94573c9f687257387b74ac947");
         //Renames methods
-        refactoringBetweenCommits("https://github.com/GabrielLacerda00/RenameMethodExample.git","1aa1171a01937ad6655ceb193260ca4bd4308008",
-                "0ba9f3f29f3e5e14836e98cdb13eee3dd8ff7461");
+        /*refactoringBetweenCommits("https://github.com/GabrielLacerda00/RenameMethodExample.git","1aa1171a01937ad6655ceb193260ca4bd4308008",
+                "0ba9f3f29f3e5e14836e98cdb13eee3dd8ff7461");*/
 
-        //System.out.println(getObjectRMiner().toString());;
-        /*for (objectOutputRefactMiner obj:
-                objectsRMiners) {
-            System.out.println(obj);
-        }*/
+
         System.out.println("----------- Lista Objetos Rminer ---------- ");
         for (objectOutputRefactMiner obj : objectsRMiners) {
             System.out.println(obj);
@@ -128,10 +128,11 @@ public class refactoringMinerHandlerBetweenCommits {
         linhaDeOrigem = meuObj.get("startLine").getAsString();
         String codeElementType = meuObj.get("codeElementType").getAsString();
         metodoOrigem = extractMethodName(meuObj.get("codeElement").getAsString());
-
+        String path = meuObj.get("filePath").getAsString();
         System.out.println("startLine: " + linhaDeOrigem);
         System.out.println("codeElementType: " + codeElementType);
         System.out.println("codeElement: " + metodoOrigem);
+        System.out.println("filePath: "+extractClassName(path));
         System.out.println("--------------------------------------------");
 
     }
@@ -142,10 +143,11 @@ public class refactoringMinerHandlerBetweenCommits {
         linhaDeDestino = meuObj.get("startLine").getAsString();
         String codeElementType = meuObj.get("codeElementType").getAsString();
         metodoDestino = extractMethodName(meuObj.get("codeElement").getAsString());
-
+        String path = meuObj.get("filePath").getAsString();
         System.out.println("startLine: " + linhaDeDestino);
         System.out.println("codeElementType: " + codeElementType);
         System.out.println("codeElement: " + metodoDestino);
+        System.out.println("filePath: "+extractClassName(path));
         System.out.println("--------------------------------------------");
 
     }
@@ -163,6 +165,15 @@ public class refactoringMinerHandlerBetweenCommits {
         }
 
         return result;
+    }
+
+    public static String extractClassName(String className){
+        String classNamee = className.split("\\.")[0];
+        return classNamee;
+    }
+
+    public static String createMethodName(String classeName,String methodName){
+        return classeName+"."+methodName;
     }
 
     public static objectOutputRefactMiner getObjectRMiner() {

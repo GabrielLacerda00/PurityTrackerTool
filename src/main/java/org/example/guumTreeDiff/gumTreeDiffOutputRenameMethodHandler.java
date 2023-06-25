@@ -32,6 +32,9 @@ public class gumTreeDiffOutputRenameMethodHandler {
     static ArrayList<TempObject> updateInvocationObjects = new ArrayList<TempObject>();
 
     static HashMap<TempObject,renameMethodObject> renameMethodObjects = new HashMap<>();
+
+    static ArrayList<renameMethodObject> listaConvertida = new ArrayList<>();
+
     static ArrayList<renameMethodObject> rMethodObjects = new ArrayList<>();
 
     static Diff result;
@@ -68,9 +71,12 @@ public class gumTreeDiffOutputRenameMethodHandler {
        ArrayList<String> filePaths1 = filePathFinderVersao01.getJavaFilePaths(path01);
        ArrayList<String> filePaths2 = filePathFinderVersao02.getJavaFilePaths(path02);
 
+
         javaParserHandler p1 = new javaParserHandler(path01);
         myListCallsSrc = p1.getMethodsCalls();
         myListDeclarationsSrc = p1.getMethodsDeclarations();
+
+
         javaParserHandler p2 = new javaParserHandler(path02);
         myListCallsDst = p2.getMethodsCalls();
         myListDeclarationsDst = p2.getMethodsDeclarations();
@@ -87,21 +93,21 @@ public class gumTreeDiffOutputRenameMethodHandler {
 
             ArrayList<TempObject> listpares = mergeLists(updateMethodsObjects,updateInvocationObjects);
 
-            int index = -1;
             for (int j = 0; j < listpares.size(); j+=2) {
                 if(!renameMethodObjects.containsKey(listpares.get(j))){
                     renameMethodObjects.put(listpares.get(j),new renameMethodObject(listpares.get(j)));
-                    index++;
                     renameMethodObjects.get(listpares.get(j)).setUpdateInvocationList(listpares.get(j+1));
                 }else{
                     renameMethodObjects.get(listpares.get(j)).setUpdateInvocationList(listpares.get(j+1));
                 }
             }
 
-            for (renameMethodObject ren:
+            /*for (renameMethodObject ren:
                     renameMethodObjects.values()) {
                 System.out.println(ren);
-            }
+            }*/
+            converteMap(renameMethodObjects);
+            System.out.println(getListaConvertida());
         }
     }
 
@@ -116,11 +122,13 @@ public class gumTreeDiffOutputRenameMethodHandler {
 
 
             String checkedNameO = checkNamesMethodsDeclarationSRC(nameMethodOrigin);
+
             String checkedNameDst = checkeNameMethodsDeclarationDst(nameMethodDst);
+
 
             TempObject updateMethodObject = new TempObject(typeRename,lineOrigin,checkedNameO,lineDest,checkedNameDst);
             updateMethodsObjects.add(updateMethodObject);
-            System.out.println(updateMethodObject.toStringMethod());
+            //System.out.println(updateMethodObject.toStringMethod());
         }
         return updateMethodsObjects;
     }
@@ -139,14 +147,16 @@ public class gumTreeDiffOutputRenameMethodHandler {
             String lineO = getLineOrigin(result,var);
             String nameMethodO = getInvocationSrc(result,var);
             String lineD = getLineDestino(result,var);
-            String nameMethodD = getInvocationDst(result,var); 
+            String nameMethodD = getInvocationDst(result,var);
 
             String checkedNameMethodSRC = checkNamesMethodsCallsSrc(nameMethodO);
+
             String checkedNameMethodDST = checkNamesMethodsCallsDST(nameMethodD);
+
 
             TempObject updateInvocationObject = new TempObject(typeeRename,lineO,checkedNameMethodSRC,lineD,checkedNameMethodDST);
             updateInvocationObjects.add(updateInvocationObject);
-            System.out.println(updateInvocationObject.toStringInvocation());
+            //System.out.println(updateInvocationObject.toStringInvocation());
         }
         return updateInvocationObjects;
     }
@@ -198,13 +208,13 @@ public class gumTreeDiffOutputRenameMethodHandler {
         return renameMethodObjects;
     }
     private static String checkeNameMethodsDeclarationDst(String nameMethodDst) {
-        String strName = "";
+        String strNamee = "";
         for (String name: myListDeclarationsDst) {
             if(name.contains(nameMethodDst)){
-                strName = name;
+                strNamee = name;
             }
         }
-        return strName;
+        return strNamee;
     }
 
     private static String checkNamesMethodsDeclarationSRC(String nameMethodO) {
@@ -256,4 +266,11 @@ public class gumTreeDiffOutputRenameMethodHandler {
               && updateKey.getNameMethodDst().equals(updateLock.getNameMethodDst());
     }
 
+    private static void converteMap(HashMap<TempObject,renameMethodObject> renames){
+        listaConvertida.addAll(renames.values());
+    }
+
+    public static ArrayList<renameMethodObject> getListaConvertida() {
+        return listaConvertida;
+    }
 }

@@ -8,12 +8,18 @@ import org.example.util.objectOutputRefactMiner;
 import org.example.guumTreeDiff.gumTreeDiffOutputRenameMethodHandler;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
 public class Main {
 
     static ArrayList<objectOutputRefactMiner> objectsRMiner = new ArrayList<>();
+
+    static ArrayList<renameMethodObject> listRenamesObjects = new ArrayList<>();
+
+    static ArrayList<renameMethodObject> list = new ArrayList<>();
+
     private static refactoringMinerHandlerBetweenCommits refactoringMinerHandler;
     public static void main(String[] args) throws Exception {
         //Rename method
@@ -25,36 +31,32 @@ public class Main {
 
         objectsRMiner = refactoringMinerHandlerBetweenCommits.getObjectsRMiners();
         gumTreeDiffOutputRenameMethodHandler.main(args);
-        //checkRenameMethod(objectsRMiner, gumTreeDiffOutputRenameMethodHandler.getRenameMethodObjects());
+        listRenamesObjects = gumTreeDiffOutputRenameMethodHandler.getListaConvertida();
+        checkRenameMethod(objectsRMiner,listRenamesObjects);
 
     }
 
-   /* public static void checkRenameMethod(ArrayList<objectOutputRefactMiner> objectsRMiner, ArrayList<renameMethodObject> renameMethodObjects){
+   public static void checkRenameMethod(ArrayList<objectOutputRefactMiner> objectsRMiner, ArrayList<renameMethodObject> renameMethodObjects){
         for (int i = 0; i < objectsRMiner.size(); i++) {
             for (int j = i; j < renameMethodObjects.size() ; j++) {
-                if(renameMethodObjects.get(j).getUpdateMethodObj().getType().toLowerCase().equals("update method") && renameMethodObjects.get(j).getUpdateMethodObj().getNameMethodOrigin().equals(objectsRMiner.get(j).getNameMethodOrigin())
-                        && renameMethodObjects.get(j).getUpdateInvocationObj().getNameMethodDst().equals(objectsRMiner.get(j).getNameMethodDst())){
-                    System.out.println("Pure");
 
+                if (renameMethodObjects.get(j).getUpdateMethodObj().getType().toLowerCase().equals("update method") && renameMethodObjects.get(j).getUpdateMethodObj().getNameMethodOrigin().contains(objectsRMiner.get(j).getNameMethodOrigin())
+                        && renameMethodObjects.get(j).getUpdateMethodObj().getNameMethodDst().contains(objectsRMiner.get(j).getNameMethodDst())){
+                    System.out.println("Pure!");
+                }else {
+                    System.out.println("Floss!");
+                }
+
+                if (renameMethodObjects.get(j).getUpdateMethodObj().getType().toLowerCase().equals("update invocation") && renameMethodObjects.get(j).getUpdateInvocationInList().get(j).getNameMethodOrigin().contains(objectsRMiner.get(j).getNameMethodOrigin())
+                        && renameMethodObjects.get(j).getUpdateInvocationInList().get(j).getNameMethodDst().contains(objectsRMiner.get(j).getNameMethodDst())){
+                    System.out.println("Pure");
                 }else{
                     System.out.println("Floss!");
                 }
 
-                if (renameMethodObjects.get(j).getUpdateInvocationObj().getType().toLowerCase().equals("update invocation") && renameMethodObjects.get(j).getUpdateInvocationObj().getNameMethodDst().equals(objectsRMiner.get(j).getNameMethodDst())&&
-                        renameMethodObjects.get(j).getUpdateInvocationObj().getNameMethodOrigin().equals(objectsRMiner.get(j).getNameMethodOrigin())){
-                    System.out.println("Pure");
-                }else{
-                    System.out.println("Floss");
-                }
             }
         }
-    }*/
-
-    public static void checkInlineMethod(ArrayList<objectOutputRefactMiner> objectsRMiner, ArrayList<renameMethodObject> renameMethodObjects){
-
     }
 
-    public static boolean verificaMethods(){
-        return true;
-    }
+
 }

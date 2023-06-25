@@ -8,7 +8,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/guumTreeDiff/gumTreeDiffOutputRenameMethodHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/guumTreeDiff/gumTreeDiffOutputRenameMethodHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/refactoringMiner/refactoringMinerHandlerBetweenCommits.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/refactoringMiner/refactoringMinerHandlerBetweenCommits.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/refactoringTypes/renameMethodObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/refactoringTypes/renameMethodObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/util/javaParserHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/util/javaParserHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +56,7 @@
       <recent name="C:\Users\gabri\GitHub-Gabriel_lacerda\PurityTrackerTool\PurityTrackerTool\src\main\java\org\example\guumTreeDiff" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.gumTreeDiffOutputRenameMethodHandler">
+  <component name="RunManager" selected="Application.refactoringMinerHandlerBetweenCommits">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="PurityTrackerTool" />
@@ -122,10 +124,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.gumTreeDiffOutputRenameMethodHandler" />
-        <item itemvalue="Application.javaParserHandler" />
-        <item itemvalue="Application.Main" />
         <item itemvalue="Application.refactoringMinerHandlerBetweenCommits" />
+        <item itemvalue="Application.gumTreeDiffOutputRenameMethodHandler" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.javaParserHandler" />
         <item itemvalue="Application.gumTreeDiffOutputInlineMethodHandler" />
       </list>
     </recent_temporary>
@@ -141,11 +143,19 @@
       <workItem from="1686592127096" duration="2000" />
       <workItem from="1686697247022" duration="36036000" />
       <workItem from="1687265850198" duration="48172000" />
-      <workItem from="1687441111758" duration="8682000" />
+      <workItem from="1687441111758" duration="17803000" />
+      <workItem from="1687480798491" duration="5398000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="myListCallsDst.get(17)" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

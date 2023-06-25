@@ -76,9 +76,13 @@ public class javaParserHandler {
 
     private static void addClassNameToCallersAndDeclarations(ArrayList<String> list, String additionalText) {
         for(int i = 0; i < list.size(); i++) {
-            list.set(i, additionalText +"."+ list.get(i));
+            if(list.get(i).split("\\.").length == 1){
+                list.set(i, additionalText +"."+ list.get(i));
+            }
+
         }
     }
+
 
     public  ArrayList<String> getMethodsCalls() {
         return methodsCalls;
