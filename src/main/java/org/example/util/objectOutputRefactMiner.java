@@ -1,45 +1,33 @@
 package org.example.util;
 
 
+import java.util.ArrayList;
+
 public class objectOutputRefactMiner {
-    private String lineOrigin;
-    private String nameMethodOrigin;
-    private String lineDest;
-    private String nameMethodDst;
 
-    private String type;
+   private ArrayList<Object> version01;
 
-    public objectOutputRefactMiner(String type,String lineOrigin, String nameMethodOrigin, String lineDest, String nameMethodDst) {
-        this.type = type;
-        this.lineOrigin = lineOrigin;
-        this.nameMethodOrigin = nameMethodOrigin;
-        this.lineDest = lineDest;
-        this.nameMethodDst = nameMethodDst;
+   private ArrayList<Object> version02;
+
+
+    public objectOutputRefactMiner(ArrayList<Object> version01, ArrayList<Object> version02) {
+        this.version01 = version01;
+        this.version02 = version02;
     }
 
-    public String getLineDest() {
-        return lineDest;
+    public ArrayList<Object> getVersion01() {
+        return version01;
     }
 
-    public String getLineOrigin() {
-        return lineOrigin;
-    }
-
-    public String getNameMethodDst() {
-        return nameMethodDst;
-    }
-
-    public String getNameMethodOrigin() {
-        return nameMethodOrigin;
+    public ArrayList<Object> getVersion02() {
+        return version02;
     }
 
     @Override
     public String toString() {
-        return "Update Method{" +
-                "lineOrigin='" + lineOrigin + '\'' +
-                ", nameMethodOrigin='" + nameMethodOrigin + '\'' +
-                ", lineDest='" + lineDest + '\'' +
-                ", nameMethodDst='" + nameMethodDst + '\'' +
+        return "Edições Esperadas{" +
+                "version01=" + version01 +
+                ", version02=" + version02 +
                 '}';
     }
 }

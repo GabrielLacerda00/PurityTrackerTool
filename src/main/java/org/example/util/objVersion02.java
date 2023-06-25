@@ -1,11 +1,14 @@
 package org.example.util;
 
-public class objVersion01 {
+public class objVersion02 {
+
     private String lineOrigin;
+
     private String nameMethodOrigin;
+
     private String type;
 
-    public objVersion01(String type, String lineOrigin, String nameMethodOrigin) {
+    public objVersion02(String type, String lineOrigin, String nameMethodOrigin) {
         this.type = type;
         this.lineOrigin = lineOrigin;
         this.nameMethodOrigin = nameMethodOrigin;
@@ -21,12 +24,14 @@ public class objVersion01 {
 
     public String getType() {return type;}
 
+
     @Override
     public String toString() {
-        return "objVersion01{" +
+        return "objVersion02{" +
                 "lineOrigin='" + lineOrigin + '\'' +
                 ", nameMethodOrigin='" + nameMethodOrigin + '\'' +
                 ", type='" + type + '\'' +
                 '}';
     }
+
 }

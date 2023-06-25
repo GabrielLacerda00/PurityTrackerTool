@@ -21,6 +21,7 @@ import java.util.regex.Pattern;
 import org.example.util.objectOutputRefactMiner;
 
 import org.example.util.objVersion01;
+import org.example.util.objVersion02;
 
 public class refactoringMinerHandlerBetweenCommits {
 
@@ -38,6 +39,8 @@ public class refactoringMinerHandlerBetweenCommits {
 
     static ArrayList<objectOutputRefactMiner> objectsRMiners = new ArrayList<>();
 
+    static ArrayList<Object> objectsRefactoringMiner = new ArrayList<>();
+
     static ArrayList<Object> versao01 = new ArrayList<>();
 
     static ArrayList<Object> versao02 = new ArrayList<>();
@@ -54,6 +57,9 @@ public class refactoringMinerHandlerBetweenCommits {
         System.out.println("----------- Lista Objetos Rminer ---------- ");
         for (objectOutputRefactMiner obj : objectsRMiners) {
             System.out.println(obj);
+        }
+        for (Object version: objectsRefactoringMiner) {
+            System.out.println(version);
         }
 
     }
@@ -116,7 +122,7 @@ public class refactoringMinerHandlerBetweenCommits {
                 pegaElementosDestino(locationElement);
             }
         }
-        createAndAddObjectRMiner();
+        createAndAddObjectRMiner(versao01,versao02);
 
     }
 
@@ -134,7 +140,10 @@ public class refactoringMinerHandlerBetweenCommits {
         System.out.println("codeElement: " + metodoOrigem);
         System.out.println("filePath: "+extractClassName(path));
         System.out.println("--------------------------------------------");
-
+        metodoOrigem = createMethodName(extractClassName(path),metodoOrigem);
+        objVersion01 version01 = new objVersion01(type,linhaDeOrigem,metodoOrigem);
+        versao01.add(version01);
+        objectsRefactoringMiner.add(version01);
     }
     private static void pegaElementosDestino(JsonElement meuJson){
 
@@ -149,7 +158,10 @@ public class refactoringMinerHandlerBetweenCommits {
         System.out.println("codeElement: " + metodoDestino);
         System.out.println("filePath: "+extractClassName(path));
         System.out.println("--------------------------------------------");
-
+        metodoDestino = createMethodName(extractClassName(path),metodoDestino);
+        objVersion02 version02 = new objVersion02(type,linhaDeDestino,metodoDestino);
+        versao02.add(version02);
+        objectsRefactoringMiner.add(version02);
     }
 
 
@@ -163,7 +175,6 @@ public class refactoringMinerHandlerBetweenCommits {
         if (matcher.find()) {
             result = matcher.group(1);
         }
-
         return result;
     }
 
@@ -176,9 +187,6 @@ public class refactoringMinerHandlerBetweenCommits {
         return classeName+"."+methodName;
     }
 
-    public static objectOutputRefactMiner getObjectRMiner() {
-        return objectRMiner = new objectOutputRefactMiner(type, linhaDeOrigem, metodoOrigem, linhaDeDestino, metodoDestino);
-    }
 
     public static ArrayList<objectOutputRefactMiner> getObjectsRMiners() {
         for (objectOutputRefactMiner obj : objectsRMiners) {
@@ -187,8 +195,10 @@ public class refactoringMinerHandlerBetweenCommits {
         return objectsRMiners;
     }
 
-    public static void createAndAddObjectRMiner() {
-        objectOutputRefactMiner object = new objectOutputRefactMiner(type, linhaDeOrigem, metodoOrigem, linhaDeDestino, metodoDestino);
+    public static void createAndAddObjectRMiner(ArrayList<Object> versao01,ArrayList<Object>version02) {
+        objectOutputRefactMiner object = new objectOutputRefactMiner(versao01,version02);
         objectsRMiners.add(object);
     }
+
+
 }
