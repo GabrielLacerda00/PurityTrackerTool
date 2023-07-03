@@ -4,8 +4,10 @@ import com.google.gson.internal.bind.util.ISO8601Utils;
 import org.example.refactoringMiner.refactoringMinerHandlerBetweenCommits;
 import org.example.refactoringTypes.renameMethodObject;
 import org.example.util.TempObject;
+import org.example.util.callerWaited;
 import org.example.util.objectOutputRefactMiner;
 import org.example.guumTreeDiff.gumTreeDiffOutputRenameMethodHandler;
+import org.example.util.javaParserHandler;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,6 +16,7 @@ import java.util.List;
 
 public class Main {
 
+    static ArrayList<callerWaited>  callerWaiteds = new ArrayList<>();
     static ArrayList<objectOutputRefactMiner> objectsRMiner = new ArrayList<>();
 
     static ArrayList<renameMethodObject> listRenamesObjects = new ArrayList<>();
@@ -32,11 +35,32 @@ public class Main {
         objectsRMiner = refactoringMinerHandlerBetweenCommits.getObjectsRMiners();
         gumTreeDiffOutputRenameMethodHandler.main(args);
         listRenamesObjects = gumTreeDiffOutputRenameMethodHandler.getListaConvertida();
-        //checkRenameMethod(objectsRMiner,listRenamesObjects);
+        javaParserHandler.main(args);
+        callerWaiteds = javaParserHandler.getCallersMethod();
+        checkRenameMethod(objectsRMiner,listRenamesObjects,callerWaiteds);
+
+    }
+    public static void checkRenameMethod(ArrayList<objectOutputRefactMiner> objectsRMiner, ArrayList<renameMethodObject> renameMethodObjects,ArrayList<callerWaited> expectedCalls){
+        for (int i = 0; i < objectsRMiner.size(); i++) {
+            for (int j = i; j < renameMethodObjects.size(); j++) {
+                if (renameMethodObjects.get(j).getUpdateMethodObj().getType().toLowerCase().equals("update method") && renameMethodObjects.get(j).getUpdateMethodObj().getNameMethodDst().equals(objectsRMiner.get(j).getVersion02().getNameMethodDst())){
+                    System.out.println("Pure");
+                }else{
+                    System.out.println("Floss");
+                }
+
+                if(renameMethodObjects.get(j).getUpdateInvocationInList().get(j).getType().toLowerCase().equals("update invocation") && renameMethodObjects.get(j).getUpdateInvocationInList().get(j).getNameMethodDst().equals(
+                        objectsRMiner.get(j).getVersion02().getNameMethodDst()) && expectedCalls.get(j).getCallNameMethod().equals(renameMethodObjects.get(j).getUpdateInvocationInList().get(j).getNameMethodDst())){
+                    System.out.println("Pure");
+                }else{
+                    System.out.println("Floss");
+                }
+            }
+        }
 
     }
 
- /*  public static void checkRenameMethod(ArrayList<objectOutputRefactMiner> objectsRMiner, ArrayList<renameMethodObject> renameMethodObjects){
+   /* public static void checkRenameMethod(ArrayList<objectOutputRefactMiner> objectsRMiner, ArrayList<renameMethodObject> renameMethodObjects){
         for (int i = 0; i < objectsRMiner.size(); i++) {
             for (int j = i; j < renameMethodObjects.size() ; j++) {
 

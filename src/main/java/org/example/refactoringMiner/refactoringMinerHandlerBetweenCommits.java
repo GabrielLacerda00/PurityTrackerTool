@@ -41,23 +41,23 @@ public class refactoringMinerHandlerBetweenCommits {
 
     static ArrayList<Object> objectsRefactoringMiner = new ArrayList<>();
 
-    static ArrayList<Object> versao01 = new ArrayList<>();
+    static ArrayList<objVersion01> versao01 = new ArrayList<>();
 
-    static ArrayList<Object> versao02 = new ArrayList<>();
+    static ArrayList<objVersion02> versao02 = new ArrayList<>();
 
     public static void main(String[] args) throws Exception {
-        //Renam method
+        //Rename method
         refactoringBetweenCommits("https://github.com/GabrielLacerda00/RenameMethodExample.git","45fa67dcec1f768d69da02374bb3c39fc2dc853b",
                 "e32e45cc0471ebc94573c9f687257387b74ac947");
         //Renames methods
         /*refactoringBetweenCommits("https://github.com/GabrielLacerda00/RenameMethodExample.git","1aa1171a01937ad6655ceb193260ca4bd4308008",
                 "0ba9f3f29f3e5e14836e98cdb13eee3dd8ff7461");*/
 
-
         System.out.println("----------- Lista Objetos Rminer ---------- ");
-        for (objectOutputRefactMiner obj : objectsRMiners) {
+        /*for (objectOutputRefactMiner obj : objectsRMiners) {
             System.out.println(obj);
-        }
+        }*/
+
         for (Object version: objectsRefactoringMiner) {
             System.out.println(version);
         }
@@ -69,7 +69,6 @@ public class refactoringMinerHandlerBetweenCommits {
         int lastSlashIndex = projectURL.lastIndexOf("/");
         String projectNameWithGit = projectURL.substring(lastSlashIndex + 1);
         String projectName = projectNameWithGit.replace(".git", "");
-
 
         //clearFile(outPutRMinerPath);
 
@@ -123,7 +122,6 @@ public class refactoringMinerHandlerBetweenCommits {
             }
         }
         createAndAddObjectRMiner(versao01,versao02);
-
     }
 
 
@@ -164,7 +162,6 @@ public class refactoringMinerHandlerBetweenCommits {
         objectsRefactoringMiner.add(version02);
     }
 
-
     private static String extractMethodName(String methodDefinition) {
         String result = "";
 
@@ -189,16 +186,21 @@ public class refactoringMinerHandlerBetweenCommits {
 
 
     public static ArrayList<objectOutputRefactMiner> getObjectsRMiners() {
-        for (objectOutputRefactMiner obj : objectsRMiners) {
+        for (Object obj : objectsRefactoringMiner) {
             System.out.println(obj);
         }
         return objectsRMiners;
     }
 
-    public static void createAndAddObjectRMiner(ArrayList<Object> versao01,ArrayList<Object>version02) {
-        objectOutputRefactMiner object = new objectOutputRefactMiner(versao01,version02);
-        objectsRMiners.add(object);
-    }
 
+    public static void createAndAddObjectRMiner(ArrayList<objVersion01> versao01, ArrayList<objVersion02>version02) {
+        for (int i = 0; i < versao01.size(); i++) {
+            for (int j = 0; j <version02.size() ; j++) {
+                objectOutputRefactMiner object = new objectOutputRefactMiner(versao01.get(j),version02.get(j));
+                objectsRMiners.add(object);
+            }
+        }
+        //objectOutputRefactMiner object = new objectOutputRefactMiner(versao01,version02);
+    }
 
 }

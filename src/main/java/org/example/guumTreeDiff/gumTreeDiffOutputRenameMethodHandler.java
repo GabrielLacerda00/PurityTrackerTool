@@ -72,14 +72,14 @@ public class gumTreeDiffOutputRenameMethodHandler {
        ArrayList<String> filePaths2 = filePathFinderVersao02.getJavaFilePaths(path02);
 
 
-        javaParserHandler p1 = new javaParserHandler(path01);
+       /* javaParserHandler p1 = new javaParserHandler(path01);
         myListCallsSrc = p1.getMethodsCalls();
         myListDeclarationsSrc = p1.getMethodsDeclarations();
 
 
         javaParserHandler p2 = new javaParserHandler(path02);
         myListCallsDst = p2.getMethodsCalls();
-        myListDeclarationsDst = p2.getMethodsDeclarations();
+        myListDeclarationsDst = p2.getMethodsDeclarations();*/
 
         int tamanho = Math.min(filePaths1.size(), filePaths2.size());
 
@@ -116,17 +116,15 @@ public class gumTreeDiffOutputRenameMethodHandler {
         for (int var = 0; var < (result.getRootOperations().size()/2); var++) {
             String typeRename = getTypeRename(result,var);
             String lineOrigin = getLineOrigin(result,var);
-            String nameMethodOrigin = getInvocationSrc(result,var);
+            String nameMethodOrigin = extractClassName(result,var)+"."+getInvocationSrc(result,var);
             String lineDest = getLineDestino(result,var);
-            String nameMethodDst = getInvocationDst(result,var);
-
+            String nameMethodDst = extractClassName(result,var)+"."+getInvocationDst(result,var);
 
             String checkedNameO = checkNamesMethodsDeclarationSRC(nameMethodOrigin);
 
             String checkedNameDst = checkeNameMethodsDeclarationDst(nameMethodDst);
 
-
-            TempObject updateMethodObject = new TempObject(typeRename,lineOrigin,checkedNameO,lineDest,checkedNameDst);
+            TempObject updateMethodObject = new TempObject(typeRename,lineOrigin,nameMethodOrigin,lineDest,nameMethodDst);
             updateMethodsObjects.add(updateMethodObject);
             //System.out.println(updateMethodObject.toStringMethod());
         }
@@ -145,16 +143,16 @@ public class gumTreeDiffOutputRenameMethodHandler {
         for (int var = (result.getRootOperations().size()/2); var < (result.getRootOperations().size()); var++) {
             String typeeRename = getTypeRename(result,var);
             String lineO = getLineOrigin(result,var);
-            String nameMethodO = getInvocationSrc(result,var);
+            String nameMethodO = extractClassName(result,var)+"."+getInvocationSrc(result,var);
             String lineD = getLineDestino(result,var);
-            String nameMethodD = getInvocationDst(result,var);
+            String nameMethodD = extractClassName(result,var)+"."+getInvocationDst(result,var);
 
             String checkedNameMethodSRC = checkNamesMethodsCallsSrc(nameMethodO);
 
             String checkedNameMethodDST = checkNamesMethodsCallsDST(nameMethodD);
 
 
-            TempObject updateInvocationObject = new TempObject(typeeRename,lineO,checkedNameMethodSRC,lineD,checkedNameMethodDST);
+            TempObject updateInvocationObject = new TempObject(typeeRename,lineO,nameMethodO,lineD,nameMethodD);
             updateInvocationObjects.add(updateInvocationObject);
             //System.out.println(updateInvocationObject.toStringInvocation());
         }
@@ -179,6 +177,7 @@ public class gumTreeDiffOutputRenameMethodHandler {
     }
 
     private static String getInvocationDst(Diff result, int var){
+        //System.out.println(result.getRootOperations().get(var).getDstNode().toString());
         //return extractMethodName(result.getRootOperations().get(var).getDstNode().toString());
         String name="";
         if(result.getRootOperations().get(var).getDstNode() == null){
@@ -202,6 +201,20 @@ public class gumTreeDiffOutputRenameMethodHandler {
         }
 
         return result;
+    }
+    public static String extractClassName(Diff result, int var){
+        return extractClassDetailss(result.getRootOperations().get(var).toString());
+    }
+    private static String extractClassDetailss(String input) {
+        String regex = "\\b(\\w+)\\s*:";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(input);
+
+        if (matcher.find()) {
+            return matcher.group(1);
+        }
+
+        return null;
     }
 
    public static HashMap<TempObject,renameMethodObject> getRenameMethodObjects() {

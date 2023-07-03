@@ -1,4 +1,5 @@
 package org.example.refactoringMiner;
 
-public class refactoringMinerHandler {
+public class rMinerObject {
+
 }

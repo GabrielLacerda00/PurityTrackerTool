@@ -7,8 +7,11 @@
     <list default="true" id="a0c258d2-3607-4dd8-9031-96f739d9116c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/guumTreeDiff/gumTreeDiffOutputRenameMethodHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/guumTreeDiff/gumTreeDiffOutputRenameMethodHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/refactoringMiner/refactoringMinerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/refactoringMiner/rMinerObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/refactoringMiner/refactoringMinerHandlerBetweenCommits.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/refactoringMiner/refactoringMinerHandlerBetweenCommits.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/util/objVersion01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/util/objVersion01.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/util/javaParserHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/util/javaParserHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/util/objVersion02.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/util/objVersion02.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/util/objectOutputRefactMiner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/util/objectOutputRefactMiner.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,7 +58,7 @@
       <recent name="C:\Users\gabri\GitHub-Gabriel_lacerda\PurityTrackerTool\PurityTrackerTool\src\main\java\org\example\guumTreeDiff" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.refactoringMinerHandlerBetweenCommits">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="PurityTrackerTool" />
@@ -69,8 +72,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="gumTreeDiffOutputInlineMethodHandler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.guumTreeDiff.gumTreeDiffOutputInlineMethodHandler" />
+    <configuration name="gumTeeDiffHandler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.guumTreeDiff.gumTeeDiffHandler" />
       <module name="PurityTrackerTool" />
       <extension name="coverage">
         <pattern>
@@ -123,11 +126,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.refactoringMinerHandlerBetweenCommits" />
         <item itemvalue="Application.gumTreeDiffOutputRenameMethodHandler" />
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.gumTeeDiffHandler" />
         <item itemvalue="Application.javaParserHandler" />
-        <item itemvalue="Application.gumTreeDiffOutputInlineMethodHandler" />
       </list>
     </recent_temporary>
   </component>
@@ -144,7 +147,9 @@
       <workItem from="1687265850198" duration="48172000" />
       <workItem from="1687441111758" duration="17803000" />
       <workItem from="1687480798491" duration="6283000" />
-      <workItem from="1687658518334" duration="4730000" />
+      <workItem from="1687658518334" duration="7248000" />
+      <workItem from="1687954099474" duration="12178000" />
+      <workItem from="1688086964232" duration="49420000" />
     </task>
     <servers />
   </component>

@@ -1,25 +1,27 @@
 package org.example.util;
 
+import java.util.ArrayList;
+
 public class objVersion02 {
 
-    private String lineOrigin;
+    private String lineDst;
 
-    private String nameMethodOrigin;
+    private String nameMethodDst;
 
     private String type;
 
-    public objVersion02(String type, String lineOrigin, String nameMethodOrigin) {
+    public objVersion02(String type, String lineDst, String nameMethodDst) {
         this.type = type;
-        this.lineOrigin = lineOrigin;
-        this.nameMethodOrigin = nameMethodOrigin;
+        this.lineDst = lineDst;
+        this.nameMethodDst = nameMethodDst;
     }
 
-    public String getLineOrigin() {
-        return lineOrigin;
+    public String getLineDst() {
+        return lineDst;
     }
 
-    public String getNameMethodOrigin() {
-        return nameMethodOrigin;
+    public String getNameMethodDst() {
+        return nameMethodDst;
     }
 
     public String getType() {return type;}
@@ -28,8 +30,8 @@ public class objVersion02 {
     @Override
     public String toString() {
         return "objVersion02{" +
-                "lineOrigin='" + lineOrigin + '\'' +
-                ", nameMethodOrigin='" + nameMethodOrigin + '\'' +
+                "lineOrigin='" + lineDst + '\'' +
+                ", nameMethodOrigin='" + nameMethodDst + '\'' +
                 ", type='" + type + '\'' +
                 '}';
     }
