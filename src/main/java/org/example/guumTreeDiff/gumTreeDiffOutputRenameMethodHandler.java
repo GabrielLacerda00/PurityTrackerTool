@@ -71,23 +71,13 @@ public class gumTreeDiffOutputRenameMethodHandler {
        ArrayList<String> filePaths1 = filePathFinderVersao01.getJavaFilePaths(path01);
        ArrayList<String> filePaths2 = filePathFinderVersao02.getJavaFilePaths(path02);
 
-
-       /* javaParserHandler p1 = new javaParserHandler(path01);
-        myListCallsSrc = p1.getMethodsCalls();
-        myListDeclarationsSrc = p1.getMethodsDeclarations();
-
-
-        javaParserHandler p2 = new javaParserHandler(path02);
-        myListCallsDst = p2.getMethodsCalls();
-        myListDeclarationsDst = p2.getMethodsDeclarations();*/
-
         int tamanho = Math.min(filePaths1.size(), filePaths2.size());
 
         for (int i = 0; i < tamanho; i++) {
             File file1 = new File(filePaths1.get(i));
             File file2 = new File(filePaths2.get(i));
             result = new AstComparator().compare(file1, file2);
-
+            result.getRootOperations();
             extractDetailsUpdateMethod(result);
             extractDetailsInvocationMethod(result);
 
@@ -101,7 +91,6 @@ public class gumTreeDiffOutputRenameMethodHandler {
                     renameMethodObjects.get(listpares.get(j)).setUpdateInvocationList(listpares.get(j+1));
                 }
             }
-
             /*for (renameMethodObject ren:
                     renameMethodObjects.values()) {
                 System.out.println(ren);
@@ -112,26 +101,18 @@ public class gumTreeDiffOutputRenameMethodHandler {
     }
 
     private static ArrayList<TempObject> extractDetailsUpdateMethod(Diff result) {
-
         for (int var = 0; var < (result.getRootOperations().size()/2); var++) {
             String typeRename = getTypeRename(result,var);
             String lineOrigin = getLineOrigin(result,var);
             String nameMethodOrigin = extractClassName(result,var)+"."+getInvocationSrc(result,var);
             String lineDest = getLineDestino(result,var);
             String nameMethodDst = extractClassName(result,var)+"."+getInvocationDst(result,var);
-
-            String checkedNameO = checkNamesMethodsDeclarationSRC(nameMethodOrigin);
-
-            String checkedNameDst = checkeNameMethodsDeclarationDst(nameMethodDst);
-
             TempObject updateMethodObject = new TempObject(typeRename,lineOrigin,nameMethodOrigin,lineDest,nameMethodDst);
             updateMethodsObjects.add(updateMethodObject);
             //System.out.println(updateMethodObject.toStringMethod());
         }
         return updateMethodsObjects;
     }
-
-
 
     private static String getTypeRename(Diff result, int var) {
         String[] types =result.getRootOperations().get(var).getAction().getName().split("-");
@@ -146,12 +127,6 @@ public class gumTreeDiffOutputRenameMethodHandler {
             String nameMethodO = extractClassName(result,var)+"."+getInvocationSrc(result,var);
             String lineD = getLineDestino(result,var);
             String nameMethodD = extractClassName(result,var)+"."+getInvocationDst(result,var);
-
-            String checkedNameMethodSRC = checkNamesMethodsCallsSrc(nameMethodO);
-
-            String checkedNameMethodDST = checkNamesMethodsCallsDST(nameMethodD);
-
-
             TempObject updateInvocationObject = new TempObject(typeeRename,lineO,nameMethodO,lineD,nameMethodD);
             updateInvocationObjects.add(updateInvocationObject);
             //System.out.println(updateInvocationObject.toStringInvocation());
@@ -173,12 +148,17 @@ public class gumTreeDiffOutputRenameMethodHandler {
     }
 
     private static String getInvocationSrc(Diff result,int var){
-        return extractMethodName(result.getRootOperations().get(var).getSrcNode().toString());
+        String name="";
+        if(result.getRootOperations().get(var).getSrcNode() == null){
+            name = "null";
+        }
+        else{
+            name = extractMethodName(result.getRootOperations().get(var).getSrcNode().toString());;
+        }
+        return name;
     }
 
     private static String getInvocationDst(Diff result, int var){
-        //System.out.println(result.getRootOperations().get(var).getDstNode().toString());
-        //return extractMethodName(result.getRootOperations().get(var).getDstNode().toString());
         String name="";
         if(result.getRootOperations().get(var).getDstNode() == null){
             name = "null";
@@ -199,7 +179,6 @@ public class gumTreeDiffOutputRenameMethodHandler {
         if (matcher.find()) {
             result = matcher.group(1);
         }
-
         return result;
     }
     public static String extractClassName(Diff result, int var){
@@ -216,48 +195,6 @@ public class gumTreeDiffOutputRenameMethodHandler {
 
         return null;
     }
-
-   public static HashMap<TempObject,renameMethodObject> getRenameMethodObjects() {
-        return renameMethodObjects;
-    }
-    private static String checkeNameMethodsDeclarationDst(String nameMethodDst) {
-        String strNamee = "";
-        for (String name: myListDeclarationsDst) {
-            if(name.contains(nameMethodDst)){
-                strNamee = name;
-            }
-        }
-        return strNamee;
-    }
-
-    private static String checkNamesMethodsDeclarationSRC(String nameMethodO) {
-        String strName = "";
-        for (String name: myListDeclarationsSrc) {
-            if(name.contains(nameMethodO)){
-                strName = name;
-            }
-        }
-        return strName;
-    }
-    private static String checkNamesMethodsCallsDST(String nameMethod){
-        String strName = "";
-        for (String name: myListCallsDst) {
-            if (name.contains(nameMethod)){
-                strName = name;
-            }
-        }
-        return strName;
-    }
-    private static String checkNamesMethodsCallsSrc(String nameMethod){
-        String strName = "";
-        for (String name: myListCallsSrc) {
-            if (name.contains(nameMethod)){
-                strName = name;
-            }
-        }
-        return strName;
-    }
-
     private static ArrayList<TempObject> mergeLists(ArrayList<TempObject>list01,ArrayList<TempObject> list02){
         ArrayList<TempObject> listResult = new ArrayList<>();
         for (int i = 0; i < list01.size(); i++) {

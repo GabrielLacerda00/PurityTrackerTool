@@ -146,8 +146,7 @@ public class javaParserHandler {
             if (n.getNameAsString().equals(TARGET_METHOD_NAME)) {
                 String declaringClassName = getClassName(filePath);
                 int declarationLine = n.getBegin().get().line;
-                System.out.println(declarationLine);
-                System.out.println("Method declaration: " +declaringClassName+"."+ n.getNameAsString());
+                //System.out.println("Method declaration: " +declaringClassName+"."+ n.getNameAsString());
             }
         }
 
@@ -157,8 +156,7 @@ public class javaParserHandler {
             if (n.getNameAsString().equals(TARGET_METHOD_NAME)) {
                 String callingClassName = getClassName(filePath);
                 String callLine = Integer.toString(n.getBegin().get().line);
-                System.out.println(callLine);
-                System.out.println("Method call found: "+callingClassName+"." + n.getNameAsString());
+                //System.out.println("Method call found: "+callingClassName+"." + n.getNameAsString());
                 String fullName = callingClassName+"."+n.getNameAsString();
                 callerWaited callerMethod = new callerWaited(callLine,fullName);
                 callersMethod.add(callerMethod);
