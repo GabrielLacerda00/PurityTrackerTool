@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import org.example.util.*;
 import org.refactoringminer.api.Refactoring;
 import org.refactoringminer.api.RefactoringHandler;
 
@@ -13,15 +14,11 @@ import org.refactoringminer.api.GitService;
 import org.refactoringminer.rm1.GitHistoryRefactoringMinerImpl;
 import org.refactoringminer.util.GitServiceImpl;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import org.example.util.objectOutputRefactMiner;
-
-import org.example.util.objVersion01;
-import org.example.util.objVersion02;
 
 public class refactoringMinerHandlerBetweenCommits {
 
@@ -45,7 +42,18 @@ public class refactoringMinerHandlerBetweenCommits {
 
     static ArrayList<objVersion02> versao02 = new ArrayList<>();
 
+    static ArrayList<callerWaited> rightSideCallers = new ArrayList<>();
+
+    static ArrayList<callerWaited> leftSideCallers = new ArrayList<>();
+
+    private static String path01 = "";
+
+    private static String path02 = "";
+
     public static void main(String[] args) throws Exception {
+        String pathDir01 = "C:\\Users\\gabri\\versao01\\RenameMethodExample";
+        String pathDir02 = "C:\\Users\\gabri\\versao02\\RenameMethodExample";
+        handlerPathsDirs(pathDir01,pathDir02);
         //Rename method
         refactoringBetweenCommits("https://github.com/GabrielLacerda00/RenameMethodExample.git","45fa67dcec1f768d69da02374bb3c39fc2dc853b",
                 "e32e45cc0471ebc94573c9f687257387b74ac947");
@@ -54,14 +62,19 @@ public class refactoringMinerHandlerBetweenCommits {
                 "0ba9f3f29f3e5e14836e98cdb13eee3dd8ff7461");*/
 
         System.out.println("----------- Lista Objetos Rminer ---------- ");
-        /*for (objectOutputRefactMiner obj : objectsRMiners) {
+        for (objectOutputRefactMiner obj : objectsRMiners) {
             System.out.println(obj);
-        }*/
+        }
 
         for (Object version: objectsRefactoringMiner) {
             System.out.println(version);
         }
 
+    }
+
+    public static void handlerPathsDirs(String pathh01, String pathh02){
+        path01 = pathh01;
+        path02 = pathh02;
     }
 
     public static void refactoringBetweenCommits(String projectURL, String commit1, String commit2) throws Exception {
@@ -85,14 +98,18 @@ public class refactoringMinerHandlerBetweenCommits {
                         System.out.println("Refactorings at " + commitId);
                         for (Refactoring ref : refactorings) {
                             System.out.println(ref.toJSON());
-                            readJSON(ref);
+                            try {
+                                readJSON(ref);
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
                         }
 
                     }
                 });
     }
 
-    private static void readJSON(Refactoring ref){
+    private static void readJSON(Refactoring ref) throws IOException {
 
         //converto em String -> converto em JsonElement para trasnformar em um object.
 
@@ -125,7 +142,7 @@ public class refactoringMinerHandlerBetweenCommits {
     }
 
 
-    private static void pegaElementosOrigin(JsonElement meuJson){
+    private static void pegaElementosOrigin(JsonElement meuJson) throws IOException {
 
         JsonObject meuObj = meuJson.getAsJsonObject();
 
@@ -138,12 +155,16 @@ public class refactoringMinerHandlerBetweenCommits {
         System.out.println("codeElement: " + metodoOrigem);
         System.out.println("filePath: "+extractClassName(path));
         System.out.println("--------------------------------------------");
+        javaParserHandler.mainCallersHandler(path01,metodoOrigem);
+
         metodoOrigem = createMethodName(extractClassName(path),metodoOrigem);
-        objVersion01 version01 = new objVersion01(type,linhaDeOrigem,metodoOrigem);
+        leftSideCallers.addAll(javaParserHandler.getCallersMethod());
+        objVersion01 version01 = new objVersion01(type,linhaDeOrigem,metodoOrigem,leftSideCallers);
         versao01.add(version01);
         objectsRefactoringMiner.add(version01);
+
     }
-    private static void pegaElementosDestino(JsonElement meuJson){
+    private static void pegaElementosDestino(JsonElement meuJson) throws IOException {
 
         JsonObject meuObj = meuJson.getAsJsonObject();
 
@@ -156,8 +177,13 @@ public class refactoringMinerHandlerBetweenCommits {
         System.out.println("codeElement: " + metodoDestino);
         System.out.println("filePath: "+extractClassName(path));
         System.out.println("--------------------------------------------");
+        javaParserHandler.getCallersMethod().clear();
+        javaParserHandler.mainCallersHandler(path02,metodoDestino);
+        rightSideCallers.addAll(javaParserHandler.getCallersMethod());
+
         metodoDestino = createMethodName(extractClassName(path),metodoDestino);
-        objVersion02 version02 = new objVersion02(type,linhaDeDestino,metodoDestino);
+
+        objVersion02 version02 = new objVersion02(type,linhaDeDestino,metodoDestino,rightSideCallers);
         versao02.add(version02);
         objectsRefactoringMiner.add(version02);
     }
@@ -202,5 +228,7 @@ public class refactoringMinerHandlerBetweenCommits {
         }
         //objectOutputRefactMiner object = new objectOutputRefactMiner(versao01,version02);
     }
+
+
 
 }

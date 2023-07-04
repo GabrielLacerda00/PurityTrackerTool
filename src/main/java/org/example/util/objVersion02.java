@@ -10,10 +10,13 @@ public class objVersion02 {
 
     private String type;
 
-    public objVersion02(String type, String lineDst, String nameMethodDst) {
+    private static ArrayList<callerWaited> callerWaitedsMethod = new ArrayList<>();
+
+    public objVersion02(String type, String lineDst, String nameMethodDst,ArrayList<callerWaited> callerWaitedMethod) {
         this.type = type;
         this.lineDst = lineDst;
         this.nameMethodDst = nameMethodDst;
+        this.callerWaitedsMethod = callerWaitedMethod;
     }
 
     public String getLineDst() {
@@ -26,6 +29,9 @@ public class objVersion02 {
 
     public String getType() {return type;}
 
+    public  ArrayList<callerWaited> getCallerWaitedsMethod() {
+        return callerWaitedsMethod;
+    }
 
     @Override
     public String toString() {
@@ -33,6 +39,7 @@ public class objVersion02 {
                 "lineOrigin='" + lineDst + '\'' +
                 ", nameMethodOrigin='" + nameMethodDst + '\'' +
                 ", type='" + type + '\'' +
+                " method calls= " + callerWaitedsMethod+ '\''+
                 '}';
     }
 

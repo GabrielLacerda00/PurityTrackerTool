@@ -25,6 +25,9 @@ public class Main {
 
     private static refactoringMinerHandlerBetweenCommits refactoringMinerHandler;
     public static void main(String[] args) throws Exception {
+        String pathDir01 = "C:\\Users\\gabri\\versao01\\RenameMethodExample";
+        String pathDir02 = "C:\\Users\\gabri\\versao02\\RenameMethodExample";
+        refactoringMinerHandlerBetweenCommits.handlerPathsDirs(pathDir01,pathDir02);
         //Rename method
         refactoringMinerHandlerBetweenCommits.refactoringBetweenCommits("https://github.com/GabrielLacerda00/RenameMethodExample.git","62a4405fbd48fc9f64b54da58856f3e441b45636",
                 "d46cdc1ad2fa4eb91042e318da56ae00ebbf69e5");
@@ -38,25 +41,26 @@ public class Main {
         gumTreeDiffOutputRenameMethodHandler.main(args);
         listRenamesObjects = gumTreeDiffOutputRenameMethodHandler.getListaConvertida();
         System.out.println(listRenamesObjects);
-        javaParserHandler.main(args);
-        callerWaiteds = javaParserHandler.getCallersMethod();
-        System.out.println(callerWaiteds);
-        checkRenameMethod(objectsRMiner,listRenamesObjects,callerWaiteds);
-
+        //javaParserHandler.main(args);
+        //callerWaiteds = javaParserHandler.getCallersMethod();
+        //System.out.println(callerWaiteds);
+        checkRenameMethod(objectsRMiner,listRenamesObjects);
     }
-    public static void checkRenameMethod(ArrayList<objectOutputRefactMiner> objectsRMiner, ArrayList<renameMethodObject> renameMethodObjects,ArrayList<callerWaited> expectedCalls){
-        if(objectsRMiner.isEmpty() || renameMethodObjects.isEmpty() || expectedCalls.isEmpty()){
+    public static void checkRenameMethod(ArrayList<objectOutputRefactMiner> objectsRMiner, ArrayList<renameMethodObject> renameMethodObjects){
+        if(objectsRMiner.isEmpty() || renameMethodObjects.isEmpty()){
             System.out.println("Floss");
         }
         for (int i = 0; i < objectsRMiner.size(); i++) {
             for (int j = i; j < renameMethodObjects.size(); j++) {
-                if (renameMethodObjects.get(j).getUpdateMethodObj().getType().toLowerCase().equals("update method") && renameMethodObjects.get(j).getUpdateMethodObj().getNameMethodDst().equals(objectsRMiner.get(j).getVersion02().getNameMethodDst())){
+                if (renameMethodObjects.get(j).getUpdateMethodObj().getType().toLowerCase().equals("update method") && renameMethodObjects.get(j).getUpdateMethodObj().getNameMethodDst().equals(objectsRMiner.get(j).getVersion02().getNameMethodDst())
+                && renameMethodObjects.get(j).getUpdateMethodObj().getLineDest().equals(objectsRMiner.get(j).getVersion02().getLineDst())){
                     System.out.println("Pure");
                 }else{
                     System.out.println("Floss");
                 }
-                if(renameMethodObjects.get(j).getUpdateInvocationInList().get(j).getType().toLowerCase().equals("update invocation") && renameMethodObjects.get(j).getUpdateInvocationInList().get(j).getNameMethodDst().equals(
-                        objectsRMiner.get(j).getVersion02().getNameMethodDst()) && expectedCalls.get(j).getCallNameMethod().equals(renameMethodObjects.get(j).getUpdateInvocationInList().get(j).getNameMethodDst())){
+                if(renameMethodObjects.get(j).getUpdateInvocationInList().get(j).getType().toLowerCase().equals("update invocation")
+                        && renameMethodObjects.get(j).getUpdateInvocationInList().get(j).getNameMethodDst().equals(objectsRMiner.get(j).getVersion02().getNameMethodDst())
+                        && renameMethodObjects.get(j).getUpdateInvocationInList().get(j).getLineDest().equals(objectsRMiner.get(j).getVersion02().getCallerWaitedsMethod().get(j).getLineCall())){
                     System.out.println("Pure");
                 }else{
                     System.out.println("Floss");
@@ -64,4 +68,6 @@ public class Main {
             }
         }
     }
+
 }
+
