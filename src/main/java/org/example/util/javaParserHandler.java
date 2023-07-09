@@ -24,8 +24,8 @@ public class javaParserHandler {
         }*/
     }
 
-    public  static void mainCallersHandler(String path,String className) throws IOException {
-        TARGET_METHOD_NAME = className;
+    public  static void mainCallersHandler(String path,String methodName) throws IOException {
+        TARGET_METHOD_NAME = methodName;
         callersHandler(path);
     }
 
@@ -36,7 +36,7 @@ public class javaParserHandler {
                 .filter(filePath -> filePath.toString().endsWith(".java"))
                 .forEach(filePath -> processJavaFile(filePath));
     }
-
+    
     private static void processJavaFile(Path path) {
         try {
             CompilationUnit compilationUnit = StaticJavaParser.parse(path);
@@ -47,23 +47,14 @@ public class javaParserHandler {
     }
 
     private static class MethodVisitor extends VoidVisitorAdapter<String> {
-        @Override
-        public void visit(MethodDeclaration n, String filePath) {
-            super.visit(n, filePath);
-            if (n.getNameAsString().equals(TARGET_METHOD_NAME)) {
-                String declaringClassName = getClassName(filePath);
-                int declarationLine = n.getBegin().get().line;
-                //System.out.println("Method declaration: " +declaringClassName+"."+ n.getNameAsString());
-            }
-        }
 
         @Override
         public void visit(MethodCallExpr n, String filePath) {
             super.visit(n, filePath);
+
             if (n.getNameAsString().equals(TARGET_METHOD_NAME)) {
                 String callingClassName = getClassName(filePath);
                 String callLine = Integer.toString(n.getBegin().get().line);
-                //System.out.println("Method call found: "+callingClassName+"." + n.getNameAsString());
                 String fullName = callingClassName+"."+n.getNameAsString();
                 callerWaited callerMethod = new callerWaited(callLine,fullName);
                 callersMethod.add(callerMethod);

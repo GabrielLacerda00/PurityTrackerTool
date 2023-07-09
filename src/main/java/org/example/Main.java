@@ -31,6 +31,9 @@ public class Main {
         //Rename method
         refactoringMinerHandlerBetweenCommits.refactoringBetweenCommits("https://github.com/GabrielLacerda00/RenameMethodExample.git","62a4405fbd48fc9f64b54da58856f3e441b45636",
                 "d46cdc1ad2fa4eb91042e318da56ae00ebbf69e5");
+
+        //62a4405fbd48fc9f64b54da58856f3e441b45636 - versao01 testando erro
+        //d46cdc1ad2fa4eb91042e318da56ae00ebbf69e5 - versão 02 testando erro
         //56cfa5546ab707eaba0289de2a5f5eda2b2e595d - versao 02 antiga
         //45fa67dcec1f768d69da02374bb3c39fc2dc853b - versao 01 antiga
         //Renames methods
@@ -41,9 +44,6 @@ public class Main {
         gumTreeDiffOutputRenameMethodHandler.main(args);
         listRenamesObjects = gumTreeDiffOutputRenameMethodHandler.getListaConvertida();
         System.out.println(listRenamesObjects);
-        //javaParserHandler.main(args);
-        //callerWaiteds = javaParserHandler.getCallersMethod();
-        //System.out.println(callerWaiteds);
         checkRenameMethod(objectsRMiner,listRenamesObjects);
     }
     public static void checkRenameMethod(ArrayList<objectOutputRefactMiner> objectsRMiner, ArrayList<renameMethodObject> renameMethodObjects){
@@ -54,10 +54,11 @@ public class Main {
             for (int j = i; j < renameMethodObjects.size(); j++) {
                 if (renameMethodObjects.get(j).getUpdateMethodObj().getType().toLowerCase().equals("update method") && renameMethodObjects.get(j).getUpdateMethodObj().getNameMethodDst().equals(objectsRMiner.get(j).getVersion02().getNameMethodDst())
                 && renameMethodObjects.get(j).getUpdateMethodObj().getLineDest().equals(objectsRMiner.get(j).getVersion02().getLineDst())){
-                    System.out.println("Pure");
+                    System.out.println("Pure"); //True
                 }else{
-                    System.out.println("Floss");
+                    System.out.println("Floss"); //False
                 }
+
                 if(renameMethodObjects.get(j).getUpdateInvocationInList().get(j).getType().toLowerCase().equals("update invocation")
                         && renameMethodObjects.get(j).getUpdateInvocationInList().get(j).getNameMethodDst().equals(objectsRMiner.get(j).getVersion02().getNameMethodDst())
                         && renameMethodObjects.get(j).getUpdateInvocationInList().get(j).getLineDest().equals(objectsRMiner.get(j).getVersion02().getCallerWaitedsMethod().get(j).getLineCall())){
