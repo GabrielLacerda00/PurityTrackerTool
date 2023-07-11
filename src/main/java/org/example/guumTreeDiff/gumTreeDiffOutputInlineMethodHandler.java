@@ -37,7 +37,7 @@ public class gumTreeDiffOutputInlineMethodHandler {
 
         //C:\Users\gabri\versao01\RenameMethodExample
         //C:\Users\gabri\versao01\RenameMethodsExample\RenameMethodExample
-        String pathDir01 = "C:\\Users\\gabri\\versao01\\InlineOneMethodExample\\InlineMethodExample";
+        String pathDir01 = "/Users/gabriellacerda/GitHubGabrielLacerda/backup_Projects_test/versao01/RenameMethodExample";
         //C:\Users\gabri\versao02\ExtractMethodExample
         //C:\Users\gabri\versao02\MoveMethodExample
 
@@ -48,7 +48,7 @@ public class gumTreeDiffOutputInlineMethodHandler {
 
         //C:\Users\gabri\versao02\RenameMethodExample
         //C:\Users\gabri\versao02\RenameMethodsExample\RenameMethodExample
-        String pathDir02 = "C:\\Users\\gabri\\versao02\\InlineOneMethodExample\\InlineMethodExample";
+        String pathDir02 = "/Users/gabriellacerda/GitHubGabrielLacerda/backup_Projects_test/versao02/RenameMethodExample";
         ArrayList<String> filePaths1 = filePathFinderVersao01.getJavaFilePaths(pathDir01);
         ArrayList<String> filePaths2 = filePathFinderVersao02.getJavaFilePaths(pathDir02);
 

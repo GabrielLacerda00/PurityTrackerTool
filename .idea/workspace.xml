@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a0c258d2-3607-4dd8-9031-96f739d9116c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/guumTreeDiff/gumTreeDiffOutputInlineMethodHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/guumTreeDiff/gumTreeDiffOutputInlineMethodHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/guumTreeDiff/gumTreeDiffOutputRenameMethodHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/guumTreeDiff/gumTreeDiffOutputRenameMethodHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/util/TempObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/util/TempObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/util/javaParserHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/util/javaParserHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,25 +38,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Fluxograma02&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/gabri/GitHub-Gabriel_lacerda/PurityTrackerTool/PurityTrackerTool/src/main/java/org/example/guumTreeDiff/gumtree-spoon-ast-diff-1.62-jar-with-dependencies.jar&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.41379312&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "Fluxograma02",
+    "last_opened_file_path": "/Users/gabriellacerda/GitHubGabrielLacerda/PurityTrackerTool",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.41379312",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\gabri\GitHub-Gabriel_lacerda\PurityTrackerTool\PurityTrackerTool\src\main\java\org\example\guumTreeDiff" />
@@ -75,8 +79,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="gumTeeDiffHandler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.guumTreeDiff.gumTeeDiffHandler" />
+    <configuration name="gumTreeDiffOutputInlineMethodHandler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.guumTreeDiff.gumTreeDiffOutputInlineMethodHandler" />
       <module name="PurityTrackerTool" />
       <extension name="coverage">
         <pattern>
@@ -131,9 +135,9 @@
       <list>
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.gumTreeDiffOutputRenameMethodHandler" />
-        <item itemvalue="Application.refactoringMinerHandlerBetweenCommits" />
         <item itemvalue="Application.javaParserHandler" />
-        <item itemvalue="Application.gumTeeDiffHandler" />
+        <item itemvalue="Application.gumTreeDiffOutputInlineMethodHandler" />
+        <item itemvalue="Application.refactoringMinerHandlerBetweenCommits" />
       </list>
     </recent_temporary>
   </component>
@@ -160,6 +164,7 @@
       <workItem from="1688580083676" duration="695000" />
       <workItem from="1688606043830" duration="2037000" />
       <workItem from="1688648546217" duration="2195000" />
+      <workItem from="1688865548142" duration="25268000" />
     </task>
     <servers />
   </component>

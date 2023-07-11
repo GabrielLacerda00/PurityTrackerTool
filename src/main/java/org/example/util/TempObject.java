@@ -16,6 +16,10 @@ public class TempObject {
         this.nameMethodDst = nameMethodDst;
     }
 
+    public TempObject(String type) {
+        this.type = type;
+    }
+
     public String getLineDest() {
         return lineDest;
     }

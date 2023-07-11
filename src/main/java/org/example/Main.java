@@ -25,13 +25,17 @@ public class Main {
 
     private static refactoringMinerHandlerBetweenCommits refactoringMinerHandler;
     public static void main(String[] args) throws Exception {
-        String pathDir01 = "C:\\Users\\gabri\\versao01\\RenameMethodExample";
-        String pathDir02 = "C:\\Users\\gabri\\versao02\\RenameMethodExample";
+        String pathDir01 = "/Users/gabriellacerda/GitHubGabrielLacerda/backup_Projects_test/versao01/RenameMethodExample2.0";
+        String pathDir02 = "/Users/gabriellacerda/GitHubGabrielLacerda/backup_Projects_test/versao02/RenameMethodExample2.0";
         refactoringMinerHandlerBetweenCommits.handlerPathsDirs(pathDir01,pathDir02);
         //Rename method
-        refactoringMinerHandlerBetweenCommits.refactoringBetweenCommits("https://github.com/GabrielLacerda00/RenameMethodExample.git","62a4405fbd48fc9f64b54da58856f3e441b45636",
-                "d46cdc1ad2fa4eb91042e318da56ae00ebbf69e5");
+        refactoringMinerHandlerBetweenCommits.refactoringBetweenCommits("https://github.com/GabrielLacerda00/RenameMethodExample2.0.git",
+                "d89b7df22e35d060941d21d9db5bc585c95e9c12",
+                "48ed6a599073e44eccf91f032821a77488dd7cd0");
 
+        //d89b7df22e35d060941d21d9db5bc585c95e9c12 - Versão Rename2.0 commit inicial
+        //48ed6a599073e44eccf91f032821a77488dd7cd0 - Versão Rename2.0 commit final
+        //https://github.com/GabrielLacerda00/RenameMethodExample2.0.git
         //62a4405fbd48fc9f64b54da58856f3e441b45636 - versao01 testando erro
         //d46cdc1ad2fa4eb91042e318da56ae00ebbf69e5 - versão 02 testando erro
         //56cfa5546ab707eaba0289de2a5f5eda2b2e595d - versao 02 antiga
@@ -54,12 +58,12 @@ public class Main {
             for (int j = i; j < renameMethodObjects.size(); j++) {
                 if (renameMethodObjects.get(j).getUpdateMethodObj().getType().toLowerCase().equals("update method") && renameMethodObjects.get(j).getUpdateMethodObj().getNameMethodDst().equals(objectsRMiner.get(j).getVersion02().getNameMethodDst())
                 && renameMethodObjects.get(j).getUpdateMethodObj().getLineDest().equals(objectsRMiner.get(j).getVersion02().getLineDst())){
-                    System.out.println("Pure"); //True
+                    System.out.println("Pure");
                 }else{
-                    System.out.println("Floss"); //False
+                    System.out.println("Floss");
                 }
 
-                if(renameMethodObjects.get(j).getUpdateInvocationInList().get(j).getType().toLowerCase().equals("update invocation")
+                if(renameMethodObjects.get(j).getUpdateInvocationInList().get(j).getType().equalsIgnoreCase("update invocation")
                         && renameMethodObjects.get(j).getUpdateInvocationInList().get(j).getNameMethodDst().equals(objectsRMiner.get(j).getVersion02().getNameMethodDst())
                         && renameMethodObjects.get(j).getUpdateInvocationInList().get(j).getLineDest().equals(objectsRMiner.get(j).getVersion02().getCallerWaitedsMethod().get(j).getLineCall())){
                     System.out.println("Pure");
