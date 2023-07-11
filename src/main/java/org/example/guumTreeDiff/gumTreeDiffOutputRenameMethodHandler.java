@@ -43,28 +43,9 @@ public class gumTreeDiffOutputRenameMethodHandler {
 
     public static void main(String[] args) throws Exception {
 
-        //C:\Users\gabri\versao01\ExtractMethodExample
-        //C:\Users\gabri\versao01\MoveMethodExample
 
-        //C:\Users\gabri\versao01\InlineMethodExample
-        //C:\Users\gabri\versao01\InlineOneMethodExample\InlineMethodExample
-
-        //C:\Users\gabri\versao01\PullUpMethod
-
-        //C:\Users\gabri\versao01\RenameMethodExample
-        //C:\Users\gabri\versao01\RenameMethodsExample\RenameMethodExample
-        String pathDir01 = "/Users/gabriellacerda/GitHubGabrielLacerda/backup_Projects_test/versao01/RenameMethodExample2.0";
-        //C:\Users\gabri\versao02\ExtractMethodExample
-        //C:\Users\gabri\versao02\MoveMethodExample
-
-        //C:\Users\gabri\versao02\InlineMethodExample
-        //C:\Users\gabri\versao02\InlineOneMethodExample\InlineMethodExample
-
-        //C:\Users\gabri\versao02\PullUpMethod
-
-        //C:\Users\gabri\versao02\RenameMethodExample
-        //C:\Users\gabri\versao02\RenameMethodsExample\RenameMethodExample
-        String pathDir02 = "/Users/gabriellacerda/GitHubGabrielLacerda/backup_Projects_test/versao02/RenameMethodExample2.0";
+        String pathDir01 = "/Users/gabriellacerda/GitHubGabrielLacerda/backup_Projects_test/versao01/RenameMethodExample";
+        String pathDir02 = "/Users/gabriellacerda/GitHubGabrielLacerda/backup_Projects_test/versao02/RenameMethodExample";
 
         renameMethodHandler(pathDir01,pathDir02);
     }
@@ -83,12 +64,8 @@ public class gumTreeDiffOutputRenameMethodHandler {
             extractDetailsUpdateMethod(result);
             extractDetailsInvocationMethod(result);
 
-            System.out.println(updateInvocationObjects);
-            System.out.println(updateMethodsObjects);
-
             ArrayList<TempObject> listpares = mergeLists(updateMethodsObjects,updateInvocationObjects);
 
-            System.out.println(listpares);
 
             for (int j = 0; j < listpares.size(); j+=2) {
                 if(!renameMethodObjects.containsKey(listpares.get(j))){
@@ -103,7 +80,7 @@ public class gumTreeDiffOutputRenameMethodHandler {
                 System.out.println(ren);
             }*/
             converteMap(renameMethodObjects);
-            System.out.println(getListaConvertida());
+
         }
     }
 

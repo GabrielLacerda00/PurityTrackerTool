@@ -25,13 +25,13 @@ public class Main {
 
     private static refactoringMinerHandlerBetweenCommits refactoringMinerHandler;
     public static void main(String[] args) throws Exception {
-        String pathDir01 = "/Users/gabriellacerda/GitHubGabrielLacerda/backup_Projects_test/versao01/RenameMethodExample2.0";
-        String pathDir02 = "/Users/gabriellacerda/GitHubGabrielLacerda/backup_Projects_test/versao02/RenameMethodExample2.0";
+        String pathDir01 = "/Users/gabriellacerda/GitHubGabrielLacerda/backup_Projects_test/versao01/RenameMethodExample";
+        String pathDir02 = "/Users/gabriellacerda/GitHubGabrielLacerda/backup_Projects_test/versao02/RenameMethodExample";
         refactoringMinerHandlerBetweenCommits.handlerPathsDirs(pathDir01,pathDir02);
         //Rename method
-        refactoringMinerHandlerBetweenCommits.refactoringBetweenCommits("https://github.com/GabrielLacerda00/RenameMethodExample2.0.git",
-                "d89b7df22e35d060941d21d9db5bc585c95e9c12",
-                "48ed6a599073e44eccf91f032821a77488dd7cd0");
+        refactoringMinerHandlerBetweenCommits.refactoringBetweenCommits("https://github.com/GabrielLacerda00/RenameMethodExample.git",
+                "a6c19ed6c79b2d6051586a686e67404b5b0d6a1c",
+                "23b0cc04f0fedd43b4a41addb35bc52b79f5ec4d");
 
         //d89b7df22e35d060941d21d9db5bc585c95e9c12 - Versão Rename2.0 commit inicial
         //48ed6a599073e44eccf91f032821a77488dd7cd0 - Versão Rename2.0 commit final
