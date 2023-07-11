@@ -340,8 +340,8 @@ public class javaParserHandler {
             if (n.getNameAsString().equals(TARGET_METHOD_NAME)) {
                 String callingClassName = CURRENT_CLASS_NAME;
                 String callLine = Integer.toString(n.getBegin().get().line);
-                System.out.println(callLine);
-                System.out.println("Method call found: " + callingClassName + "." + n.getNameAsString());
+                //System.out.println(callLine);
+                //System.out.println("Method call found: " + callingClassName + "." + n.getNameAsString());
                 String fullName = callingClassName + "." + n.getNameAsString();
                 callerWaited callerMethod = new callerWaited(callLine, fullName);
                 callersMethod.add(callerMethod);

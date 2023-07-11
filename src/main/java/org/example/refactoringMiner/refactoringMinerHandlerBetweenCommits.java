@@ -118,15 +118,15 @@ public class refactoringMinerHandlerBetweenCommits {
         JsonObject ObjetoJson = jelement.getAsJsonObject();
 
         type = ObjetoJson.get("type").getAsString();
-        System.out.println("Type: " + type);
-        System.out.println("--------------------------------------------");
+        //System.out.println("Type: " + type);
+        //System.out.println("--------------------------------------------");
 
         if (ObjetoJson.has("leftSideLocations")) {
             //essa função vai pegar tudo de leftSide e salvar em um array usa o forEach para transformar em um Element novamente.
 
             JsonArray leftSideLocations = ObjetoJson.getAsJsonArray("leftSideLocations");
             for (JsonElement locationElement : leftSideLocations) {
-                System.out.println("leftSideLocation: ");
+                //System.out.println("leftSideLocation: ");
                 pegaElementosOrigin(locationElement);
             }
         }
@@ -134,7 +134,7 @@ public class refactoringMinerHandlerBetweenCommits {
         if (ObjetoJson.has("rightSideLocations")) {
             JsonArray rightSideLocations = ObjetoJson.getAsJsonArray("rightSideLocations");
             for (JsonElement locationElement : rightSideLocations) {
-                System.out.println("Right Side Location: ");
+                //System.out.println("Right Side Location: ");
                 pegaElementosDestino(locationElement);
             }
         }
@@ -150,11 +150,11 @@ public class refactoringMinerHandlerBetweenCommits {
         String codeElementType = meuObj.get("codeElementType").getAsString();
         metodoOrigem = extractMethodName(meuObj.get("codeElement").getAsString());
         String path = meuObj.get("filePath").getAsString();
-        System.out.println("startLine: " + linhaDeOrigem);
-        System.out.println("codeElementType: " + codeElementType);
-        System.out.println("codeElement: " + metodoOrigem);
-        System.out.println("filePath: "+extractClassName(path));
-        System.out.println("--------------------------------------------");
+        //System.out.println("startLine: " + linhaDeOrigem);
+        //System.out.println("codeElementType: " + codeElementType);
+        //System.out.println("codeElement: " + metodoOrigem);
+        //System.out.println("filePath: "+extractClassName(path));
+        //System.out.println("--------------------------------------------");
         javaParserHandler.mainCallersHandler(path01,metodoOrigem);
 
         metodoOrigem = createMethodName(extractClassName(path),metodoOrigem);
@@ -172,11 +172,11 @@ public class refactoringMinerHandlerBetweenCommits {
         String codeElementType = meuObj.get("codeElementType").getAsString();
         metodoDestino = extractMethodName(meuObj.get("codeElement").getAsString());
         String path = meuObj.get("filePath").getAsString();
-        System.out.println("startLine: " + linhaDeDestino);
-        System.out.println("codeElementType: " + codeElementType);
-        System.out.println("codeElement: " + metodoDestino);
-        System.out.println("filePath: "+extractClassName(path));
-        System.out.println("--------------------------------------------");
+        //System.out.println("startLine: " + linhaDeDestino);
+        //System.out.println("codeElementType: " + codeElementType);
+        //System.out.println("codeElement: " + metodoDestino);
+        //System.out.println("filePath: "+extractClassName(path));
+        //System.out.println("--------------------------------------------");
         javaParserHandler.getCallersMethod().clear();
         javaParserHandler.mainCallersHandler(path02,metodoDestino);
         rightSideCallers.addAll(javaParserHandler.getCallersMethod());

@@ -60,7 +60,6 @@ public class gumTreeDiffOutputRenameMethodHandler {
             File file1 = new File(filePaths1.get(i));
             File file2 = new File(filePaths2.get(i));
             result = new AstComparator().compare(file1, file2);
-            System.out.println(result.getRootOperations());
             extractDetailsUpdateMethod(result);
             extractDetailsInvocationMethod(result);
 
