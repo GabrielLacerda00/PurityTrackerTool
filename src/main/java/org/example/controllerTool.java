@@ -9,12 +9,10 @@ import org.example.util.objectOutputRefactMiner;
 import org.example.guumTreeDiff.gumTreeDiffOutputRenameMethodHandler;
 import org.example.util.javaParserHandler;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 
-public class Main {
+public class controllerTool {
 
     static ArrayList<callerWaited>  callerWaiteds = new ArrayList<>();
     static ArrayList<objectOutputRefactMiner> objectsRMiner = new ArrayList<>();
@@ -25,55 +23,60 @@ public class Main {
 
     private static refactoringMinerHandlerBetweenCommits refactoringMinerHandler;
     public static void main(String[] args) throws Exception {
-        String pathDir01 = "/Users/gabriellacerda/GitHubGabrielLacerda/backup_Projects_test/versao01/RenameMethodExample2.0";
-        String pathDir02 = "/Users/gabriellacerda/GitHubGabrielLacerda/backup_Projects_test/versao02/RenameMethodExample2.0";
+        String pathDir01 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameAndOneCaller/CodigoOrigem";
+        String pathDir02 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameAndOneCaller/CodigoDestino";
         refactoringMinerHandlerBetweenCommits.handlerPathsDirs(pathDir01,pathDir02);
         //Rename method
-        refactoringMinerHandlerBetweenCommits.refactoringBetweenCommits("https://github.com/GabrielLacerda00/RenameMethodExample2.0.git",
-                "d89b7df22e35d060941d21d9db5bc585c95e9c12",
-                "48ed6a599073e44eccf91f032821a77488dd7cd0");
+        refactoringMinerHandlerBetweenCommits.refactoringBetweenCommits("https://github.com/GabrielLacerda00/SuitTestsRenameMethod.git",
+                "45f12929dba78bfd65d396e8ccece2443df42dbc",
+                "23e56e6cdf6381ed6b617b9ddaeda4f0e4b9aa37");
 
-        //d89b7df22e35d060941d21d9db5bc585c95e9c12 - Versão Rename2.0 commit inicial
-        //48ed6a599073e44eccf91f032821a77488dd7cd0 - Versão Rename2.0 commit final
-        //https://github.com/GabrielLacerda00/RenameMethodExample2.0.git
-        //62a4405fbd48fc9f64b54da58856f3e441b45636 - versao01 testando erro
-        //d46cdc1ad2fa4eb91042e318da56ae00ebbf69e5 - versão 02 testando erro
-        //56cfa5546ab707eaba0289de2a5f5eda2b2e595d - versao 02 antiga
-        //45fa67dcec1f768d69da02374bb3c39fc2dc853b - versao 01 antiga
         //Renames methods
         /*refactoringMinerHandlerBetweenCommits.refactoringBetweenCommits("https://github.com/GabrielLacerda00/RenameMethodExample.git","1aa1171a01937ad6655ceb193260ca4bd4308008",
                 "0ba9f3f29f3e5e14836e98cdb13eee3dd8ff7461");*/
+
         objectsRMiner = refactoringMinerHandlerBetweenCommits.getObjectsRMiners();
-        System.out.println(objectsRMiner);
         gumTreeDiffOutputRenameMethodHandler.main(args);
         listRenamesObjects = gumTreeDiffOutputRenameMethodHandler.getListaConvertida();
-        System.out.println(listRenamesObjects);
         checkRenameMethod(objectsRMiner,listRenamesObjects);
     }
-    public static void checkRenameMethod(ArrayList<objectOutputRefactMiner> objectsRMiner, ArrayList<renameMethodObject> renameMethodObjects){
+    public static List<String> checkRenameMethod(ArrayList<objectOutputRefactMiner> objectsRMiner, ArrayList<renameMethodObject> renameMethodObjects){
+
+        List<String> types = new ArrayList<String>();
+
         if(objectsRMiner.isEmpty() || renameMethodObjects.isEmpty()){
+             types.add("Floss");
+            System.out.println("Floss");
+             types.add("Floss");
             System.out.println("Floss");
         }
+
         for (int i = 0; i < objectsRMiner.size(); i++) {
             for (int j = i; j < renameMethodObjects.size(); j++) {
                 if (renameMethodObjects.get(j).getUpdateMethodObj().getType().toLowerCase().equals("update method")
                         && !renameMethodObjects.get(j).getUpdateMethodObj().getNameMethodOrigin().equals(objectsRMiner.get(j).getVersion02().getNameMethodDst())
                         && renameMethodObjects.get(j).getUpdateMethodObj().getNameMethodDst().equals(objectsRMiner.get(j).getVersion02().getNameMethodDst())
                 && renameMethodObjects.get(j).getUpdateMethodObj().getLineDest().equals(objectsRMiner.get(j).getVersion02().getLineDst())){
+                     types.add("Pure");
                     System.out.println("Pure");
-                }else{
+                }
+                else{
+                     types.add("Floss");
                     System.out.println("Floss");
                 }
                 if(renameMethodObjects.get(j).getUpdateInvocationInList().get(j).getType().equalsIgnoreCase("update invocation")
                         && !renameMethodObjects.get(j).getUpdateMethodObj().getNameMethodOrigin().equals(objectsRMiner.get(j).getVersion02().getNameMethodDst())
                         && renameMethodObjects.get(j).getUpdateInvocationInList().get(j).getNameMethodDst().equals(objectsRMiner.get(j).getVersion02().getNameMethodDst())
                         && checkCallersLines(objectsRMiner.get(j),renameMethodObjects.get(j),j)){
+                    types.add("Pure");
                     System.out.println("Pure");
                 }else{
+                    types.add("Floss");
                     System.out.println("Floss");
                 }
             }
         }
+        return types;
     }
 
     public static boolean checkCallersLines(objectOutputRefactMiner rminerObj,renameMethodObject renameObject,int j){

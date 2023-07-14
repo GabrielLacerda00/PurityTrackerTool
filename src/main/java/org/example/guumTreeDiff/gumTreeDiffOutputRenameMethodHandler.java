@@ -44,8 +44,8 @@ public class gumTreeDiffOutputRenameMethodHandler {
     public static void main(String[] args) throws Exception {
 
 
-        String pathDir01 = "/Users/gabriellacerda/GitHubGabrielLacerda/backup_Projects_test/versao01/RenameMethodExample";
-        String pathDir02 = "/Users/gabriellacerda/GitHubGabrielLacerda/backup_Projects_test/versao02/RenameMethodExample";
+        String pathDir01 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForMissingCaller/CodeOrigin";
+        String pathDir02 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForMissingCaller/Codedestiny";
 
         renameMethodHandler(pathDir01,pathDir02);
     }
@@ -64,7 +64,6 @@ public class gumTreeDiffOutputRenameMethodHandler {
             extractDetailsInvocationMethod(result);
 
             ArrayList<TempObject> listpares = mergeLists(updateMethodsObjects,updateInvocationObjects);
-
 
             for (int j = 0; j < listpares.size(); j+=2) {
                 if(!renameMethodObjects.containsKey(listpares.get(j))){

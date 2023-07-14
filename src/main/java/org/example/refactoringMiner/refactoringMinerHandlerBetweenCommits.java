@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.example.util.clearTempDirs;
 
 public class refactoringMinerHandlerBetweenCommits {
 
@@ -51,12 +52,12 @@ public class refactoringMinerHandlerBetweenCommits {
     private static String path02 = "";
 
     public static void main(String[] args) throws Exception {
-        String pathDir01 = "C:\\Users\\gabri\\versao01\\RenameMethodExample";
-        String pathDir02 = "C:\\Users\\gabri\\versao02\\RenameMethodExample";
+        String pathDir01 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForMissingCaller/CodeOrigin";
+        String pathDir02 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForMissingCaller/CodeOdestiny";
         handlerPathsDirs(pathDir01,pathDir02);
         //Rename method
-        refactoringBetweenCommits("https://github.com/GabrielLacerda00/RenameMethodExample.git","45fa67dcec1f768d69da02374bb3c39fc2dc853b",
-                "e32e45cc0471ebc94573c9f687257387b74ac947");
+        refactoringBetweenCommits("https://github.com/GabrielLacerda00/SuitTestsRenameMethod.git","ca24fe5512407aa0c738b29000f2cd533b3e6478",
+                "ca24fe5512407aa0c738b29000f2cd533b3e6478");
         //Renames methods
         /*refactoringBetweenCommits("https://github.com/GabrielLacerda00/RenameMethodExample.git","1aa1171a01937ad6655ceb193260ca4bd4308008",
                 "0ba9f3f29f3e5e14836e98cdb13eee3dd8ff7461");*/
@@ -78,6 +79,7 @@ public class refactoringMinerHandlerBetweenCommits {
     }
 
     public static void refactoringBetweenCommits(String projectURL, String commit1, String commit2) throws Exception {
+
 
         int lastSlashIndex = projectURL.lastIndexOf("/");
         String projectNameWithGit = projectURL.substring(lastSlashIndex + 1);
@@ -107,6 +109,7 @@ public class refactoringMinerHandlerBetweenCommits {
 
                     }
                 });
+        clearTempDirs.runClearTempDirs();
     }
 
     private static void readJSON(Refactoring ref) throws IOException {
@@ -201,9 +204,17 @@ public class refactoringMinerHandlerBetweenCommits {
         return result;
     }
 
-    public static String extractClassName(String className){
-        String classNamee = className.split("\\.")[0];
-        return classNamee;
+    public static String extractClassName(String className) {
+        String regex = "/([^/]+)\\.java";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(className);
+
+        if (matcher.find()) {
+            String classNameWithoutExtension = matcher.group(1);
+            return classNameWithoutExtension;
+        }
+
+        return null; // Retorna null caso nenhum nome seja encontrado
     }
 
     public static String createMethodName(String classeName,String methodName){
@@ -228,7 +239,5 @@ public class refactoringMinerHandlerBetweenCommits {
         }
         //objectOutputRefactMiner object = new objectOutputRefactMiner(versao01,version02);
     }
-
-
 
 }

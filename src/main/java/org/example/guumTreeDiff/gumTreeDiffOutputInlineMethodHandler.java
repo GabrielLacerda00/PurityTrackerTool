@@ -27,28 +27,10 @@ public class gumTreeDiffOutputInlineMethodHandler {
 
     public static void main(String[] args) throws Exception {
 
-        //C:\Users\gabri\versao01\ExtractMethodExample
-        //C:\Users\gabri\versao01\MoveMethodExample
 
-        //C:\Users\gabri\versao01\InlineMethodExample
-        //C:\Users\gabri\versao01\InlineOneMethodExample\InlineMethodExample
+        String pathDir01 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameAndOneCaller/CodigoOrigem";
 
-        //C:\Users\gabri\versao01\PullUpMethod
-
-        //C:\Users\gabri\versao01\RenameMethodExample
-        //C:\Users\gabri\versao01\RenameMethodsExample\RenameMethodExample
-        String pathDir01 = "/Users/gabriellacerda/GitHubGabrielLacerda/backup_Projects_test/versao01/RenameMethodExample";
-        //C:\Users\gabri\versao02\ExtractMethodExample
-        //C:\Users\gabri\versao02\MoveMethodExample
-
-        //C:\Users\gabri\versao02\InlineMethodExample
-        //C:\Users\gabri\versao02\InlineOneMethodExample\InlineMethodExample
-
-        //C:\Users\gabri\versao02\PullUpMethod
-
-        //C:\Users\gabri\versao02\RenameMethodExample
-        //C:\Users\gabri\versao02\RenameMethodsExample\RenameMethodExample
-        String pathDir02 = "/Users/gabriellacerda/GitHubGabrielLacerda/backup_Projects_test/versao02/RenameMethodExample";
+        String pathDir02 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameAndOneCaller/CodigoDestino";
         ArrayList<String> filePaths1 = filePathFinderVersao01.getJavaFilePaths(pathDir01);
         ArrayList<String> filePaths2 = filePathFinderVersao02.getJavaFilePaths(pathDir02);
 
