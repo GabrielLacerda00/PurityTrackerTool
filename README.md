@@ -1,15 +1,28 @@
 # PurityTrackerTool
 
-## Como utilizar a ferramenta
+A PurityTrackerTool é uma ferramenta criada para identificar e rastrear refatoramentos do tipo "puro" e "floss". 
 
-Este guia rápido tem como objetivo auxiliar na configuração e execução do PurityTracker
+Este documento tem como objetivo orientar você na configuração e execução da PurityTrackerTool.
 
 ## Pré-requisitos
-1. Projeto Java
-2. Compilável
 
-## Passo a passo do Fluxograma02
-1. Faça o clone do repositório contendo a versão original do código,código antes do refatoramento,e pegue o hash do commit para essa versão(hash01).
-2. Faça o clone do repositório contendo a versão destino do código,código depois do refatoramento,e pegue o hash do commit para essa versão(hash02).
-3. Abra a ferramenta e navegue até a classe controllerTool,execute a classe controllerTool passando o path em que está clonada a versão original e versão destino, além disso passe a URLGit do projeto com os hash01 hash02.
+Para o funcionamento adequado da PurityTrackerTool, você precisa:
 
+1. Possuir um projeto em Java.
+2. O projeto deve ser capaz de ser compilado sem erros.
+
+## Utilizando a PurityTrackerTool
+
+Segue abaixo o passo a passo para a execução correta da ferramenta:
+
+### Clonagem dos Repositórios
+
+1. *Clone a versão original do repositório:* Refere-se ao código antes do processo de refatoramento. Quando realizar a clonagem do repositório, é importante capturar o hash do commit relativo a essa versão, que chamaremos de `hash01`.
+2. *Clone a versão de destino do repositório:* Refere-se ao código após o processo de refatoramento. Similar ao passo anterior, após a clonagem do repositório, capture o hash do commit dessa versão, que chamaremos de `hash02`.
+
+### Executando a Ferramenta
+
+1. *Inicie a PurityTrackerTool:* Após abrir a ferramenta, navegue até a classe `controllerTool`.
+2. *Execute a classe `controllerTool`:* Esta classe deve ser executada passando como parâmetros o caminho (path) do local em que as versões original e de destino foram clonadas. Além disso, é necessário fornecer a URL do projeto no Git, bem como os hashes `hash01` e `hash02`.
+
+Com a execução destes passos, a PurityTrackerTool estará pronta para uso. Caso encontre quaisquer dificuldades, não hesite em buscar por suporte.
