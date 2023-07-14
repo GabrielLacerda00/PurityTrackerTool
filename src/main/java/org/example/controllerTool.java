@@ -36,7 +36,7 @@ public class controllerTool {
                 "0ba9f3f29f3e5e14836e98cdb13eee3dd8ff7461");*/
 
         objectsRMiner = refactoringMinerHandlerBetweenCommits.getObjectsRMiners();
-        gumTreeDiffOutputRenameMethodHandler.main(args);
+        gumTreeDiffOutputRenameMethodHandler.renameMethodHandler(pathDir01,pathDir02);
         listRenamesObjects = gumTreeDiffOutputRenameMethodHandler.getListaConvertida();
         checkRenameMethod(objectsRMiner,listRenamesObjects);
     }

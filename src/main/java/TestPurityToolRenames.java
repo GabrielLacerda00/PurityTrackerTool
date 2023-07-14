@@ -41,7 +41,7 @@ public class TestPurityToolRenames {
 		 ArrayList<objectOutputRefactMiner> objectsRMiner = new ArrayList<>();
 		 objectsRMiner = refactoringMinerHandlerBetweenCommits.getObjectsRMiners();
 		 
-		 gumTreeDiffOutputRenameMethodHandler.main(null);
+		 gumTreeDiffOutputRenameMethodHandler.renameMethodHandler(pathDir01,pathDir02);
 		 ArrayList<renameMethodObject> listRenamesObjects = new ArrayList<>();
 		 listRenamesObjects = gumTreeDiffOutputRenameMethodHandler.getListaConvertida();
 		 
@@ -71,7 +71,7 @@ public class TestPurityToolRenames {
 		ArrayList<objectOutputRefactMiner> objectsRMiner = new ArrayList<>();
 		objectsRMiner = refactoringMinerHandlerBetweenCommits.getObjectsRMiners();
 
-		gumTreeDiffOutputRenameMethodHandler.main(null);
+		gumTreeDiffOutputRenameMethodHandler.renameMethodHandler(pathDir01,pathDir02);
 		ArrayList<renameMethodObject> listRenamesObjects = new ArrayList<>();
 		listRenamesObjects = gumTreeDiffOutputRenameMethodHandler.getListaConvertida();
 
@@ -101,7 +101,7 @@ public class TestPurityToolRenames {
 		ArrayList<objectOutputRefactMiner> objectsRMiner = new ArrayList<>();
 		objectsRMiner = refactoringMinerHandlerBetweenCommits.getObjectsRMiners();
 
-		gumTreeDiffOutputRenameMethodHandler.main(null);
+		gumTreeDiffOutputRenameMethodHandler.renameMethodHandler(pathDir01,pathDir02);
 		ArrayList<renameMethodObject> listRenamesObjects = new ArrayList<>();
 		listRenamesObjects = gumTreeDiffOutputRenameMethodHandler.getListaConvertida();
 
