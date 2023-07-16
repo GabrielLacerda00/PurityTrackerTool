@@ -7,10 +7,8 @@
     <list default="true" id="a0c258d2-3607-4dd8-9031-96f739d9116c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/TestPurityToolRenames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/TestesJUNIT/TestPurityToolRenames.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/guumTreeDiff/gumTreeDiffOutputRenameMethodHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/guumTreeDiff/gumTreeDiffOutputRenameMethodHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/refactoringMiner/refactoringMinerHandlerBetweenCommits.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/refactoringMiner/refactoringMinerHandlerBetweenCommits.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/util/javaParserHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/util/javaParserHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/TestesJUNIT/TestPurityToolRenames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/TestesJUNIT/TestPurityToolRenames.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/refactoringMiner/rMinerObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/refactoringMiner/rMinerObject.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +50,7 @@
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.41379312",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "preferences.keymap",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -64,13 +62,26 @@
       <recent name="org.example.util" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TestPurityToolRenames.testOneRenameOneCaller">
-    <configuration name="gumTreeDiffOutputRenameMethodHandler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.guumTreeDiff.gumTreeDiffOutputRenameMethodHandler" />
+  <component name="RunManager" selected="Application.rMinerObject">
+    <configuration name="rMinerObject" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.refactoringMiner.rMinerObject" />
       <module name="PurityTrackerTool" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.guumTreeDiff.*" />
+          <option name="PATTERN" value="org.example.refactoringMiner.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="testRunner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.TestesJUNIT.testRunner" />
+      <module name="PurityTrackerTool" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.TestesJUNIT.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -93,7 +104,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestPurityToolRenames.testOneRenameForMissingCaller" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestRenameOneRenameForMissingCallers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PurityTrackerTool" />
       <extension name="coverage">
         <pattern>
@@ -102,14 +113,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.example.TestesJUNIT" />
-      <option name="MAIN_CLASS_NAME" value="org.example.TestesJUNIT.TestPurityToolRenames" />
-      <option name="METHOD_NAME" value="testOneRenameForMissingCaller" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="org.example.TestesJUNIT.TestRenameOneRenameForMissingCallers" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestPurityToolRenames.testOneRenameOneCaller" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestRenameOneRenameTwoCallers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PurityTrackerTool" />
       <extension name="coverage">
         <pattern>
@@ -118,36 +128,19 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.example.TestesJUNIT" />
-      <option name="MAIN_CLASS_NAME" value="org.example.TestesJUNIT.TestPurityToolRenames" />
-      <option name="METHOD_NAME" value="testOneRenameOneCaller" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestPurityToolRenames.testOneRenameTwoCaller" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="PurityTrackerTool" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.TestesJUNIT.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.example.TestesJUNIT" />
-      <option name="MAIN_CLASS_NAME" value="org.example.TestesJUNIT.TestPurityToolRenames" />
-      <option name="METHOD_NAME" value="testOneRenameTwoCaller" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="org.example.TestesJUNIT.TestRenameOneRenameTwoCallers" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestPurityToolRenames.testOneRenameOneCaller" />
-        <item itemvalue="JUnit.TestPurityToolRenames.testOneRenameTwoCaller" />
-        <item itemvalue="JUnit.TestPurityToolRenames.testOneRenameForMissingCaller" />
+        <item itemvalue="Application.rMinerObject" />
+        <item itemvalue="JUnit.TestRenameOneRenameForMissingCallers" />
+        <item itemvalue="JUnit.TestRenameOneRenameTwoCallers" />
         <item itemvalue="JUnit.TestPurityToolRenames" />
-        <item itemvalue="Application.gumTreeDiffOutputRenameMethodHandler" />
+        <item itemvalue="Application.testRunner" />
       </list>
     </recent_temporary>
   </component>
@@ -174,7 +167,7 @@
       <workItem from="1688580083676" duration="695000" />
       <workItem from="1688606043830" duration="2037000" />
       <workItem from="1688648546217" duration="2195000" />
-      <workItem from="1688865548142" duration="95434000" />
+      <workItem from="1688865548142" duration="112872000" />
     </task>
     <servers />
   </component>

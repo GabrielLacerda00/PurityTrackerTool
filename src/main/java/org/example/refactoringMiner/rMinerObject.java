@@ -1,5 +1,244 @@
 package org.example.refactoringMiner;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import org.example.util.*;
+import org.example.refactoringMiner.MinerUtils.*;
+import org.refactoringminer.api.Refactoring;
+import org.refactoringminer.api.RefactoringHandler;
+
+import org.eclipse.jgit.lib.Repository;
+import org.refactoringminer.api.GitHistoryRefactoringMiner;
+import org.refactoringminer.api.GitService;
+import org.refactoringminer.rm1.GitHistoryRefactoringMinerImpl;
+import org.refactoringminer.util.GitServiceImpl;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.example.util.clearTempDirs;
+import org.example.util.methodVerifier;
+
 public class rMinerObject {
 
+    static GitService gitService = new GitServiceImpl();
+    static GitHistoryRefactoringMiner miner = new GitHistoryRefactoringMinerImpl();
+    static String linhaDeOrigem;
+    static String linhaDeDestino;
+    static String metodoOrigem;
+    static String metodoDestino;
+    static String type;
+    static ArrayList<objectOutputRefactMiner> objectsRMiners = new ArrayList<>();
+    static ArrayList<Object> objectsRefactoringMiner = new ArrayList<>();
+    private static String path01 = "";
+    private  static String path02 = "";
+    private RMinerObjects minerObjects;
+    private static ArrayList<RMinerObjects> rMinerObjectsArrayList;
+
+    public static void main(String[] args) throws Exception {
+        String pathDir01 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForTwoCaller/CodeOrigin";
+        String pathDir02 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForTwoCaller/CodeDestiny";
+        String urlGit = "https://github.com/GabrielLacerda00/SuitTestsRenameMethod.git";
+        String commit01 = "a5d9055020fe8b5d11cadd1bc99f28358ad2776f";
+        String commit02 = "d3787c49b276e7489248f41e5800d9b7b38dcc6e";
+
+        rMinerObject rMinerObject = new rMinerObject(pathDir01,pathDir02,urlGit,commit01,commit02);
+
+        System.out.println("----------- Lista Objetos Rminer ---------- ");
+        rMinerObject.getrMinerObjectsArrayList().forEach(System.out::println);
+    }
+
+    public  rMinerObject(String pathh01, String pathh02,String projectURL, String commit1, String commit2) throws Exception {
+        this.minerObjects = new RMinerObjects();
+        this.rMinerObjectsArrayList = new ArrayList<>();
+        handlerPathsDirs(pathh01,pathh02);
+        refactoringBetweenCommits(projectURL,commit1,commit2);
+    }
+
+    public static void handlerPathsDirs(String pathh01, String pathh02){
+        path01 = pathh01;
+        path02 = pathh02;
+    }
+
+    public static void refactoringBetweenCommits(String projectURL, String commit1, String commit2) throws Exception {
+
+        int lastSlashIndex = projectURL.lastIndexOf("/");
+        String projectNameWithGit = projectURL.substring(lastSlashIndex + 1);
+        String projectName = projectNameWithGit.replace(".git", "");
+
+        Repository repo = gitService.cloneIfNotExists(
+                "tmp/"+projectName,
+                projectURL);
+
+        miner.detectBetweenCommits(repo,
+                commit1, commit2,
+                new RefactoringHandler() {
+                    @Override
+                    public void handle(String commitId, List<Refactoring> refactorings) {
+                        System.out.println("Refactorings at " + commitId);
+                        for (Refactoring ref : refactorings) {
+                            System.out.println(ref.toJSON());
+                            try {
+                                rMinerObjectsArrayList.add(readJSON(ref));
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
+
+                    }
+                });
+        clearTempDirs.runClearTempDirs();
+    }
+
+
+
+    private static RMinerObjects readJSON(Refactoring ref) throws IOException {
+
+        //converto em String -> converto em JsonElement para trasnformar em um object.
+        String jsonString = ref.toJSON();
+        JsonElement jelement = new JsonParser().parse(jsonString);
+        JsonObject ObjetoJson = jelement.getAsJsonObject();
+
+        type = ObjetoJson.get("type").getAsString();
+
+
+        versionOriginCode versionOriginCode = new versionOriginCode();
+        if (ObjetoJson.has("leftSideLocations")) {
+            //essa função vai pegar tudo de leftSide e salvar em um array usa o forEach para transformar em um Element novamente.
+            JsonArray leftSideLocations = ObjetoJson.getAsJsonArray("leftSideLocations");
+            for (JsonElement locationElement : leftSideLocations) {
+                //System.out.println("leftSideLocation: ");
+                pegaElementosOrigin(locationElement,versionOriginCode);
+            }
+        }
+
+        versionDestinyCode versionDestinyCode = new versionDestinyCode();
+        if (ObjetoJson.has("rightSideLocations")) {
+            JsonArray rightSideLocations = ObjetoJson.getAsJsonArray("rightSideLocations");
+
+            for (JsonElement locationElement : rightSideLocations) {
+                //System.out.println("Right Side Location: ");
+                pegaElementosDestino(locationElement,versionDestinyCode);
+            }
+        }
+        return createAndAddObjectRMiner(versionOriginCode.getVersao01(),versionDestinyCode.getVersao02());
+    }
+
+
+    private static void pegaElementosOrigin(JsonElement meuJson,versionOriginCode versionOriginCode) throws IOException {
+
+        JsonObject meuObj = meuJson.getAsJsonObject();
+
+        linhaDeOrigem = meuObj.get("startLine").getAsString();
+        String codeElementType = meuObj.get("codeElementType").getAsString();
+        metodoOrigem = extractMethodName(meuObj.get("codeElement").getAsString());
+        String path = meuObj.get("filePath").getAsString();
+
+
+        leftSideCallers leftSideCallerss = new leftSideCallers(methodVerifier.handlerVerifier(path01,extractFileName(path),metodoOrigem));
+
+
+        metodoOrigem = createMethodName(extractClassName(path),metodoOrigem);
+
+        objVersion01 version01 = new objVersion01(type,linhaDeOrigem,metodoOrigem,leftSideCallerss.getLeftSideCallers());
+        //versionOriginCode versionOriginCode = new versionOriginCode();
+        versionOriginCode.addInArray(version01);
+
+
+        objectsRefactoringMiner.add(version01);
+
+    }
+    private static void pegaElementosDestino(JsonElement meuJson,versionDestinyCode versionDestinyCode) throws IOException {
+
+        JsonObject meuObj = meuJson.getAsJsonObject();
+
+        linhaDeDestino = meuObj.get("startLine").getAsString();
+        String codeElementType = meuObj.get("codeElementType").getAsString();
+        metodoDestino = extractMethodName(meuObj.get("codeElement").getAsString());
+        String path = meuObj.get("filePath").getAsString();
+
+
+        methodVerifier.getCallersMethod().clear();
+        rightSideCallers rightSideCallerss = new rightSideCallers(methodVerifier.handlerVerifier(path02,extractFileName(path),metodoDestino));
+
+        metodoDestino = createMethodName(extractClassName(path),metodoDestino);
+
+        objVersion02 version02 = new objVersion02(type,linhaDeDestino,metodoDestino,rightSideCallerss.getRightSideCallers());
+        //versionDestinyCode versionDestinyCode = new versionDestinyCode();
+        versionDestinyCode.addInArray(version02);
+
+
+        objectsRefactoringMiner.add(version02);
+    }
+
+    private static String extractMethodName(String methodDefinition) {
+        String result = "";
+
+        String regex = "(\\w+)\\s*\\(";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(methodDefinition);
+
+        if (matcher.find()) {
+            result = matcher.group(1);
+        }
+        return result;
+    }
+
+    public static String extractClassName(String className) {
+        String regex = "/([^/]+)\\.java";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(className);
+
+        if (matcher.find()) {
+            String classNameWithoutExtension = matcher.group(1);
+            return classNameWithoutExtension;
+        }
+
+        return null; // Retorna null caso nenhum nome seja encontrado
+    }
+
+    public  ArrayList<RMinerObjects> getrMinerObjectsArrayList() {
+        for (RMinerObjects obj : rMinerObjectsArrayList) {
+            System.out.println(obj);
+        }
+        return rMinerObjectsArrayList;
+    }
+
+    public static RMinerObjects createAndAddObjectRMiner(ArrayList<objVersion01> versao01, ArrayList<objVersion02>version02) {
+        RMinerObjects rMinerObjects = new RMinerObjects();
+        for (int i = 0; i < versao01.size(); i++) {
+            for (int j = 0; j <version02.size() ; j++) {
+                objectOutputRefactMiner object = new objectOutputRefactMiner(versao01.get(j),version02.get(j));
+                System.out.println(object);
+                rMinerObjects.addInArray(object);
+                objectsRMiners.add(object);
+            }
+        }
+        return rMinerObjects;
+    }
+
+    public static String createMethodName(String classeName,String methodName){
+        return classeName+"."+methodName;
+    }
+
+    private static String extractFileName(String path) {
+        Pattern pattern = Pattern.compile("[^/\\\\]+$");
+        Matcher matcher = pattern.matcher(path);
+        if (matcher.find()) {
+            return matcher.group();
+        } else {
+            return "";
+        }
+    }
+    public RMinerObjects getMinerObjects() {
+        return minerObjects;
+    }
+
+    public void setMinerObjects(RMinerObjects minerObjects) {
+        this.minerObjects = minerObjects;
+    }
 }
