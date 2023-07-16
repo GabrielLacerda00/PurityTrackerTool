@@ -280,6 +280,7 @@ import com.github.javaparser.ast.visitor.*;
 import org.example.util.callerWaited;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -300,7 +301,8 @@ public class javaParserHandler {
 
     public static void mainCallersHandler(String path, String className) throws IOException {
         TARGET_METHOD_NAME = className;
-        callersHandler(path);
+
+        //callersHandler(path);
     }
 
     public static void callersHandler(String path) throws IOException {
@@ -312,15 +314,18 @@ public class javaParserHandler {
     }
 
     private static void processJavaFile(Path path) {
+
         try {
             CompilationUnit compilationUnit = StaticJavaParser.parse(path);
             String currentClassName = getClassName(path.toString());
+
             CURRENT_CLASS_NAME = currentClassName;
             new MethodVisitor().visit(compilationUnit, path.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 
     private static class MethodVisitor extends VoidVisitorAdapter<String> {
         @Override

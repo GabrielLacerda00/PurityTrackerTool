@@ -1,3 +1,5 @@
+package org.example.TestesJUNIT;
+
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
@@ -15,21 +17,11 @@ import org.example.controllerTool;
 import org.example.guumTreeDiff.gumTreeDiffOutputRenameMethodHandler;
 
 public class TestPurityToolRenames {
-	
-
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	@Before
-	public void setUp() throws Exception {
-		
-	}
 
 	@Test
 	public void testOneRenameOneCaller() throws Exception {
 		 //Caminho do projeto origem
-		 String pathDir01 = "//Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForOneCaller/CodeOrigin";
+		 String pathDir01 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForOneCaller/CodeOrigin";
 		 //Caminho do projeto destino
 		 String pathDir02 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForOneCaller/CodeDestiny";
 		 refactoringMinerHandlerBetweenCommits.handlerPathsDirs(pathDir01,pathDir02);
@@ -39,21 +31,21 @@ public class TestPurityToolRenames {
 			        "05ffc9d88525f2a3ec34eabe5f80a7e621e7a95a");
 		 
 		 ArrayList<objectOutputRefactMiner> objectsRMiner = new ArrayList<>();
-		 objectsRMiner = refactoringMinerHandlerBetweenCommits.getObjectsRMiners();
+		 objectsRMiner.addAll(refactoringMinerHandlerBetweenCommits.getObjectsRMiners());
 		 
 		 gumTreeDiffOutputRenameMethodHandler.renameMethodHandler(pathDir01,pathDir02);
 		 ArrayList<renameMethodObject> listRenamesObjects = new ArrayList<>();
-		 listRenamesObjects = gumTreeDiffOutputRenameMethodHandler.getListaConvertida();
+		 listRenamesObjects.addAll(gumTreeDiffOutputRenameMethodHandler.getListaConvertida());
 		 
 		 List<String> types = new ArrayList<String>();
 		 
-		 types = controllerTool.checkRenameMethod(objectsRMiner,listRenamesObjects);
+		 types.addAll(controllerTool.checkRenameMethod(objectsRMiner,listRenamesObjects));
 		 
 		 List<String> expectedType = new ArrayList<String>();
 		 expectedType.add("Pure");
 		 expectedType.add("Pure");
 		 
-		 assertArrayEquals(expectedType.toArray(), types.toArray());		 
+		 assertArrayEquals(expectedType.toArray(), types.toArray());
 	}
 
 	@Test
@@ -68,16 +60,16 @@ public class TestPurityToolRenames {
 				"a5d9055020fe8b5d11cadd1bc99f28358ad2776f",
 				"d3787c49b276e7489248f41e5800d9b7b38dcc6e");
 
-		ArrayList<objectOutputRefactMiner> objectsRMiner = new ArrayList<>();
-		objectsRMiner = refactoringMinerHandlerBetweenCommits.getObjectsRMiners();
+		ArrayList<objectOutputRefactMiner> objectsRRMiner = new ArrayList<>();
+		objectsRRMiner.addAll(refactoringMinerHandlerBetweenCommits.getObjectsRMiners());
 
 		gumTreeDiffOutputRenameMethodHandler.renameMethodHandler(pathDir01,pathDir02);
 		ArrayList<renameMethodObject> listRenamesObjects = new ArrayList<>();
-		listRenamesObjects = gumTreeDiffOutputRenameMethodHandler.getListaConvertida();
+		listRenamesObjects.addAll(gumTreeDiffOutputRenameMethodHandler.getListaConvertida());
 
 		List<String> types = new ArrayList<String>();
 
-		types = controllerTool.checkRenameMethod(objectsRMiner,listRenamesObjects);
+		types.addAll(controllerTool.checkRenameMethod(objectsRRMiner,listRenamesObjects));
 
 		List<String> expectedType = new ArrayList<String>();
 		expectedType.add("Pure");

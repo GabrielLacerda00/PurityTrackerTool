@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.example.util.clearTempDirs;
+import org.example.util.methodVerifier;
 
 public class refactoringMinerHandlerBetweenCommits {
 
@@ -31,7 +32,6 @@ public class refactoringMinerHandlerBetweenCommits {
     static String metodoDestino;
 
     static String type;
-
 
     static objectOutputRefactMiner objectRMiner;
 
@@ -52,12 +52,12 @@ public class refactoringMinerHandlerBetweenCommits {
     private static String path02 = "";
 
     public static void main(String[] args) throws Exception {
-        String pathDir01 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForMissingCaller/CodeOrigin";
-        String pathDir02 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForMissingCaller/CodeOdestiny";
+        String pathDir01 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForTwoCaller/CodeOrigin";
+        String pathDir02 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForTwoCaller/CodeDestiny";
         handlerPathsDirs(pathDir01,pathDir02);
         //Rename method
-        refactoringBetweenCommits("https://github.com/GabrielLacerda00/SuitTestsRenameMethod.git","ca24fe5512407aa0c738b29000f2cd533b3e6478",
-                "ca24fe5512407aa0c738b29000f2cd533b3e6478");
+        refactoringBetweenCommits("https://github.com/GabrielLacerda00/SuitTestsRenameMethod.git","a5d9055020fe8b5d11cadd1bc99f28358ad2776f",
+                "d3787c49b276e7489248f41e5800d9b7b38dcc6e");
         //Renames methods
         /*refactoringBetweenCommits("https://github.com/GabrielLacerda00/RenameMethodExample.git","1aa1171a01937ad6655ceb193260ca4bd4308008",
                 "0ba9f3f29f3e5e14836e98cdb13eee3dd8ff7461");*/
@@ -80,18 +80,14 @@ public class refactoringMinerHandlerBetweenCommits {
 
     public static void refactoringBetweenCommits(String projectURL, String commit1, String commit2) throws Exception {
 
-
         int lastSlashIndex = projectURL.lastIndexOf("/");
         String projectNameWithGit = projectURL.substring(lastSlashIndex + 1);
         String projectName = projectNameWithGit.replace(".git", "");
 
-        //clearFile(outPutRMinerPath);
-
         Repository repo = gitService.cloneIfNotExists(
                 "tmp/"+projectName,
                 projectURL);
-        // start commit: 819b202bfb09d4142dece04d4039f1708735019b
-        // end commit: d4bce13a443cf12da40a77c16c1e591f4f985b47
+
         miner.detectBetweenCommits(repo,
                 commit1, commit2,
                 new RefactoringHandler() {
@@ -158,10 +154,12 @@ public class refactoringMinerHandlerBetweenCommits {
         //System.out.println("codeElement: " + metodoOrigem);
         //System.out.println("filePath: "+extractClassName(path));
         //System.out.println("--------------------------------------------");
-        javaParserHandler.mainCallersHandler(path01,metodoOrigem);
 
+        //javaParserHandler.mainCallersHandler(path01,metodoOrigem);
+        //methodVerifier.handlerVerifier(path,metodoDestino);
+
+        leftSideCallers.addAll(methodVerifier.handlerVerifier(path01,extractFileName(path),metodoOrigem));
         metodoOrigem = createMethodName(extractClassName(path),metodoOrigem);
-        leftSideCallers.addAll(javaParserHandler.getCallersMethod());
         objVersion01 version01 = new objVersion01(type,linhaDeOrigem,metodoOrigem,leftSideCallers);
         versao01.add(version01);
         objectsRefactoringMiner.add(version01);
@@ -178,11 +176,11 @@ public class refactoringMinerHandlerBetweenCommits {
         //System.out.println("startLine: " + linhaDeDestino);
         //System.out.println("codeElementType: " + codeElementType);
         //System.out.println("codeElement: " + metodoDestino);
-        //System.out.println("filePath: "+extractClassName(path));
+        //System.out.println("filePath: "+path);
         //System.out.println("--------------------------------------------");
-        javaParserHandler.getCallersMethod().clear();
-        javaParserHandler.mainCallersHandler(path02,metodoDestino);
-        rightSideCallers.addAll(javaParserHandler.getCallersMethod());
+
+        methodVerifier.getCallersMethod().clear();
+        rightSideCallers.addAll(methodVerifier.handlerVerifier(path02,extractFileName(path),metodoDestino));
 
         metodoDestino = createMethodName(extractClassName(path),metodoDestino);
 
@@ -217,13 +215,10 @@ public class refactoringMinerHandlerBetweenCommits {
         return null; // Retorna null caso nenhum nome seja encontrado
     }
 
-    public static String createMethodName(String classeName,String methodName){
-        return classeName+"."+methodName;
-    }
 
 
     public static ArrayList<objectOutputRefactMiner> getObjectsRMiners() {
-        for (Object obj : objectsRefactoringMiner) {
+        for (Object obj : objectsRMiners) {
             System.out.println(obj);
         }
         return objectsRMiners;
@@ -234,10 +229,26 @@ public class refactoringMinerHandlerBetweenCommits {
         for (int i = 0; i < versao01.size(); i++) {
             for (int j = 0; j <version02.size() ; j++) {
                 objectOutputRefactMiner object = new objectOutputRefactMiner(versao01.get(j),version02.get(j));
+                System.out.println(object);
                 objectsRMiners.add(object);
             }
         }
-        //objectOutputRefactMiner object = new objectOutputRefactMiner(versao01,version02);
+
     }
+
+    public static String createMethodName(String classeName,String methodName){
+        return classeName+"."+methodName;
+    }
+
+    private static String extractFileName(String path) {
+        Pattern pattern = Pattern.compile("[^/\\\\]+$");
+        Matcher matcher = pattern.matcher(path);
+        if (matcher.find()) {
+            return matcher.group();
+        } else {
+            return "";
+        }
+    }
+
 
 }
