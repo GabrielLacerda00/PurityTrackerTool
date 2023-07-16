@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.example.guumTreeDiff.gumTreeUtils.RenameMethodsObj;
+import org.example.guumTreeDiff.gumTreeUtils.UpdateInvocationObject;
+import org.example.guumTreeDiff.gumTreeUtils.UpdateMethodsObject;
 import org.example.refactoringTypes.renameMethodObject;
 import org.example.util.TempObject;
 
@@ -17,16 +21,7 @@ import org.example.util.filePathFinderVersao02;
 
 
 public class gumTreeDiffOutputRenameMethodHandler {
-
-    static ArrayList<TempObject> updateMethodsObjects = new ArrayList<TempObject>();
-
-    static ArrayList<TempObject> updateInvocationObjects = new ArrayList<TempObject>();
-
-    static HashMap<TempObject,renameMethodObject> renameMethodObjects = new HashMap<>();
-
     static ArrayList<renameMethodObject> listaConvertida = new ArrayList<>();
-
-
     static Diff result;
 
 
@@ -35,12 +30,19 @@ public class gumTreeDiffOutputRenameMethodHandler {
         String pathDir01 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForOneCaller/CodeOrigin";
         String pathDir02 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForOneCaller/CodeDestiny";
 
-        renameMethodHandler(pathDir01,pathDir02);
+
+        gumTreeDiffOutputRenameMethodHandler gumtTree = new gumTreeDiffOutputRenameMethodHandler(pathDir01,pathDir02);
+        gumtTree.listaConvertida.forEach(System.out::println);
+    }
+
+    public gumTreeDiffOutputRenameMethodHandler(String path01, String path02) throws Exception {
+        renameMethodHandler(path01,path02);
     }
 
     public static void renameMethodHandler(String path01,String path02) throws Exception {
         ArrayList<String> filePaths1 = filePathFinderVersao01.getJavaFilePaths(path01);
         ArrayList<String> filePaths2 = filePathFinderVersao02.getJavaFilePaths(path02);
+        RenameMethodsObj renameMethodsObj = new RenameMethodsObj();
 
         int tamanho = Math.min(filePaths1.size(), filePaths2.size());
 
@@ -48,34 +50,37 @@ public class gumTreeDiffOutputRenameMethodHandler {
             File file1 = new File(filePaths1.get(i));
             File file2 = new File(filePaths2.get(i));
             result = new AstComparator().compare(file1, file2);
-            extractDetailsUpdateMethod(result);
-            extractDetailsInvocationMethod(result);
 
-            ArrayList<TempObject> listpares = mergeLists(updateMethodsObjects,updateInvocationObjects);
+            ArrayList<TempObject> listpares = mergeLists(extractDetailsUpdateMethod(result),extractDetailsInvocationMethod(result));
 
             for (int j = 0; j < listpares.size(); j+=2) {
-                if(!renameMethodObjects.containsKey(listpares.get(j))){
-                    renameMethodObjects.put(listpares.get(j),new renameMethodObject(listpares.get(j)));
-                    renameMethodObjects.get(listpares.get(j)).setUpdateInvocationList(listpares.get(j+1));
+                if(!renameMethodsObj.getRenameMethodObjects().containsKey(listpares.get(j))){
+                    renameMethodsObj.getRenameMethodObjects().put(listpares.get(j),new renameMethodObject(listpares.get(j)));
+                    renameMethodsObj.getRenameMethodObjects().get(listpares.get(j)).setUpdateInvocationList(listpares.get(j+1));
                 }else{
-                    renameMethodObjects.get(listpares.get(j)).setUpdateInvocationList(listpares.get(j+1));
+                    renameMethodsObj.getRenameMethodObjects().get(listpares.get(j)).setUpdateInvocationList(listpares.get(j+1));
                 }
             }
-            converteMap(renameMethodObjects);
+            //Verificar novamente depois de rodar
+            converteMap(renameMethodsObj.getRenameMethodObjects());
         }
     }
 
     private static ArrayList<TempObject> extractDetailsUpdateMethod(Diff result) {
+        UpdateMethodsObject updateMethodsObject = new UpdateMethodsObject();
         for (int var = 0; var < (result.getRootOperations().size()/2); var++) {
             String typeRename = getTypeRename(result,var);
             String lineOrigin = getLineOrigin(result,var);
             String nameMethodOrigin = extractClassName(result,var)+"."+getInvocationSrc(result,var);
             String lineDest = getLineDestino(result,var);
             String nameMethodDst = extractClassName(result,var)+"."+getInvocationDst(result,var);
+
             TempObject updateMethodObject = new TempObject(typeRename,lineOrigin,nameMethodOrigin,lineDest,nameMethodDst);
-            updateMethodsObjects.add(updateMethodObject);
+
+            updateMethodsObject.addInArray(updateMethodObject);
+
         }
-        return updateMethodsObjects;
+        return updateMethodsObject.getUpdateMethodsObjects();
     }
 
     private static String getTypeRename(Diff result, int var) {
@@ -85,16 +90,19 @@ public class gumTreeDiffOutputRenameMethodHandler {
     }
 
     private static ArrayList<TempObject> extractDetailsInvocationMethod(Diff result) {
+        UpdateInvocationObject updateInvocationObjectt = new UpdateInvocationObject();
         for (int var = (result.getRootOperations().size()/2); var < (result.getRootOperations().size()); var++) {
             String typeeRename = getTypeRename(result,var);
             String lineO = getLineOrigin(result,var);
             String nameMethodO = extractClassName(result,var)+"."+getInvocationSrc(result,var);
             String lineD = getLineDestino(result,var);
             String nameMethodD = extractClassName(result,var)+"."+getInvocationDst(result,var);
+
             TempObject updateInvocationObject = new TempObject(typeeRename,lineO,nameMethodO,lineD,nameMethodD);
-            updateInvocationObjects.add(updateInvocationObject);
+            updateInvocationObjectt.addInArray(updateInvocationObject);
+
         }
-        return updateInvocationObjects;
+        return updateInvocationObjectt.getUpdateInvocationObjects();
     }
 
     private static String getLineOrigin(Diff result, int var) {

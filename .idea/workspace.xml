@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a0c258d2-3607-4dd8-9031-96f739d9116c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/TestesJUNIT/TestPurityToolRenames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/TestesJUNIT/TestPurityToolRenames.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/refactoringMiner/rMinerObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/refactoringMiner/rMinerObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/guumTreeDiff/gumTreeDiffOutputRenameMethodHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/guumTreeDiff/gumTreeDiffOutputRenameMethodHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,13 +59,13 @@
       <recent name="org.example.util" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.rMinerObject">
-    <configuration name="rMinerObject" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.refactoringMiner.rMinerObject" />
+  <component name="RunManager" selected="Application.gumTreeDiffOutputRenameMethodHandler">
+    <configuration name="gumTreeDiffOutputRenameMethodHandler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.guumTreeDiff.gumTreeDiffOutputRenameMethodHandler" />
       <module name="PurityTrackerTool" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.refactoringMiner.*" />
+          <option name="PATTERN" value="org.example.guumTreeDiff.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -76,12 +73,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="testRunner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.TestesJUNIT.testRunner" />
+    <configuration name="rMinerObject" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.refactoringMiner.rMinerObject" />
       <module name="PurityTrackerTool" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.TestesJUNIT.*" />
+          <option name="PATTERN" value="org.example.refactoringMiner.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -136,11 +133,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.gumTreeDiffOutputRenameMethodHandler" />
         <item itemvalue="Application.rMinerObject" />
         <item itemvalue="JUnit.TestRenameOneRenameForMissingCallers" />
         <item itemvalue="JUnit.TestRenameOneRenameTwoCallers" />
         <item itemvalue="JUnit.TestPurityToolRenames" />
-        <item itemvalue="Application.testRunner" />
       </list>
     </recent_temporary>
   </component>
@@ -167,7 +164,7 @@
       <workItem from="1688580083676" duration="695000" />
       <workItem from="1688606043830" duration="2037000" />
       <workItem from="1688648546217" duration="2195000" />
-      <workItem from="1688865548142" duration="112872000" />
+      <workItem from="1688865548142" duration="117083000" />
     </task>
     <servers />
   </component>
