@@ -27,8 +27,8 @@ public class gumTreeDiffOutputRenameMethodHandler {
 
     public static void main(String[] args) throws Exception {
 
-        String pathDir01 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForOneCaller/CodeOrigin";
-        String pathDir02 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForOneCaller/CodeDestiny";
+        String pathDir01 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForMissingCaller/CodeOrigin";
+        String pathDir02 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForMissingCaller/CodeDestiny";
 
 
         gumTreeDiffOutputRenameMethodHandler gumtTree = new gumTreeDiffOutputRenameMethodHandler(pathDir01,pathDir02);
@@ -202,7 +202,7 @@ public class gumTreeDiffOutputRenameMethodHandler {
         listaConvertida.addAll(renames.values());
     }
 
-    public static ArrayList<renameMethodObject> getListaConvertida() {
+    public  ArrayList<renameMethodObject> getListaConvertida() {
         listaConvertida.forEach(System.out::println);
         return listaConvertida;
     }

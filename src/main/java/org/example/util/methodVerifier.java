@@ -53,7 +53,7 @@ public class methodVerifier {
                 if (superclassFilePath != null) {
                     // Perform recursive call to search in the superclass
                     this.foundInClass = verifyMethod(superclassFilePath, targetMethodName);
-                    System.out.println(cid.getBegin().get().line);
+                    //System.out.println(cid.getBegin().get().line);
                 }
             }
         }
@@ -106,8 +106,8 @@ public class methodVerifier {
         findFileInAncestors(pathRoot, superclass+ ".java");
         Path superclassPath = Path.of(pathRoot + superclass + ".java");
 
-        System.out.println(superclass);
-        System.out.println(superclassPath);
+        //System.out.println(superclass);
+        //System.out.println(superclassPath);
 
         if (Files.exists(superclassPath)) {
             return superclassPath.toString();
@@ -120,8 +120,8 @@ public class methodVerifier {
     public static void main(String[] args) {
         //String javaFilePath = "/Users/gabriellacerda/GitHubGabrielLacerda/backup_Projects_test/versao02/RenameMethodExample2.0/calculadora.java";
         //String methodName = "sum";
-        //handlerVerifier("/Users/gabriellacerda/GitHubGabrielLacerda/backup_Projects_test/versao02/RenameMethodExample2.0","calculadora.java",
-                //"sum");
+//        handlerVerifier("/Users/gabriellacerda/GitHubGabrielLacerda/backup_Projects_test/versao02/RenameMethodExample2.0","calculadora.java",
+//                "soma");
 
     }
 

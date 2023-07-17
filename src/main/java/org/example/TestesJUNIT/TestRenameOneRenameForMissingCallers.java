@@ -30,7 +30,7 @@ public class TestRenameOneRenameForMissingCallers {
 
         gumTreeDiffOutputRenameMethodHandler.renameMethodHandler(pathDir01,pathDir02);
         ArrayList<renameMethodObject> listRenamesObjects = new ArrayList<>();
-        listRenamesObjects = gumTreeDiffOutputRenameMethodHandler.getListaConvertida();
+        //listRenamesObjects = gumTreeDiffOutputRenameMethodHandler.getListaConvertida();
 
         List<String> types = new ArrayList<String>();
 

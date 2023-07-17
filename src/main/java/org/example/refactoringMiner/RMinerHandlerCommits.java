@@ -23,7 +23,7 @@ import java.util.regex.Pattern;
 import org.example.util.clearTempDirs;
 import org.example.util.methodVerifier;
 
-public class rMinerObject {
+public class RMinerHandlerCommits {
 
     static GitService gitService = new GitServiceImpl();
     static GitHistoryRefactoringMiner miner = new GitHistoryRefactoringMinerImpl();
@@ -37,24 +37,25 @@ public class rMinerObject {
     private static String path01 = "";
     private  static String path02 = "";
     private RMinerObjects minerObjects;
-    private static ArrayList<RMinerObjects> rMinerObjectsArrayList;
+
+
+    private static ArrayList<objectOutputRefactMiner> rMinerObjectsArrayList = new ArrayList<>();
 
     public static void main(String[] args) throws Exception {
-        String pathDir01 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForTwoCaller/CodeOrigin";
-        String pathDir02 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForTwoCaller/CodeDestiny";
+        String pathDir01 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForMissingCaller/CodeOrigin";
+        String pathDir02 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForMissingCaller/CodeDestiny";
         String urlGit = "https://github.com/GabrielLacerda00/SuitTestsRenameMethod.git";
-        String commit01 = "a5d9055020fe8b5d11cadd1bc99f28358ad2776f";
-        String commit02 = "d3787c49b276e7489248f41e5800d9b7b38dcc6e";
+        String commit01 = "9efa63633fbff505b84d8fba97d7a4292e7e5561";
+        String commit02 = "91e95a85850a61e81623386eeca2f495f9aec062";
 
-        rMinerObject rMinerObject = new rMinerObject(pathDir01,pathDir02,urlGit,commit01,commit02);
+        RMinerHandlerCommits RMinerHandlerCommits = new RMinerHandlerCommits(pathDir01,pathDir02,urlGit,commit01,commit02);
 
-        System.out.println("----------- Lista Objetos Rminer ---------- ");
-        rMinerObject.getrMinerObjectsArrayList().forEach(System.out::println);
+       System.out.println("----------- Lista Objetos Rminer ---------- ");
+       System.out.println(RMinerHandlerCommits.getrMinerObjectsArrayList());
     }
 
-    public  rMinerObject(String pathh01, String pathh02,String projectURL, String commit1, String commit2) throws Exception {
+    public RMinerHandlerCommits(String pathh01, String pathh02, String projectURL, String commit1, String commit2) throws Exception {
         this.minerObjects = new RMinerObjects();
-        this.rMinerObjectsArrayList = new ArrayList<>();
         handlerPathsDirs(pathh01,pathh02);
         refactoringBetweenCommits(projectURL,commit1,commit2);
     }
@@ -83,7 +84,7 @@ public class rMinerObject {
                         for (Refactoring ref : refactorings) {
                             System.out.println(ref.toJSON());
                             try {
-                                rMinerObjectsArrayList.add(readJSON(ref));
+                                readJSON(ref);
                             } catch (IOException e) {
                                 throw new RuntimeException(e);
                             }
@@ -96,7 +97,7 @@ public class rMinerObject {
 
 
 
-    private static RMinerObjects readJSON(Refactoring ref) throws IOException {
+    private static void readJSON(Refactoring ref) throws IOException {
 
         //converto em String -> converto em JsonElement para trasnformar em um object.
         String jsonString = ref.toJSON();
@@ -125,7 +126,7 @@ public class rMinerObject {
                 pegaElementosDestino(locationElement,versionDestinyCode);
             }
         }
-        return createAndAddObjectRMiner(versionOriginCode.getVersao01(),versionDestinyCode.getVersao02());
+        createAndAddObjectRMiner(versionOriginCode.getVersao01(),versionDestinyCode.getVersao02());
     }
 
 
@@ -136,20 +137,19 @@ public class rMinerObject {
         linhaDeOrigem = meuObj.get("startLine").getAsString();
         String codeElementType = meuObj.get("codeElementType").getAsString();
         metodoOrigem = extractMethodName(meuObj.get("codeElement").getAsString());
-        String path = meuObj.get("filePath").getAsString();
+        String file = meuObj.get("filePath").getAsString();
 
-
-        leftSideCallers leftSideCallerss = new leftSideCallers(methodVerifier.handlerVerifier(path01,extractFileName(path),metodoOrigem));
-
-
-        metodoOrigem = createMethodName(extractClassName(path),metodoOrigem);
+        methodVerifier.getCallersMethod().clear();
+        leftSideCallers leftSideCallerss = new leftSideCallers(methodVerifier.handlerVerifier(path01,extractFileName(file),metodoOrigem));
+        //System.out.println(leftSideCallerss);
+        metodoOrigem = createMethodName(extractClassName(file),metodoOrigem);
 
         objVersion01 version01 = new objVersion01(type,linhaDeOrigem,metodoOrigem,leftSideCallerss.getLeftSideCallers());
-        //versionOriginCode versionOriginCode = new versionOriginCode();
+        //System.out.println(leftSideCallerss.getLeftSideCallers());
+        //System.out.println(version01);
         versionOriginCode.addInArray(version01);
 
-
-        objectsRefactoringMiner.add(version01);
+        //objectsRefactoringMiner.add(version01);
 
     }
     private static void pegaElementosDestino(JsonElement meuJson,versionDestinyCode versionDestinyCode) throws IOException {
@@ -159,20 +159,20 @@ public class rMinerObject {
         linhaDeDestino = meuObj.get("startLine").getAsString();
         String codeElementType = meuObj.get("codeElementType").getAsString();
         metodoDestino = extractMethodName(meuObj.get("codeElement").getAsString());
-        String path = meuObj.get("filePath").getAsString();
+        String file = meuObj.get("filePath").getAsString();
 
 
         methodVerifier.getCallersMethod().clear();
-        rightSideCallers rightSideCallerss = new rightSideCallers(methodVerifier.handlerVerifier(path02,extractFileName(path),metodoDestino));
+        rightSideCallers rightSideCallerss = new rightSideCallers(methodVerifier.handlerVerifier(path02,extractFileName(file),metodoDestino));
 
-        metodoDestino = createMethodName(extractClassName(path),metodoDestino);
+        metodoDestino = createMethodName(extractClassName(file),metodoDestino);
 
         objVersion02 version02 = new objVersion02(type,linhaDeDestino,metodoDestino,rightSideCallerss.getRightSideCallers());
         //versionDestinyCode versionDestinyCode = new versionDestinyCode();
         versionDestinyCode.addInArray(version02);
 
 
-        objectsRefactoringMiner.add(version02);
+        //objectsRefactoringMiner.add(version02);
     }
 
     private static String extractMethodName(String methodDefinition) {
@@ -201,25 +201,23 @@ public class rMinerObject {
         return null; // Retorna null caso nenhum nome seja encontrado
     }
 
-    public  ArrayList<RMinerObjects> getrMinerObjectsArrayList() {
-        for (RMinerObjects obj : rMinerObjectsArrayList) {
-            System.out.println(obj);
-        }
+    public  ArrayList<objectOutputRefactMiner> getrMinerObjectsArrayList() {
         return rMinerObjectsArrayList;
     }
 
-    public static RMinerObjects createAndAddObjectRMiner(ArrayList<objVersion01> versao01, ArrayList<objVersion02>version02) {
+    public static void createAndAddObjectRMiner(ArrayList<objVersion01> versao01, ArrayList<objVersion02>version02) {
         RMinerObjects rMinerObjects = new RMinerObjects();
         for (int i = 0; i < versao01.size(); i++) {
             for (int j = 0; j <version02.size() ; j++) {
-                objectOutputRefactMiner object = new objectOutputRefactMiner(versao01.get(j),version02.get(j));
-                System.out.println(object);
+                objectOutputRefactMiner object = new objectOutputRefactMiner(versao01.get(i),version02.get(j));
                 rMinerObjects.addInArray(object);
-                objectsRMiners.add(object);
             }
         }
-        return rMinerObjects;
+        rMinerObjectsArrayList.addAll(rMinerObjects.getObjectsRefactoringMiner());
+
     }
+
+
 
     public static String createMethodName(String classeName,String methodName){
         return classeName+"."+methodName;

@@ -36,7 +36,7 @@ public class objVersion01 {
                 "lineOrigin='" + lineOrigin + '\'' +
                 ", nameMethodOrigin='" + nameMethodOrigin + '\'' +
                 ", type='" + type + '\'' +
-                " method calls= " + callerWaitedsMethod+ '\''+
+                ", method calls= " + callerWaitedsMethod+ '\''+
                 '}';
     }
 }
