@@ -171,7 +171,6 @@ public class RMinerHandlerCommits {
         //versionDestinyCode versionDestinyCode = new versionDestinyCode();
         versionDestinyCode.addInArray(version02);
 
-
         //objectsRefactoringMiner.add(version02);
     }
 

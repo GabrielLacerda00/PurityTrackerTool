@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a0c258d2-3607-4dd8-9031-96f739d9116c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/TestesJUNIT/TestRenameOneRenameForMissingCallers.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/TestesJUNIT/TestRenameOneRenameTwoCallers.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllerTool.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/refactoringMiner/refactoringMinerHandlerBetweenCommits.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/refactoringMiner/RMinerHandlerCommits.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/refactoringMiner/RMinerHandlerCommits.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,39 +60,13 @@
       <recent name="org.example.util" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.RMinerHandlerCommits">
+  <component name="RunManager" selected="JUnit.TestPurityToolRenames.testOneRenameOneCaller">
     <configuration name="RMinerHandlerCommits" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.refactoringMiner.RMinerHandlerCommits" />
       <module name="PurityTrackerTool" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.example.refactoringMiner.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="gumTreeDiffOutputRenameMethodHandler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.guumTreeDiff.gumTreeDiffOutputRenameMethodHandler" />
-      <module name="PurityTrackerTool" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.guumTreeDiff.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="methodVerifier" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.util.methodVerifier" />
-      <module name="PurityTrackerTool" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.util.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -117,6 +89,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestPurityToolRenames.testOneRenameForMissingCaller" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PurityTrackerTool" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.TestesJUNIT.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example.TestesJUNIT" />
+      <option name="MAIN_CLASS_NAME" value="org.example.TestesJUNIT.TestPurityToolRenames" />
+      <option name="METHOD_NAME" value="testOneRenameForMissingCaller" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestPurityToolRenames.testOneRenameOneCaller" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PurityTrackerTool" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.TestesJUNIT.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example.TestesJUNIT" />
+      <option name="MAIN_CLASS_NAME" value="org.example.TestesJUNIT.TestPurityToolRenames" />
+      <option name="METHOD_NAME" value="testOneRenameOneCaller" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestPurityToolRenames.testOneRenameTwoCaller" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PurityTrackerTool" />
       <extension name="coverage">
@@ -135,11 +139,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestPurityToolRenames.testOneRenameOneCaller" />
+        <item itemvalue="JUnit.TestPurityToolRenames.testOneRenameTwoCaller" />
+        <item itemvalue="JUnit.TestPurityToolRenames.testOneRenameForMissingCaller" />
         <item itemvalue="Application.RMinerHandlerCommits" />
         <item itemvalue="JUnit.TestPurityToolRenames" />
-        <item itemvalue="Application.methodVerifier" />
-        <item itemvalue="Application.gumTreeDiffOutputRenameMethodHandler" />
-        <item itemvalue="JUnit.TestPurityToolRenames.testOneRenameTwoCaller" />
       </list>
     </recent_temporary>
   </component>
@@ -167,7 +171,7 @@
       <workItem from="1688606043830" duration="2037000" />
       <workItem from="1688648546217" duration="2195000" />
       <workItem from="1688865548142" duration="133098000" />
-      <workItem from="1689587469681" duration="513000" />
+      <workItem from="1689587469681" duration="1948000" />
     </task>
     <servers />
   </component>
