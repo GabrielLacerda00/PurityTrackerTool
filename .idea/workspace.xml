@@ -5,17 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a0c258d2-3607-4dd8-9031-96f739d9116c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mainFluxograma02.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/TestesJUNIT/TestPurityToolRenames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/TestesJUNIT/TestPurityToolRenames.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/TestesJUNIT/TestRenameOneRenameForMissingCallers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/TestesJUNIT/TestRenameOneRenameForMissingCallers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/TestesJUNIT/TestRenameOneRenameTwoCallers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/TestesJUNIT/TestRenameOneRenameTwoCallers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllerTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllerTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllerTool02.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/guumTreeDiff/gumTreeDiffOutputRenameMethodHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/guumTreeDiff/gumTreeDiffOutputRenameMethodHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/refactoringMiner/rMinerObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/refactoringMiner/rMinerObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/util/methodVerifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/util/methodVerifier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/util/objVersion01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/util/objVersion01.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/TestesJUNIT/TestRenameOneRenameForMissingCallers.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/TestesJUNIT/TestRenameOneRenameTwoCallers.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllerTool.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/refactoringMiner/refactoringMinerHandlerBetweenCommits.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,6 +167,7 @@
       <workItem from="1688606043830" duration="2037000" />
       <workItem from="1688648546217" duration="2195000" />
       <workItem from="1688865548142" duration="133098000" />
+      <workItem from="1689587469681" duration="513000" />
     </task>
     <servers />
   </component>
