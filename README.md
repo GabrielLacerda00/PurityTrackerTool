@@ -22,7 +22,8 @@ Segue abaixo o passo a passo para a execução correta da ferramenta:
 
 ### Executando a Ferramenta
 
-1. *Inicie a PurityTrackerTool:* Após abrir a ferramenta, navegue até a classe `mainFluxograma02`.
-2. *Execute a classe `mainFluxograma02`:* Esta classe deve ser executada passando como parâmetros o caminho (path) do local em que as versões original e de destino foram clonadas. Além disso, é necessário fornecer a URL do projeto no Git, bem como os hashes `hash01` e `hash02`.
+1.*Adicione o `gumtree-spon-ast-diff.jar` ao buildPath do projeto.
+2. *Inicie a PurityTrackerTool:* Após abrir a ferramenta, navegue até a classe `mainFluxograma02`.
+3. *Execute a classe `mainFluxograma02`:* Esta classe deve ser executada passando como parâmetros o caminho (path) do local em que as versões original e de destino foram clonadas. Além disso, é necessário fornecer a URL do projeto no Git, bem como os hashes `hash01` e `hash02`.
 
 Com a execução destes passos, a PurityTrackerTool estará pronta para uso. Caso encontre quaisquer dificuldades, não hesite em buscar por suporte.
