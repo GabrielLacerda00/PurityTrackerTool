@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a0c258d2-3607-4dd8-9031-96f739d9116c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/refactoringMiner/RMinerHandlerCommits.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/refactoringMiner/RMinerHandlerCommits.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/guumTreeDiff/gumtree-spoon-ast-diff-1.62-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/libs/gumtree-spoon-ast-diff-1.62-jar-with-dependencies.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,34 +34,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Fluxograma02&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/gabriellacerda/GitHubGabrielLacerda/PurityTrackerTool&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.41379312&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "Fluxograma02",
+    "last_opened_file_path": "/Users/gabriellacerda/GitHubGabrielLacerda/PurityTrackerTool/src/main/java/org/example/guumTreeDiff",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Problems",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.5275862",
+    "settings.editor.selected.configurable": "com.intellij.jarRepository.settings.RemoteRepositoriesConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/org/example/guumTreeDiff" />
       <recent name="C:\Users\gabri\GitHub-Gabriel_lacerda\PurityTrackerTool\PurityTrackerTool\src\main\java\org\example\guumTreeDiff" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/org/example/libs" />
     </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="org.example.util" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TestPurityToolRenames.testOneRenameOneCaller">
+  <component name="RunManager" selected="Application.mainFluxograma02">
     <configuration name="RMinerHandlerCommits" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.refactoringMiner.RMinerHandlerCommits" />
       <module name="PurityTrackerTool" />
@@ -74,17 +79,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestPurityToolRenames" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="mainFluxograma02" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.mainFluxograma02" />
       <module name="PurityTrackerTool" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.TestesJUNIT.*" />
+          <option name="PATTERN" value="org.example.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.example.TestesJUNIT" />
-      <option name="MAIN_CLASS_NAME" value="org.example.TestesJUNIT.TestPurityToolRenames" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -139,11 +142,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.mainFluxograma02" />
         <item itemvalue="JUnit.TestPurityToolRenames.testOneRenameOneCaller" />
         <item itemvalue="JUnit.TestPurityToolRenames.testOneRenameTwoCaller" />
         <item itemvalue="JUnit.TestPurityToolRenames.testOneRenameForMissingCaller" />
         <item itemvalue="Application.RMinerHandlerCommits" />
-        <item itemvalue="JUnit.TestPurityToolRenames" />
       </list>
     </recent_temporary>
   </component>
@@ -171,7 +174,7 @@
       <workItem from="1688606043830" duration="2037000" />
       <workItem from="1688648546217" duration="2195000" />
       <workItem from="1688865548142" duration="133098000" />
-      <workItem from="1689587469681" duration="1948000" />
+      <workItem from="1689587469681" duration="6233000" />
     </task>
     <servers />
   </component>
