@@ -22,6 +22,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.example.util.clearTempDirs;
 import org.example.util.methodVerifier;
+import org.example.util.methodVerifierDestiny;
 
 public class RMinerHandlerCommits {
 
@@ -32,8 +33,6 @@ public class RMinerHandlerCommits {
     static String metodoOrigem;
     static String metodoDestino;
     static String type;
-    static ArrayList<objectOutputRefactMiner> objectsRMiners = new ArrayList<>();
-    static ArrayList<Object> objectsRefactoringMiner = new ArrayList<>();
     private static String path01 = "";
     private  static String path02 = "";
     private RMinerObjects minerObjects;
@@ -51,7 +50,7 @@ public class RMinerHandlerCommits {
         RMinerHandlerCommits RMinerHandlerCommits = new RMinerHandlerCommits(pathDir01,pathDir02,urlGit,commit01,commit02);
 
        System.out.println("----------- Lista Objetos Rminer ---------- ");
-       System.out.println(RMinerHandlerCommits.getrMinerObjectsArrayList());
+      System.out.println(RMinerHandlerCommits.getrMinerObjectsArrayList());
     }
 
     public RMinerHandlerCommits(String pathh01, String pathh02, String projectURL, String commit1, String commit2) throws Exception {
@@ -80,9 +79,9 @@ public class RMinerHandlerCommits {
                 new RefactoringHandler() {
                     @Override
                     public void handle(String commitId, List<Refactoring> refactorings) {
-                        System.out.println("Refactorings at " + commitId);
+                        //System.out.println("Refactorings at " + commitId);
                         for (Refactoring ref : refactorings) {
-                            System.out.println(ref.toJSON());
+                            //System.out.println(ref.toJSON());
                             try {
                                 readJSON(ref);
                             } catch (IOException e) {
@@ -118,14 +117,16 @@ public class RMinerHandlerCommits {
         }
 
         versionDestinyCode versionDestinyCode = new versionDestinyCode();
+        //System.out.println(versionOriginCode.getVersao01());
         if (ObjetoJson.has("rightSideLocations")) {
             JsonArray rightSideLocations = ObjetoJson.getAsJsonArray("rightSideLocations");
-
+            
             for (JsonElement locationElement : rightSideLocations) {
                 //System.out.println("Right Side Location: ");
-                pegaElementosDestino(locationElement,versionDestinyCode);
+                pegaElementosDestino(locationElement,versionDestinyCode, versionOriginCode);
             }
         }
+
         createAndAddObjectRMiner(versionOriginCode.getVersao01(),versionDestinyCode.getVersao02());
     }
 
@@ -141,18 +142,17 @@ public class RMinerHandlerCommits {
 
         methodVerifier.getCallersMethod().clear();
         leftSideCallers leftSideCallerss = new leftSideCallers(methodVerifier.handlerVerifier(path01,extractFileName(file),metodoOrigem));
-        //System.out.println(leftSideCallerss);
+
         metodoOrigem = createMethodName(extractClassName(file),metodoOrigem);
 
         objVersion01 version01 = new objVersion01(type,linhaDeOrigem,metodoOrigem,leftSideCallerss.getLeftSideCallers());
-        //System.out.println(leftSideCallerss.getLeftSideCallers());
+        //System.out.println(leftSideCallerss.getLeftSideCallers())
         //System.out.println(version01);
         versionOriginCode.addInArray(version01);
-
-        //objectsRefactoringMiner.add(version01);
-
     }
-    private static void pegaElementosDestino(JsonElement meuJson,versionDestinyCode versionDestinyCode) throws IOException {
+
+    private static void pegaElementosDestino(JsonElement meuJson,versionDestinyCode versionDestinyCode, versionOriginCode versionOriginCode) throws IOException {
+        //System.out.println(versionOriginCode.getVersao01());
 
         JsonObject meuObj = meuJson.getAsJsonObject();
 
@@ -161,17 +161,15 @@ public class RMinerHandlerCommits {
         metodoDestino = extractMethodName(meuObj.get("codeElement").getAsString());
         String file = meuObj.get("filePath").getAsString();
 
+        methodVerifierDestiny.getCallersMethod().clear();
 
-        methodVerifier.getCallersMethod().clear();
-        rightSideCallers rightSideCallerss = new rightSideCallers(methodVerifier.handlerVerifier(path02,extractFileName(file),metodoDestino));
-
+        rightSideCallers rightSideCallerss = new rightSideCallers(methodVerifierDestiny.handlerVerifier(path02,extractFileName(file),metodoDestino));
+        //System.out.println(rightSideCallerss.getRightSideCallers());
         metodoDestino = createMethodName(extractClassName(file),metodoDestino);
 
         objVersion02 version02 = new objVersion02(type,linhaDeDestino,metodoDestino,rightSideCallerss.getRightSideCallers());
-        //versionDestinyCode versionDestinyCode = new versionDestinyCode();
         versionDestinyCode.addInArray(version02);
 
-        //objectsRefactoringMiner.add(version02);
     }
 
     private static String extractMethodName(String methodDefinition) {
@@ -216,8 +214,6 @@ public class RMinerHandlerCommits {
 
     }
 
-
-
     public static String createMethodName(String classeName,String methodName){
         return classeName+"."+methodName;
     }
@@ -231,6 +227,7 @@ public class RMinerHandlerCommits {
             return "";
         }
     }
+
     public RMinerObjects getMinerObjects() {
         return minerObjects;
     }

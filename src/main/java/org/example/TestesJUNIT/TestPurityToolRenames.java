@@ -10,12 +10,14 @@ import org.example.refactoringMiner.RMinerHandlerCommits;
 import org.junit.Test;
 
 import org.example.guumTreeDiff.gumTreeDiffOutputRenameMethodHandler;
+import org.junit.jupiter.api.Order;
 //import org.junit.jupiter.api.Test;
+
 
 public class TestPurityToolRenames {
 
-
 	@Test
+	@Order(1)
 	public void testOneRenameOneCaller() throws Exception {
 		String pathDir01 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForOneCaller/CodeOrigin";
 		String pathDir02 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForOneCaller/CodeDestiny";
@@ -27,19 +29,24 @@ public class TestPurityToolRenames {
 
 		gumTreeDiffOutputRenameMethodHandler gumtTree = new gumTreeDiffOutputRenameMethodHandler(pathDir01,pathDir02);
 
-		 List<String> types = new ArrayList<String>();
-		 
-		 types.addAll(mainFluxograma02.checkRenameMethod(RMinerHandlerCommits.getrMinerObjectsArrayList(), gumtTree.getListaConvertida()));
-		 
-		 List<String> expectedType = new ArrayList<String>();
-		 expectedType.add("Pure");
-		 expectedType.add("Pure");
-		 
-		 assertArrayEquals(expectedType.toArray(), types.toArray());
-		 expectedType.clear();
+		List<String> types = new ArrayList<String>();
+
+		mainFluxograma02 main01 = new mainFluxograma02();
+
+		types.addAll(main01.checkRenameMethod(RMinerHandlerCommits.getrMinerObjectsArrayList(), gumtTree.getListaConvertida()));
+
+		List<String> expectedType = new ArrayList<String>();
+		expectedType.add("Pure");
+		expectedType.add("Pure");
+
+		assertArrayEquals(expectedType.toArray(), types.toArray());
+
+		expectedType.clear();
+
 	}
 
 	@Test
+	@Order(2)
 	public void testOneRenameTwoCaller() throws Exception {
 		String pathDir01 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForTwoCaller/CodeOrigin";
 		String pathDir02 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForTwoCaller/CodeDestiny";
@@ -53,17 +60,21 @@ public class TestPurityToolRenames {
 
 		List<String> typesTwo = new ArrayList<String>();
 
-		typesTwo.addAll(mainFluxograma02.checkRenameMethod(rMinerHandlerCommitsTwo.getrMinerObjectsArrayList(), gumtTreeTwo.getListaConvertida()));
+		mainFluxograma02 main02 = new mainFluxograma02();
+
+		typesTwo.clear();
+		typesTwo.addAll(main02.checkRenameMethod(rMinerHandlerCommitsTwo.getrMinerObjectsArrayList(), gumtTreeTwo.getListaConvertida()));
 
 		List<String> expectedType02 = new ArrayList<String>();
 		expectedType02.add("Pure");
 		expectedType02.add("Pure");
 
 		assertArrayEquals(expectedType02.toArray(), typesTwo.toArray());
-		expectedType02.clear();
+
 	}
 
 	@Test
+	@Order(3)
 	public void testOneRenameForMissingCaller() throws Exception {
 
 		String pathDir01 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForMissingCaller/CodeOrigin";
@@ -72,20 +83,23 @@ public class TestPurityToolRenames {
 		String commit01 = "9efa63633fbff505b84d8fba97d7a4292e7e5561";
 		String commit02 = "91e95a85850a61e81623386eeca2f495f9aec062";
 
-		RMinerHandlerCommits rMinerHandlerCommits03 = new RMinerHandlerCommits(pathDir01,pathDir02,urlGit,commit01,commit02);
+		RMinerHandlerCommits rMinerHandlerCommits03 = new RMinerHandlerCommits(pathDir01, pathDir02, urlGit, commit01, commit02);
 
-		gumTreeDiffOutputRenameMethodHandler gumtTree03 = new gumTreeDiffOutputRenameMethodHandler(pathDir01,pathDir02);
+		gumTreeDiffOutputRenameMethodHandler gumtTree03 = new gumTreeDiffOutputRenameMethodHandler(pathDir01, pathDir02);
 
 		List<String> types03 = new ArrayList<String>();
 
-		types03.addAll(mainFluxograma02.checkRenameMethod(rMinerHandlerCommits03.getrMinerObjectsArrayList(), gumtTree03.getListaConvertida()));
+		mainFluxograma02 main03 = new mainFluxograma02();
+
+		types03.addAll(main03.checkRenameMethod(rMinerHandlerCommits03.getrMinerObjectsArrayList(), gumtTree03.getListaConvertida()));
 
 		List<String> expectedType03 = new ArrayList<String>();
 		expectedType03.add("Pure");
 		expectedType03.add("Floss");
 
 		assertArrayEquals(expectedType03.toArray(), types03.toArray());
-		expectedType03.clear();
-	}
 
+	}
 }
+
+
