@@ -1,0 +1,3 @@
+cls
+ECHO on
+java -classpath C:\Users\gabri\ProjetoMercadinho\bin;C:\Users\gabri\GitHub-Gabriel_lacerda\PesquisaPibicUFCG\ProjetoPibic\src\main\java\com\libs\Randoop\randoop-all-4.3.2.jar randoop.main.Main gentests --classlist=C:\Users\gabri\GitHub-Gabriel_lacerda\PesquisaPibicUFCG\C:\Users\gabri\GitHub-Gabriel_lacerda\PesquisaPibicUFCG\ProjetoPIBIC\src\main\java\com\JsonFiles\pathsInJSONFile.txt --omit-methods-file=C:\Users\gabri\GitHub-Gabriel_lacerda\PesquisaPibicUFCG\C:\Users\gabri\GitHub-Gabriel_lacerda\PesquisaPibicUFCG\ProjetoPIBIC\src\main\java\com\JsonFiles\comuns_methods.txt --output-limit=100 --no-error-revealing-tests=true --flaky-test-behavior=DISCARD --junit-output-dir=

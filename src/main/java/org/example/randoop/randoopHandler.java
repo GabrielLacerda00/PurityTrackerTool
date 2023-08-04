@@ -19,24 +19,35 @@ public class randoopHandler {
 
         createComanderRandoop("C:\\Users\\gabri\\ProjetoMercadinho\\bin",
                 "C:\\Users\\gabri\\GitHub-Gabriel_lacerda\\PesquisaPibicUFCG\\ProjetoPIBIC\\src\\main\\java\\com\\JsonFiles\\pathsInJSONFile.txt",
-                "C:\\Users\\gabri\\GitHub-Gabriel_lacerda\\PesquisaPibicUFCG\\ProjetoPIBIC\\src\\main\\java\\com\\JsonFiles\\comuns_methods.txt","");
+                "C:\\Users\\gabri\\GitHub-Gabriel_lacerda\\PesquisaPibicUFCG\\ProjetoPIBIC\\src\\main\\java\\com\\JsonFiles\\comuns_methods.txt",
+                "/Users/gabriellacerda/GitHubGabrielLacerda/PurityTrackerFluxograma01/PurityTrackerTool/src/main/java/org/example/randoop/Output");
         /*createComanderRandoop("C:\\Users\\gabri\\GitHub-Gabriel_lacerda\\ProjetoMercadinho\\bin","C:\\Users\\gabri\\GitHub-Gabriel_lacerda\\PesquisaPibicUFCG\\ProjetoPIBIC\\src\\main\\java\\com\\JsonFiles\\pathsInJSONFile.txt"
         ,"C:\\Users\\gabri\\GitHub-Gabriel_lacerda\\PesquisaPibicUFCG\\ProjetoPIBIC\\src\\main\\java\\com\\JsonFiles\\comuns_methods.txt");*/
-        executeComand("C:\\Users\\gabri\\GitHub-Gabriel_lacerda\\PesquisaPibicUFCG\\scriptRandoop.bat");
+        executeComand("/Users/gabriellacerda/GitHubGabrielLacerda/PurityTrackerFluxograma01/PurityTrackerTool/src/main/java/org/example/libs/Randoop/randoop-all-4.3.2.jar");
     }
-    public static void createComanderRandoop(String pathProjectBIN,String pathClassTXT,String pathMethodsTXT,String pathResult) throws IOException {
+
+    public randoopHandler() {
+    }
+
+    public static void createComanderRandoop(String pathProjectBIN, String pathClassTXT, String pathMethodsTXT, String pathResult) throws IOException {
         String userDir = System.getProperty("user.dir");
-        String pathRandoopJar = "ProjetoPibic\\src\\main\\java\\com\\libs\\Randoop\\randoop-all-4.3.2.jar";
-        //"ProjetoPIBIC\\src\\main\\java\\com\\Randoop\\results"
-        String pathRandoopResult =  userDir+"\\"+pathResult;
-        String pathClasssTxt = userDir+"\\"+pathClassTXT;
-        String pathMethodss = userDir+"\\"+pathMethodsTXT;
+        String os = System.getProperty("os.name").toLowerCase();
+        String pathRandoopJar = "";
+
+
+        if (os.contains("win")) { // Verifica se é Windows
+            pathRandoopJar = userDir +"\\PurityTrackerTool\\src\\main\\java\\org\\example\\libs\\Randoop\\randoop-all-4.3.2.jar";
+        } else if (os.contains("mac")) { // Verifica se é macOS
+            pathRandoopJar = userDir + "/PurityTrackerTool/src/main/java/org/example/libs/Randoop/randoop-all-4.3.2.jar";
+        } else { // Assume que é Linux ou outro sistema UNIX-like
+            pathRandoopJar = userDir +"/PurityTrackerTool/src/main/java/org/example/libs/Randoop/randoop-all-4.3.2.jar";
+        }
 
 
         String inicialComand = "java -classpath ";
 
-        String comand = inicialComand +pathProjectBIN+ ";" + getPathsGenerics(pathRandoopJar) + " randoop.main.Main gentests --classlist="+ pathClasssTxt+
-                " --omit-methods-file="+pathMethodss+ " --output-limit=100" + " --no-error-revealing-tests=true" +
+        String comand = inicialComand +pathProjectBIN+ ";" + pathRandoopJar + " randoop.main.Main gentests --classlist="+ pathClassTXT+
+                " --omit-methods-file="+pathMethodsTXT+ " --output-limit=100" + " --no-error-revealing-tests=true" +
                 " --flaky-test-behavior=DISCARD" + " --junit-output-dir=" + pathResult ;
 
         createFileBATRandoop(comand);

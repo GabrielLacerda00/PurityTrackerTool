@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a0c258d2-3607-4dd8-9031-96f739d9116c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/randoop/randoopHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mainFluxograma01.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/randoop/randoopHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/randoop/randoopHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,25 +31,102 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Fluxograma01",
-    "last_opened_file_path": "C:/Users/gabri/GitHub-Gabriel_lacerda/PurityTrackerTool/PurityTrackerTool/src/main/java/org/example/libs/Randoop",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Fluxograma01&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/gabriellacerda/GitHubGabrielLacerda/PurityTrackerFluxograma01/PurityTrackerTool/src/main/java/org/example/randoop/scriptRandoop&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/org/example/randoop/scriptRandoop" />
       <recent name="C:\Users\gabri\GitHub-Gabriel_lacerda\PurityTrackerTool\PurityTrackerTool\src\main\java\org\example\libs\Randoop" />
     </key>
+  </component>
+  <component name="RunManager" selected="Application.mainFluxo01">
+    <configuration name="FiltroDeArquivos" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.randoop.utilsRandoop.FiltroDeArquivos" />
+      <module name="PurityTrackerTool" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.randoop.utilsRandoop.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PathUtilScriptRandoopBat" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.randoop.utilsRandoop.PathUtilScriptRandoopBat" />
+      <module name="PurityTrackerTool" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.randoop.utilsRandoop.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PathUtilVersion02" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.randoop.utilsRandoop.PathUtilVersion02" />
+      <module name="PurityTrackerTool" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.randoop.utilsRandoop.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="mainFluxo01" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.mainFluxo01" />
+      <module name="PurityTrackerTool" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="methodsFinderVersion02" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.randoop.utilsRandoop.methodsFinderVersion02" />
+      <module name="PurityTrackerTool" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.randoop.utilsRandoop.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.mainFluxo01" />
+        <item itemvalue="Application.PathUtilScriptRandoopBat" />
+        <item itemvalue="Application.FiltroDeArquivos" />
+        <item itemvalue="Application.PathUtilVersion02" />
+        <item itemvalue="Application.methodsFinderVersion02" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -57,6 +137,17 @@
       <option name="presentableId" value="Default" />
       <updated>1686592125982</updated>
       <workItem from="1686592127096" duration="2533000" />
+      <workItem from="1689856271594" duration="7358000" />
+      <workItem from="1690238506779" duration="7747000" />
+      <workItem from="1690250541160" duration="5359000" />
+      <workItem from="1690256965309" duration="6597000" />
+      <workItem from="1690372498898" duration="5455000" />
+      <workItem from="1690420397862" duration="567000" />
+      <workItem from="1690421076389" duration="20243000" />
+      <workItem from="1690643330973" duration="596000" />
+      <workItem from="1690646073466" duration="80000" />
+      <workItem from="1690940168748" duration="1334000" />
+      <workItem from="1690996794300" duration="36308000" />
     </task>
     <servers />
   </component>
