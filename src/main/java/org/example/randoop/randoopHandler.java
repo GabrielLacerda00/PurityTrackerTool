@@ -17,13 +17,8 @@ public class randoopHandler {
         String jarName02 = "ProjetoPibic\\libs\\RefactoringMiner\\bin\\RefactoringMiner";
         */
 
-        createComanderRandoop("C:\\Users\\gabri\\ProjetoMercadinho\\bin",
-                "C:\\Users\\gabri\\GitHub-Gabriel_lacerda\\PesquisaPibicUFCG\\ProjetoPIBIC\\src\\main\\java\\com\\JsonFiles\\pathsInJSONFile.txt",
-                "C:\\Users\\gabri\\GitHub-Gabriel_lacerda\\PesquisaPibicUFCG\\ProjetoPIBIC\\src\\main\\java\\com\\JsonFiles\\comuns_methods.txt",
-                "/Users/gabriellacerda/GitHubGabrielLacerda/PurityTrackerFluxograma01/PurityTrackerTool/src/main/java/org/example/randoop/Output");
-        /*createComanderRandoop("C:\\Users\\gabri\\GitHub-Gabriel_lacerda\\ProjetoMercadinho\\bin","C:\\Users\\gabri\\GitHub-Gabriel_lacerda\\PesquisaPibicUFCG\\ProjetoPIBIC\\src\\main\\java\\com\\JsonFiles\\pathsInJSONFile.txt"
-        ,"C:\\Users\\gabri\\GitHub-Gabriel_lacerda\\PesquisaPibicUFCG\\ProjetoPIBIC\\src\\main\\java\\com\\JsonFiles\\comuns_methods.txt");*/
-        executeComand("/Users/gabriellacerda/GitHubGabrielLacerda/PurityTrackerFluxograma01/PurityTrackerTool/src/main/java/org/example/libs/Randoop/randoop-all-4.3.2.jar");
+
+        executeComand("/Users/gabriellacerda/GitHubGabrielLacerda/script.sh");
     }
 
     public randoopHandler() {
@@ -42,7 +37,6 @@ public class randoopHandler {
         } else { // Assume que é Linux ou outro sistema UNIX-like
             pathRandoopJar = userDir +"/PurityTrackerTool/src/main/java/org/example/libs/Randoop/randoop-all-4.3.2.jar";
         }
-
 
         String inicialComand = "java -classpath ";
 
@@ -70,7 +64,6 @@ public class randoopHandler {
         }
     }
 
-
     private static String getPathsGenerics(String classDir) throws IOException {
         List<String> pathGeneric = new ArrayList<>();
         String userDir = System.getProperty("user.dir");
@@ -91,7 +84,7 @@ public class randoopHandler {
         if (osName.startsWith("Windows")) {
             command = "cmd /c start " + batFilePath;
         } else if (osName.startsWith("Linux") || osName.startsWith("Mac")) {
-            command = "sh " + batFilePath;
+            command = "bash " + batFilePath;
         } else {
             System.out.println("Sistema operacional não suportado.");
             return;

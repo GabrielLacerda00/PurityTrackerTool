@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a0c258d2-3607-4dd8-9031-96f739d9116c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mainFluxograma01.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scriptRandoop.bat" beforeDir="false" afterPath="$PROJECT_DIR$/scriptRandoop.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mainFluxo01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mainFluxo01.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/randoop/randoopHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/randoop/randoopHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,7 +52,7 @@
       <recent name="C:\Users\gabri\GitHub-Gabriel_lacerda\PurityTrackerTool\PurityTrackerTool\src\main\java\org\example\libs\Randoop" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.mainFluxo01">
+  <component name="RunManager" selected="Application.ShellScriptExecutor">
     <configuration name="FiltroDeArquivos" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.randoop.utilsRandoop.FiltroDeArquivos" />
       <module name="PurityTrackerTool" />
@@ -79,12 +79,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PathUtilVersion02" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.randoop.utilsRandoop.PathUtilVersion02" />
+    <configuration name="ShellScriptExecutor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.randoop.ShellScriptExecutor" />
       <module name="PurityTrackerTool" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.randoop.utilsRandoop.*" />
+          <option name="PATTERN" value="org.example.randoop.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -105,12 +105,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="methodsFinderVersion02" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.randoop.utilsRandoop.methodsFinderVersion02" />
+    <configuration name="randoopHandler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.randoop.randoopHandler" />
       <module name="PurityTrackerTool" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.randoop.utilsRandoop.*" />
+          <option name="PATTERN" value="org.example.randoop.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -120,11 +120,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ShellScriptExecutor" />
+        <item itemvalue="Application.randoopHandler" />
         <item itemvalue="Application.mainFluxo01" />
         <item itemvalue="Application.PathUtilScriptRandoopBat" />
         <item itemvalue="Application.FiltroDeArquivos" />
-        <item itemvalue="Application.PathUtilVersion02" />
-        <item itemvalue="Application.methodsFinderVersion02" />
       </list>
     </recent_temporary>
   </component>
@@ -147,7 +147,7 @@
       <workItem from="1690643330973" duration="596000" />
       <workItem from="1690646073466" duration="80000" />
       <workItem from="1690940168748" duration="1334000" />
-      <workItem from="1690996794300" duration="36308000" />
+      <workItem from="1690996794300" duration="44562000" />
     </task>
     <servers />
   </component>

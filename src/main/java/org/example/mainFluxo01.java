@@ -85,7 +85,7 @@ public class mainFluxo01 {
         FiltroDeArquivos.filtroNotComunMethods(pathUtilVersion01.getPath(),
                 pathUtilVersion02.getPath());
 
-
+        //Ignora os metodos que não comuns
         PathUtilOmitedMethods pathUtilOmitedMethods = new PathUtilOmitedMethods();
         pathUtilOmitedMethods.getPathFromRoot("omited_methods.txt");
         PathUtilClasses pathUtilClasses = new PathUtilClasses();
