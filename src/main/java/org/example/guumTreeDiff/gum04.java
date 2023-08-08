@@ -25,8 +25,8 @@ public class gum04 {
     private ArrayList<TempObject> updateInvocation = new ArrayList();
 
     public static void main(String[] args) throws Exception {
-        String pathDir01 = "/Users/gabriellacrd/Documents/SuitTestsRenameMethod/OneRenameForOneMissingCallersInClasseRefact/CodeOrigin";
-        String pathDir02 = "/Users/gabriellacrd/Documents/SuitTestsRenameMethod/OneRenameForOneMissingCallersInClasseRefact/CodeDestiny";
+        String pathDir01 = "/Users/gabriellacrd/Documents/SuitTestsRenameMethod/OneRenameForThreObjCallersInOtherClasses/CodeOrigin";
+        String pathDir02 = "/Users/gabriellacrd/Documents/SuitTestsRenameMethod/OneRenameForThreObjCallersInOtherClasses/CodeDestiny";
         gum04 gum04 = new gum04(pathDir01, pathDir02);
         gum04.getListaConvertida().forEach(System.out::println);
     }
