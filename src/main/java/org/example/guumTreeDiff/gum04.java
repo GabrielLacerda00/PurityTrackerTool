@@ -28,7 +28,7 @@ public class gum04 {
         String pathDir01 = "/Users/gabriellacrd/Documents/SuitTestsRenameMethod/OneRenameForOneMissingCallersInClasseRefact/CodeOrigin";
         String pathDir02 = "/Users/gabriellacrd/Documents/SuitTestsRenameMethod/OneRenameForOneMissingCallersInClasseRefact/CodeDestiny";
         gum04 gum04 = new gum04(pathDir01, pathDir02);
-        gum04.listaConvertida.forEach(System.out::println);
+        gum04.getListaConvertida().forEach(System.out::println);
     }
 
     public gum04(String path01, String path02) throws Exception {
@@ -69,10 +69,10 @@ public class gum04 {
     private static void creatingMap(ArrayList<TempObject> listResult, RenameMethodsObj renameMethodsObj) {
         for(int j = 0; j < listResult.size(); j += 2) {
             if (!renameMethodsObj.getRenameMethodObjects().containsKey(listResult.get(j))) {
-                renameMethodsObj.getRenameMethodObjects().put((TempObject)listResult.get(j), new renameMethodObject((TempObject)listResult.get(j)));
-                ((renameMethodObject)renameMethodsObj.getRenameMethodObjects().get(listResult.get(j))).setUpdateInvocationList((TempObject)listResult.get(j + 1));
+                renameMethodsObj.getRenameMethodObjects().put(listResult.get(j), new renameMethodObject(listResult.get(j)));
+                (renameMethodsObj.getRenameMethodObjects().get(listResult.get(j))).setUpdateInvocationList(listResult.get(j + 1));
             } else {
-                ((renameMethodObject)renameMethodsObj.getRenameMethodObjects().get(listResult.get(j))).setUpdateInvocationList((TempObject)listResult.get(j + 1));
+                (renameMethodsObj.getRenameMethodObjects().get(listResult.get(j))).setUpdateInvocationList(listResult.get(j + 1));
             }
         }
 
@@ -82,11 +82,7 @@ public class gum04 {
         listaConvertida.addAll(renames.values());
     }
 
-    public ArrayList<renameMethodObject> getListaConvertida() {
-        ArrayList var10000 = listaConvertida;
-        PrintStream var10001 = System.out;
-        Objects.requireNonNull(var10001);
-        var10000.forEach(var10001::println);
+    public  ArrayList<renameMethodObject> getListaConvertida() {
         return listaConvertida;
     }
 
@@ -94,49 +90,45 @@ public class gum04 {
         ArrayList<TempObject> listResult = new ArrayList();
 
         for(int i = 0; i < invocationsArray.size(); ++i) {
-            listResult.add((TempObject)updateMethodArrays.get(0));
-            listResult.add((TempObject)invocationsArray.get(i));
+            listResult.add(updateMethodArrays.get(0));
+            listResult.add(invocationsArray.get(i));
         }
 
         return listResult;
     }
 
     private static String getTypeRename(Diff result, int var) {
-        String[] types = ((Operation)result.getRootOperations().get(var)).getAction().getName().split("-");
+        String[] types = (result.getRootOperations().get(var)).getAction().getName().split("-");
         String type = types[0];
-        return type + " " + ((Operation)result.getRootOperations().get(var)).getAction().getNode().getType().toString();
+        return type + " " + (result.getRootOperations().get(var)).getAction().getNode().getType().toString();
     }
 
     private static TempObject extractDetailsInvocationMethod(Diff result, int var) {
-        String typeeRename = getTypeRename(result, var);
-        String lineO = getLineOrigin(result, var);
-        String var10000 = extractClassName(result, var);
-        String nameMethodO = var10000 + "." + getInvocationSrc(result, var);
-        String lineD = getLineDestino(result, var);
-        var10000 = extractClassName(result, var);
-        String nameMethodD = var10000 + "." + getInvocationDst(result, var);
+        String typeeRename = getTypeRename(result,var);
+        String lineO = getLineOrigin(result,var);
+        String nameMethodO = extractClassName(result,var)+"."+getInvocationSrc(result,var);
+        String lineD = getLineDestino(result,var);
+        String nameMethodD = extractClassName(result,var)+"."+getInvocationDst(result,var);
         TempObject updateInvocationObject = new TempObject(typeeRename, lineO, nameMethodO, lineD, nameMethodD);
         return updateInvocationObject;
     }
 
     private static TempObject extractDetailsUpdateMethod(Diff result, int var) {
-        String typeRename = getTypeRename(result, var);
-        String lineOrigin = getLineOrigin(result, var);
-        String var10000 = extractClassName(result, var);
-        String nameMethodOrigin = var10000 + "." + getInvocationSrc(result, var);
-        String lineDest = getLineDestino(result, var);
-        var10000 = extractClassName(result, var);
-        String nameMethodDst = var10000 + "." + getInvocationDst(result, var);
+        String typeRename = getTypeRename(result,var);
+        String lineOrigin = getLineOrigin(result,var);
+        String nameMethodOrigin = extractClassName(result,var)+"."+getInvocationSrc(result,var);
+        String lineDest = getLineDestino(result,var);
+        String nameMethodDst = extractClassName(result,var)+"."+getInvocationDst(result,var);
         TempObject updateMethodObject = new TempObject(typeRename, lineOrigin, nameMethodOrigin, lineDest, nameMethodDst);
         return updateMethodObject;
     }
 
     private static String getLineOrigin(Diff result, int var) {
         String number = "";
-        if (((Operation)result.getRootOperations().get(var)).getDstNode() == null) {
+        if ((result.getRootOperations().get(var)).getDstNode() == null) {
             number = "null";
         } else {
-            number = Integer.toString(((Operation)result.getRootOperations().get(var)).getSrcNode().getPosition().getLine());
+            number = Integer.toString((result.getRootOperations().get(var)).getSrcNode().getPosition().getLine());
         }
 
         return number;
@@ -144,10 +136,10 @@ public class gum04 {
 
     private static String getLineDestino(Diff result, int var) {
         String number = "";
-        if (((Operation)result.getRootOperations().get(var)).getDstNode() == null) {
+        if ((result.getRootOperations().get(var)).getDstNode() == null) {
             number = "null";
         } else {
-            number = Integer.toString(((Operation)result.getRootOperations().get(var)).getDstNode().getPosition().getLine());
+            number = Integer.toString((result.getRootOperations().get(var)).getDstNode().getPosition().getLine());
         }
 
         return number;
@@ -155,10 +147,10 @@ public class gum04 {
 
     private static String getInvocationSrc(Diff result, int var) {
         String name = "";
-        if (((Operation)result.getRootOperations().get(var)).getSrcNode() == null) {
+        if ((result.getRootOperations().get(var)).getSrcNode() == null) {
             name = "null";
         } else {
-            name = extractMethodName(((Operation)result.getRootOperations().get(var)).getSrcNode().toString());
+            name = extractMethodName((result.getRootOperations().get(var)).getSrcNode().toString());
         }
 
         return name;
@@ -166,10 +158,10 @@ public class gum04 {
 
     private static String getInvocationDst(Diff result, int var) {
         String name = "";
-        if (((Operation)result.getRootOperations().get(var)).getDstNode() == null) {
+        if ((result.getRootOperations().get(var)).getDstNode() == null) {
             name = "null";
         } else {
-            name = extractMethodName(((Operation)result.getRootOperations().get(var)).getDstNode().toString());
+            name = extractMethodName((result.getRootOperations().get(var)).getDstNode().toString());
         }
 
         return name;
@@ -188,7 +180,7 @@ public class gum04 {
     }
 
     public static String extractClassName(Diff result, int var) {
-        return extractClassDetailss(((Operation)result.getRootOperations().get(var)).toString());
+        return extractClassDetailss((result.getRootOperations().get(var)).toString());
     }
 
     private static String extractClassDetailss(String input) {

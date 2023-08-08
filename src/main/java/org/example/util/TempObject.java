@@ -43,7 +43,7 @@ public class TempObject {
     @Override
     public String toString() {
         return
-                "type='" + type + '\''+
+                "{type='" + type + '\''+
                 ",lineOrigin='" + lineOrigin + '\'' +
                 ", nameMethodOrigin='" + nameMethodOrigin + '\'' +
                 ", lineDest='" + lineDest + '\'' +
