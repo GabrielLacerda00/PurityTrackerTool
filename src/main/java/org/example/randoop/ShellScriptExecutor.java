@@ -5,9 +5,13 @@ import java.io.IOException;
 
 public class ShellScriptExecutor {
     public static void main(String[] args) {
+        handlerExecution("");
+    }
+
+    public  static void handlerExecution(String path){
         try {
             // Caminho para o arquivo shell
-            String shellScriptPath = "/Users/gabriellacerda/GitHubGabrielLacerda/script.sh";
+            String shellScriptPath = path;
 
             // Criando o processo para executar o shell
             ProcessBuilder processBuilder = new ProcessBuilder("bash", shellScriptPath);

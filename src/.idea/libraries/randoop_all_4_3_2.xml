@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="randoop-all-4.3.2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/main/java/org/example/libs/Randoop/randoop-all-4.3.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

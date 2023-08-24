@@ -6,9 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="a0c258d2-3607-4dd8-9031-96f739d9116c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script.sh" beforeDir="false" afterPath="$PROJECT_DIR$/script.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scriptRandoop.bat" beforeDir="false" afterPath="$PROJECT_DIR$/scriptRandoop.bat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mainFluxo01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mainFluxo01.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mainFluxograma01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mainFluxograma01.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/randoop/ShellScriptExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/randoop/ShellScriptExecutor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/randoop/randoopHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/randoop/randoopHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/randoop/utilsRandoop/FiltroDeArquivos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/randoop/utilsRandoop/FiltroDeArquivos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/randoop/utilsRandoop/PathUtilVersion01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/randoop/utilsRandoop/PathUtilVersion01.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/randoop/utilsRandoop/methodsFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/randoop/utilsRandoop/methodsFinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/txtFiles/comuns_classes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/txtFiles/comuns_classes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/txtFiles/methodsVersion01.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/txtFiles/methodsVersion01.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/txtFiles/methodsVersion02.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/txtFiles/methodsVersion02.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/txtFiles/omited_methods.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/txtFiles/omited_methods.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,30 +42,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Fluxograma01&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/gabriellacerda/GitHubGabrielLacerda/PurityTrackerFluxograma01/PurityTrackerTool/src/main/java/org/example/randoop/scriptRandoop&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "Fluxograma01",
+    "last_opened_file_path": "/Users/gabriellacerda/GitHubGabrielLacerda/PIBICTOOL/PurityTrackerTool/src/test/java/repository",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/java/repository" />
       <recent name="$PROJECT_DIR$/src/main/java/org/example/randoop/scriptRandoop" />
       <recent name="C:\Users\gabri\GitHub-Gabriel_lacerda\PurityTrackerTool\PurityTrackerTool\src\main\java\org\example\libs\Randoop" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.ShellScriptExecutor">
-    <configuration name="FiltroDeArquivos" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.randoop.utilsRandoop.FiltroDeArquivos" />
+  <component name="RunManager" selected="Application.RunJUnit5TestsFromJava">
+    <configuration name="ClassPathFinder" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.randoop.utilsRandoop.ClassPathFinder" />
       <module name="PurityTrackerTool" />
       <extension name="coverage">
         <pattern>
@@ -66,12 +87,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PathUtilScriptRandoopBat" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.randoop.utilsRandoop.PathUtilScriptRandoopBat" />
+    <configuration name="RunJUnit5TestsFromJava" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="RunJUnit5TestsFromJava" />
+      <module name="PurityTrackerTool" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ScriptGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.randoop.ScriptGenerator" />
       <module name="PurityTrackerTool" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.randoop.utilsRandoop.*" />
+          <option name="PATTERN" value="org.example.randoop.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -105,26 +133,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="randoopHandler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.randoop.randoopHandler" />
-      <module name="PurityTrackerTool" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.randoop.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ShellScriptExecutor" />
-        <item itemvalue="Application.randoopHandler" />
+        <item itemvalue="Application.RunJUnit5TestsFromJava" />
         <item itemvalue="Application.mainFluxo01" />
-        <item itemvalue="Application.PathUtilScriptRandoopBat" />
-        <item itemvalue="Application.FiltroDeArquivos" />
+        <item itemvalue="Application.ClassPathFinder" />
+        <item itemvalue="Application.ShellScriptExecutor" />
+        <item itemvalue="Application.ScriptGenerator" />
       </list>
     </recent_temporary>
   </component>
@@ -148,6 +163,12 @@
       <workItem from="1690646073466" duration="80000" />
       <workItem from="1690940168748" duration="1334000" />
       <workItem from="1690996794300" duration="44562000" />
+      <workItem from="1691886064154" duration="2079000" />
+      <workItem from="1692042820545" duration="2280000" />
+      <workItem from="1692060017466" duration="15540000" />
+      <workItem from="1692580939644" duration="591000" />
+      <workItem from="1692669389827" duration="21997000" />
+      <workItem from="1692746172946" duration="21666000" />
     </task>
     <servers />
   </component>

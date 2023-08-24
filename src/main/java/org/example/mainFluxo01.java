@@ -40,13 +40,18 @@ public class mainFluxo01 {
     public static void main(String[] args) throws Exception {
 
         //Projeto versão01
+        ///Users/gabriellacerda/GitHubGabrielLacerda/Calculator
+        ///Users/gabriellacerda/GitHubGabrielLacerda/ProjetoMercadinhoTest
         //Users/gabriellacerda/GitHubGabrielLacerda/ProjetoMercadinho/src
+        ///Users/gabriellacerda/GitHubGabrielLacerda/ProjetoMercadinhoVersionOrigin/src
         //Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForTwoCallersInClassRefact/src/CodeOrigin
         Scanner pathProject01 = new Scanner(System.in);
         System.out.print("Informe o caminho do src do projeto clonado:");
         String pathhProject01 = pathProject01.nextLine();
 
         //Projeto versão02
+        ///Users/gabriellacerda/GitHubGabrielLacerda/CalculV2
+        ///Users/gabriellacerda/GitHubGabrielLacerda/ProjetoMercadinhoTestV2
         ///Users/gabriellacerda/GitHubGabrielLacerda/ProjetoMercadinhoVersão02/src
         ///Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForTwoCallersInClassRefact/src/CodeDestiny
         Scanner pathProject02 = new Scanner(System.in);
@@ -62,46 +67,30 @@ public class mainFluxo01 {
 
         finderPathsBinSrc.finderPathsSrcBin(pathhProject02);
         main.pathSRCVersao02 = finderPathsBinSrc.getPathSRC();
-
-
         main.pathBINVersao02 = finderPathsBinSrc.getPathBIN();
 
+        String pathMethodVersion01 = FileSearcher.findFilePath("methodsVersion01.txt");
+        String pathMethodVersion02 = FileSearcher.findFilePath("methodsVersion02.txt");
+        String pathOmitedmethods = FileSearcher.findFilePath("omited_methods.txt");
+        String pathComunClasses = FileSearcher.findFilePath("comuns_classes.txt");
+        String pathScriptRandoopBat = FileSearcher.findFilePath("scriptRandoop.bat");
 
-        //1.0 - Pegar os caminhos dos métodos da versão 01
-        PathUtilVersion01 pathUtilVersion01 = new PathUtilVersion01();
-        pathUtilVersion01.getPathFromRoot("methodsVersion01.txt");
-        methodsFinder.finderMethodsPath(main.getPathSRCVersao01());
+        //1.0Pega as classes
+        ClassPathFinder.finderClassesPath(main.getPathBINVersao01(),pathComunClasses);
 
-        //2.0 - Pegar os caminhos dos métodos da versão 02
-        PathUtilVersion02 pathUtilVersion02 = new PathUtilVersion02();
-        pathUtilVersion02.getPathFromRoot("methodsVersion02.txt");
+        //2.0 - Pegar os caminhos dos métodos da versão 01
+        methodsFinder.finderMethodsPath(main.getPathSRCVersao01(),pathMethodVersion01);
 
-        methodsFinderVersion02.finderMethodsPath(main.getPathSRCVersao02());
+        //3.0 - Pegar os caminhos dos métodos da versão 02
+        methodsFinder.finderMethodsPath(main.getPathSRCVersao02(),pathMethodVersion02);
 
-        //3.0 - Filtra os métodos comuns
-        /*filterPaths.notComunsMethodfilter("ProjetoPIBIC\\src\\main\\java\\com\\JsonFiles\\pathsFiltradosV1.txt",
-                "ProjetoPIBIC\\src\\main\\java\\com\\JsonFiles\\pathsFiltradosV2.txt");*/
-
-        FiltroDeArquivos.filtroNotComunMethods(pathUtilVersion01.getPath(),
-                pathUtilVersion02.getPath());
+        //4.0 - Filtra os métodos comuns
+        FiltroDeArquivos.filtroNotComunMethods(pathMethodVersion01,
+                pathMethodVersion02);
 
         //Ignora os metodos que não comuns
-        PathUtilOmitedMethods pathUtilOmitedMethods = new PathUtilOmitedMethods();
-        pathUtilOmitedMethods.getPathFromRoot("omited_methods.txt");
-        PathUtilClasses pathUtilClasses = new PathUtilClasses();
-        pathUtilClasses.getPathFromRoot("comuns_classes.txt");
-
-        randoopHandler.createComanderRandoop(main.getPathBINVersao01(),pathUtilOmitedMethods.getPath(),
-                pathUtilClasses.getPath(),main.getPathSRCVersao02());
-
-        /*randoopScript.createComanderRandoop(pathBINVersao02,"ProjetoPIBIC\\src\\main\\java\\com\\JsonFiles\\comuns_classes.txt",
-                "ProjetoPIBIC\\src\\main\\java\\com\\JsonFiles\\omited_methods.txt",pathSRCVersao02);*/
-
-        PathUtilScriptRandoopBat pathUtilScriptRandoopBat = new PathUtilScriptRandoopBat();
-        pathUtilScriptRandoopBat.getPathFromRoot("scriptRandoop.bat");
-
-        randoopHandler.executeComand(pathUtilScriptRandoopBat.getPath());
-        randoopHandler.clearBat(pathUtilScriptRandoopBat.getPath());
+        randoopHandler.createComanderRandoop(main.getPathBINVersao01(),
+                pathComunClasses,pathOmitedmethods,main.getPathSRCVersao02());
 
     }
 

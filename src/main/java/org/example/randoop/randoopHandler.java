@@ -1,6 +1,8 @@
 package org.example.randoop;
 
 
+import org.example.randoop.utilsRandoop.FileSearcher;
+
 import java.io.*;
 import java.nio.file.AccessDeniedException;
 import java.nio.file.Files;
@@ -13,12 +15,6 @@ import java.util.stream.Stream;
 public class randoopHandler {
     public static void main(String[] args) throws IOException {
 
-        /*String pathRandoopJar = "ProjetoPibic\\src\\main\\java\\com\\libs\\Randoop\\randoop-all-4.3.2.jar";
-        String jarName02 = "ProjetoPibic\\libs\\RefactoringMiner\\bin\\RefactoringMiner";
-        */
-
-
-        executeComand("/Users/gabriellacerda/GitHubGabrielLacerda/script.sh");
     }
 
     public randoopHandler() {
@@ -27,24 +23,35 @@ public class randoopHandler {
     public static void createComanderRandoop(String pathProjectBIN, String pathClassTXT, String pathMethodsTXT, String pathResult) throws IOException {
         String userDir = System.getProperty("user.dir");
         String os = System.getProperty("os.name").toLowerCase();
-        String pathRandoopJar = "";
-
+        String pathRandoopJar = FileSearcher.findFilePath("randoop-all-4.3.2.jar");
+        String comand ;
+        int outputLimit = 100;
 
         if (os.contains("win")) { // Verifica se é Windows
             pathRandoopJar = userDir +"\\PurityTrackerTool\\src\\main\\java\\org\\example\\libs\\Randoop\\randoop-all-4.3.2.jar";
+            String inicialComand = "java -classpath ";
+            comand = inicialComand +pathProjectBIN+ ";" + pathRandoopJar + " randoop.main.Main gentests --classlist="+ pathClassTXT+
+                    " --omit-methods-file="+pathMethodsTXT+ " --output-limit=100" + " --no-error-revealing-tests=true" +
+                    " --flaky-test-behavior=DISCARD" + " --junit-output-dir=" + pathResult ;
+
+            createFileBATRandoop(comand);
+            executeComand(FileSearcher.findFilePath("scriptRandoop.bat"));
+            clearBat(FileSearcher.findFilePath("scriptRandoop.bat"));
+
         } else if (os.contains("mac")) { // Verifica se é macOS
-            pathRandoopJar = userDir + "/PurityTrackerTool/src/main/java/org/example/libs/Randoop/randoop-all-4.3.2.jar";
+
+            ScriptGenerator.generateScript(pathRandoopJar,pathClassTXT,pathMethodsTXT,
+            outputLimit,pathResult,pathProjectBIN);
+
+            ShellScriptExecutor.handlerExecution(FileSearcher.findFilePath("generate_tests.sh"));
         } else { // Assume que é Linux ou outro sistema UNIX-like
-            pathRandoopJar = userDir +"/PurityTrackerTool/src/main/java/org/example/libs/Randoop/randoop-all-4.3.2.jar";
+
+            ScriptGenerator.generateScript(pathRandoopJar,pathClassTXT,pathMethodsTXT,
+                    outputLimit,pathResult,pathProjectBIN);
+
+            ShellScriptExecutor.handlerExecution(FileSearcher.findFilePath("generate_tests.sh"));
         }
 
-        String inicialComand = "java -classpath ";
-
-        String comand = inicialComand +pathProjectBIN+ ";" + pathRandoopJar + " randoop.main.Main gentests --classlist="+ pathClassTXT+
-                " --omit-methods-file="+pathMethodsTXT+ " --output-limit=100" + " --no-error-revealing-tests=true" +
-                " --flaky-test-behavior=DISCARD" + " --junit-output-dir=" + pathResult ;
-
-        createFileBATRandoop(comand);
     }
 
     private static void createFileBATRandoop(String comand) {
@@ -62,6 +69,10 @@ public class randoopHandler {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
+    }
+
+    private static void createFileSHRandoop(){
+
     }
 
     private static String getPathsGenerics(String classDir) throws IOException {

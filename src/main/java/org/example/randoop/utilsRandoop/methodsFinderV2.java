@@ -1,5 +1,6 @@
 package org.example.randoop.utilsRandoop;
 
+
 import com.github.javaparser.StaticJavaParser;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.body.MethodDeclaration;
@@ -11,15 +12,28 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class methodsFinder {
+
+import com.github.javaparser.StaticJavaParser;
+import com.github.javaparser.ast.CompilationUnit;
+import com.github.javaparser.ast.body.MethodDeclaration;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+
+public class methodsFinderV2 {
+
+    private static String outputFile = "methodsVersion02.txt";
 
     public static void main(String[] args) throws IOException {
         String classDir = "/Users/gabriellacerda/GitHubGabrielLacerda/ProjetoMercadinho/src";
-        String outputFile = FileSearcher.findFilePath("methodsVersion01.txt");
-        finderMethodsPath(classDir,outputFile);
+        finderMethodsPath(classDir);
     }
 
-    public static void finderMethodsPath(String classDir,String outputFile) throws IOException {
+    public static void finderMethodsPath(String classDir) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
             Files.walk(Paths.get(classDir))
                     .filter(Files::isRegularFile)

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="959cba1b-18dc-40a8-a08e-922a4ef6174a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../script.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../script.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../scriptRandoop.bat" beforeDir="false" afterPath="$PROJECT_DIR$/../scriptRandoop.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/org/example/mainFluxo01.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/org/example/mainFluxo01.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/org/example/mainFluxograma01.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/org/example/mainFluxograma01.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/org/example/randoop/randoopHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/org/example/randoop/randoopHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/org/example/randoop/utilsRandoop/FiltroDeArquivos.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/org/example/randoop/utilsRandoop/FiltroDeArquivos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/org/example/randoop/utilsRandoop/PathUtilVersion01.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/org/example/randoop/utilsRandoop/PathUtilVersion01.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/org/example/randoop/utilsRandoop/methodsFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/org/example/randoop/utilsRandoop/methodsFinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/org/example/txtFiles/comuns_classes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/org/example/txtFiles/comuns_classes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/org/example/txtFiles/methodsVersion01.txt" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/org/example/txtFiles/methodsVersion01.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/org/example/txtFiles/omited_methods.txt" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/org/example/txtFiles/omited_methods.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2UMObiYFFo5BX7xBnS0wynBUEU3" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "Fluxograma01",
+    "last_opened_file_path": "/Users/gabriellacerda/GitHubGabrielLacerda/PIBICTOOL/PurityTrackerTool/src",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="959cba1b-18dc-40a8-a08e-922a4ef6174a" name="Changes" comment="" />
+      <created>1692746058169</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1692746058169</updated>
+      <workItem from="1692746070551" duration="37000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

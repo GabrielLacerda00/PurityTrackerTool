@@ -6,8 +6,8 @@ import java.util.Set;
 
 public class FiltroDeArquivos {
     public static void main(String[] args) {
-        String path01 = "src/main/java/org/example/txtFiles/methodsVersion01.txt";
-        String path02 = "src/main/java/org/example/txtFiles/methodsVersion02.txt";
+        String path01 = FileSearcher.findFilePath("methodsVersion01.txt");
+        String path02 = FileSearcher.findFilePath("methodsVersion02.txt");
         filtroNotComunMethods(path01,path02);
     }
 
@@ -31,12 +31,8 @@ public class FiltroDeArquivos {
              arquivoSaida = new File(diretorio +"\\"+"src\\main\\java\\org\\example\\txtFiles\\omited_methods.txt");
         } else if (os.contains("mac")) { // Verifica se é macOS
             arquivoEntrada1 = new File(path02);
-            System.out.println(arquivoEntrada1);
             arquivoEntrada2 = new File(path01);
-            System.out.println(arquivoEntrada2);
              arquivoSaida = new File(diretorio +"/"+"src/main/java/org/example/txtFiles/omited_methods.txt");
-            System.out.println(arquivoSaida);
-            System.out.println("oii");
         } else { // Assume que é Linux ou outro sistema UNIX-like
              arquivoEntrada1 = new File(path02);
              arquivoEntrada2 = new File(path01);

@@ -12,6 +12,7 @@ public class PathUtilVersion01 {
         String os = System.getProperty("os.name").toLowerCase();
         String rootPath = "";
         String diretorio = System.getProperty("user.dir");
+        System.out.println(diretorio);
         if (os.contains("win")) { // Verifica se é Windows
             rootPath = diretorio + "\\"+"src\\main\\java\\org\\example\\txtFiles\\";
         } else if (os.contains("mac")) { // Verifica se é macOS
