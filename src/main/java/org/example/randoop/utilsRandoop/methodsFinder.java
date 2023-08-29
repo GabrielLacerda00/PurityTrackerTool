@@ -33,7 +33,7 @@ public class methodsFinder {
                                 // writer.write((path.toString().replace(".java", "") + "." + method.getSignature()).replace(" ", "").replace("\\", ".").substring(3));
                                 // Pega o caminho sem o diretório raiz
                                 // methodsFiltrados.add(((path.toString().substring(classDir.length() + 1)) + "." + method.getSignature()).replace(" ", "").replace("\\", ".").replace(".java", ""));
-                                writer.write(((path.toString().substring(classDir.length() + 1)) + "." + method.getNameAsString()).replace(" ", "").replace("/", ".").replace(".java", ""));
+                                writer.write(((path.toString().substring(classDir.length() + 1)) + "." + method.getName()).replace(" ", "").replace("/", ".").replace(".java", ""));
                                 writer.newLine();
                             }
                         } catch (IOException e) {

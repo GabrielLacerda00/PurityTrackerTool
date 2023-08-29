@@ -8,7 +8,7 @@ public class finderPathsBinSrc {
     private static String pathSRC;
 
     public static void main(String[] args) throws IOException {
-        finderPathsSrcBin("/Users/gabriellacerda/GitHubGabrielLacerda/ProjetoMercadinhoVersão02/src");
+        finderPathsSrcBin("/Users/gabriellacerda/GitHubGabrielLacerda/Calculator");
         System.out.println(pathBIN);
         System.out.println(pathSRC);
         //executeComand("");
@@ -36,7 +36,7 @@ public class finderPathsBinSrc {
 
     public static void encontrarBinSrc(File diretorio) {
         // Verifica se o diretório atual é o diretório "bin"
-        if (diretorio.isDirectory() && (diretorio.getName().equals("bin") || diretorio.getName().equals("target")
+        if (diretorio.isDirectory() && (diretorio.getName().equals("bin") || diretorio.getName().equals("classes")
         || diretorio.getName().equals("out"))) {
             pathBIN = diretorio.getAbsolutePath();
             //System.out.println("Caminho para a pasta bin: " + diretorio.getAbsolutePath());

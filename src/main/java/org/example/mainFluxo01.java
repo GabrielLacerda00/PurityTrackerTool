@@ -75,8 +75,10 @@ public class mainFluxo01 {
         String pathComunClasses = FileSearcher.findFilePath("comuns_classes.txt");
         String pathScriptRandoopBat = FileSearcher.findFilePath("scriptRandoop.bat");
 
+        //System.out.println(main.getPathBINVersao01());
+        //System.out.println(pathComunClasses);
         //1.0Pega as classes
-        ClassPathFinder.finderClassesPath(main.getPathBINVersao01(),pathComunClasses);
+        ClassPathFindeeer.finderClassesPath(main.getPathBINVersao01(),pathComunClasses);
 
         //2.0 - Pegar os caminhos dos métodos da versão 01
         methodsFinder.finderMethodsPath(main.getPathSRCVersao01(),pathMethodVersion01);
