@@ -6,9 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="a0c258d2-3607-4dd8-9031-96f739d9116c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/guumTreeDiff/gum04.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/guumTreeDiff/gum04.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/guumTreeDiff/gumTreeDiffOutputRenameMethodHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/guumTreeDiff/gumTreeDiffOutputRenameMethodHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/util/TempObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/util/TempObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/refactoringMiner/RMinerHandlerCommits.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/refactoringMiner/RMinerHandlerCommits.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/util/objVersion02.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/util/objVersion02.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/refactoringMiner/RMinerHandlerCommits.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/refactoringMiner/RMinerHandlerCommits.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/util/objVersion02.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/util/objVersion02.class" afterDir="false" />
     </list>
     <list id="fbc3a4af-40c0-4f5b-9395-a49a3305db32" name="Changes by jhenriqueax" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,7 +48,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;Fluxograma02&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/gabriellacerda/GitHubGabrielLacerda/PurityTrackerTool/src/main/java/org/example/guumTreeDiff&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/gabriellacerda/GitHubGabrielLacerda/PurityTrackerTool&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
@@ -70,7 +72,20 @@
       <recent name="org.example.util" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.gumTreeDiffOutputRenameMethodHandler">
+  <component name="RunManager" selected="Application.mainFlux02">
+    <configuration name="RMinerHandlerCommits" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.refactoringMiner.RMinerHandlerCommits" />
+      <module name="PurityTrackerTool" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.refactoringMiner.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="gum04" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.guumTreeDiff.gum04" />
       <module name="PurityTrackerTool" />
@@ -97,60 +112,39 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestPurityToolRenames" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="gumTreeNewAlgoritmo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.guumTreeDiff.gumTreeNewAlgoritmo" />
       <module name="PurityTrackerTool" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.TestesJUNIT.*" />
+          <option name="PATTERN" value="org.example.guumTreeDiff.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.example.TestesJUNIT" />
-      <option name="MAIN_CLASS_NAME" value="org.example.TestesJUNIT.TestPurityToolRenames" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestPurityToolRenames.testOneRenameOneCaller" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="mainFlux02" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.mainFlux02" />
       <module name="PurityTrackerTool" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.TestesJUNIT.*" />
+          <option name="PATTERN" value="org.example.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.example.TestesJUNIT" />
-      <option name="MAIN_CLASS_NAME" value="org.example.TestesJUNIT.TestPurityToolRenames" />
-      <option name="METHOD_NAME" value="testOneRenameOneCaller" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestPurityToolRenames.testOneRenameTwoCaller" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="PurityTrackerTool" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.TestesJUNIT.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.example.TestesJUNIT" />
-      <option name="MAIN_CLASS_NAME" value="org.example.TestesJUNIT.TestPurityToolRenames" />
-      <option name="METHOD_NAME" value="testOneRenameTwoCaller" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.mainFlux02" />
+        <item itemvalue="Application.gumTreeNewAlgoritmo" />
+        <item itemvalue="Application.RMinerHandlerCommits" />
         <item itemvalue="Application.gumTreeDiffOutputRenameMethodHandler" />
         <item itemvalue="Application.gum04" />
-        <item itemvalue="JUnit.TestPurityToolRenames" />
-        <item itemvalue="JUnit.TestPurityToolRenames.testOneRenameTwoCaller" />
-        <item itemvalue="JUnit.TestPurityToolRenames.testOneRenameOneCaller" />
       </list>
     </recent_temporary>
   </component>
@@ -180,6 +174,13 @@
       <workItem from="1688865548142" duration="133098000" />
       <workItem from="1689587469681" duration="8350000" />
       <workItem from="1689604919955" duration="10503000" />
+      <workItem from="1691892621169" duration="5649000" />
+      <workItem from="1692022690609" duration="726000" />
+      <workItem from="1692040293712" duration="2513000" />
+      <workItem from="1692184025828" duration="5477000" />
+      <workItem from="1692533140680" duration="20412000" />
+      <workItem from="1693010672289" duration="29552000" />
+      <workItem from="1693337815358" duration="7565000" />
     </task>
     <servers />
   </component>
@@ -203,7 +204,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/util/methodVerifierDestiny.java</url>
           <line>178</line>
-          <properties class="org.example.util.methodVerifierDestiny">
+          <properties class="org.example.util.methodVerifierDestiny" method="getCallersMethod">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>

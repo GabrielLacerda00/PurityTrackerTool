@@ -1,5 +1,6 @@
 package org.example.refactoringMiner;
 
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -24,7 +25,7 @@ import org.example.util.clearTempDirs;
 import org.example.util.methodVerifier;
 import org.example.util.methodVerifierDestiny;
 
-public class RMinerHandlerCommits {
+public class RMinerObjTEst {
 
     static GitService gitService = new GitServiceImpl();
     static GitHistoryRefactoringMiner miner = new GitHistoryRefactoringMinerImpl();
@@ -49,11 +50,11 @@ public class RMinerHandlerCommits {
 
         RMinerHandlerCommits RMinerHandlerCommits = new RMinerHandlerCommits(pathDir01,pathDir02,urlGit,commit01,commit02);
 
-       System.out.println("----------- Lista Objetos Rminer ---------- ");
-      RMinerHandlerCommits.getrMinerObjectsArrayList().forEach(System.out::println);
+        System.out.println("----------- Lista Objetos Rminer ---------- ");
+        RMinerHandlerCommits.getrMinerObjectsArrayList().forEach(System.out::println);
     }
 
-    public RMinerHandlerCommits(String pathh01, String pathh02, String projectURL, String commit1, String commit2) throws Exception {
+    public RMinerObjTEst(String pathh01, String pathh02, String projectURL, String commit1, String commit2) throws Exception {
         this.minerObjects = new RMinerObjects();
         handlerPathsDirs(pathh01,pathh02);
         refactoringBetweenCommits(projectURL,commit1,commit2);
@@ -120,7 +121,7 @@ public class RMinerHandlerCommits {
         //System.out.println(versionOriginCode.getVersao01());
         if (ObjetoJson.has("rightSideLocations")) {
             JsonArray rightSideLocations = ObjetoJson.getAsJsonArray("rightSideLocations");
-            
+
             for (JsonElement locationElement : rightSideLocations) {
                 //System.out.println("Right Side Location: ");
                 pegaElementosDestino(locationElement,versionDestinyCode, versionOriginCode);

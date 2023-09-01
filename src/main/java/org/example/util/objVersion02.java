@@ -39,7 +39,7 @@ public class objVersion02 {
                 "lineOrigin='" + lineDst + '\'' +
                 ", nameMethodOrigin='" + nameMethodDst + '\'' +
                 ", type='" + type + '\'' +
-                " method calls= " + callerWaitedsMethod+ '\''+
+                ", method calls=" + callerWaitedsMethod+ '\''+
                 '}';
     }
 
