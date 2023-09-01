@@ -6,21 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a0c258d2-3607-4dd8-9031-96f739d9116c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generate_tests.sh" beforeDir="false" afterPath="$PROJECT_DIR$/generate_tests.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script.sh" beforeDir="false" afterPath="$PROJECT_DIR$/script.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mainFluxo01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mainFluxo01.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/randoop/utilsRandoop/ClassPathFinder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/randoop/utilsRandoop/PathUtilClasses.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/randoop/utilsRandoop/PathUtilOmitedMethods.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/randoop/utilsRandoop/PathUtilVersion01.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/randoop/utilsRandoop/PathUtilVersion02.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/randoop/utilsRandoop/filterPaths.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/randoop/utilsRandoop/finderPathsBinSrc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/randoop/utilsRandoop/finderPathsBinSrc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/randoop/utilsRandoop/methodsFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/randoop/utilsRandoop/methodsFinder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/txtFiles/comuns_classes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/txtFiles/comuns_classes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/txtFiles/methodsVersion02.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/txtFiles/methodsVersion02.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/txtFiles/omited_methods.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/txtFiles/omited_methods.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/txtFiles/pathsFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/txtFiles/pathsFile.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/RunJUnit5TestsFromJava.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RunJUnit5TestsFromJava.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,15 +75,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="finderPathsBinSrc" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.randoop.utilsRandoop.finderPathsBinSrc" />
+    <configuration name="JUnitTestRunner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="JUnitTestRunner" />
       <module name="PurityTrackerTool" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.randoop.utilsRandoop.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RunJUnit5TestsFromJava" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="RunJUnit5TestsFromJava" />
+      <module name="PurityTrackerTool" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -127,26 +115,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="org.example.randoop.ClassPathFinder" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.randoop.ClassPathFinder" />
-      <module name="PurityTrackerTool" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.randoop.utilsRandoop.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.mainFluxo01" />
+        <item itemvalue="Application.JUnitTestRunner" />
+        <item itemvalue="Application.RunJUnit5TestsFromJava" />
         <item itemvalue="Application.methodsFinder" />
         <item itemvalue="Application.ClassPathFindeeer" />
-        <item itemvalue="Application.org.example.randoop.ClassPathFinder" />
-        <item itemvalue="Application.finderPathsBinSrc" />
       </list>
     </recent_temporary>
   </component>
@@ -177,7 +152,8 @@
       <workItem from="1692669389827" duration="21997000" />
       <workItem from="1692746172946" duration="21666000" />
       <workItem from="1692875612360" duration="10409000" />
-      <workItem from="1693180476566" duration="30402000" />
+      <workItem from="1693180476566" duration="32413000" />
+      <workItem from="1693423246928" duration="36476000" />
     </task>
     <servers />
   </component>

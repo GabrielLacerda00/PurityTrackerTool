@@ -40,6 +40,7 @@ public class mainFluxo01 {
     public static void main(String[] args) throws Exception {
 
         //Projeto versão01
+        ///Users/gabriellacerda/GitHubGabrielLacerda/SuiteTestePIBICTool/OneRenameForTwoCaller/CodeOrigin
         ///Users/gabriellacerda/GitHubGabrielLacerda/Calculator
         ///Users/gabriellacerda/GitHubGabrielLacerda/ProjetoMercadinhoTest
         //Users/gabriellacerda/GitHubGabrielLacerda/ProjetoMercadinho/src
@@ -50,6 +51,7 @@ public class mainFluxo01 {
         String pathhProject01 = pathProject01.nextLine();
 
         //Projeto versão02
+        ///Users/gabriellacerda/GitHubGabrielLacerda/SuiteTestePIBICTool/OneRenameForTwoCaller/CodeDestiny
         ///Users/gabriellacerda/GitHubGabrielLacerda/CalculV2
         ///Users/gabriellacerda/GitHubGabrielLacerda/ProjetoMercadinhoTestV2
         ///Users/gabriellacerda/GitHubGabrielLacerda/ProjetoMercadinhoVersão02/src
@@ -77,7 +79,7 @@ public class mainFluxo01 {
 
         //System.out.println(main.getPathBINVersao01());
         //System.out.println(pathComunClasses);
-        //1.0Pega as classes
+        //1.0 - Pega as classes
         ClassPathFindeeer.finderClassesPath(main.getPathBINVersao01(),pathComunClasses);
 
         //2.0 - Pegar os caminhos dos métodos da versão 01
