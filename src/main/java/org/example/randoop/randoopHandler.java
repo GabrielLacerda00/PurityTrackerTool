@@ -10,6 +10,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Stream;
 
 public class randoopHandler {
@@ -25,7 +26,10 @@ public class randoopHandler {
         String os = System.getProperty("os.name").toLowerCase();
         String pathRandoopJar = FileSearcher.findFilePath("randoop-all-4.3.2.jar");
         String comand ;
-        int outputLimit = 100;
+        Scanner outputLim = new Scanner(System.in);
+        System.out.print("Informe o tempo de geração dos testes:");
+        int outputLimit = Integer.parseInt(outputLim.nextLine());
+        //int outputLimit = 100;
 
         if (os.contains("win")) { // Verifica se é Windows
             pathRandoopJar = userDir +"\\PurityTrackerTool\\src\\main\\java\\org\\example\\libs\\Randoop\\randoop-all-4.3.2.jar";

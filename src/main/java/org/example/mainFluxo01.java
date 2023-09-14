@@ -3,6 +3,7 @@ package org.example;
 import org.example.randoop.randoopHandler;
 import org.example.randoop.utilsRandoop.*;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class mainFluxo01 {
@@ -39,6 +40,69 @@ public class mainFluxo01 {
 
     public static void main(String[] args) throws Exception {
 
+        //Projeto versão01
+        ///Users/gabriellacerda/GitHubGabrielLacerda/GCViewerV1
+        ////Users/gabriellacerda/GitHubGabrielLacerda/SuiteTestMiniProjects/OneRenameForTwoCaller/CalculatorVersion01
+        ///Users/gabriellacerda/GitHubGabrielLacerda/Calculator
+        ///Users/gabriellacerda/GitHubGabrielLacerda/ProjetoMercadinhoTest
+        //Users/gabriellacerda/GitHubGabrielLacerda/ProjetoMercadinho/src
+        ///Users/gabriellacerda/GitHubGabrielLacerda/ProjetoMercadinhoVersionOrigin/src
+        //Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForTwoCallersInClassRefact/src/CodeOrigin
+        Scanner pathProject01 = new Scanner(System.in);
+        System.out.print("Informe o caminho do src do projeto clonado:");
+        String pathhProject01 = pathProject01.nextLine();
+
+        //Projeto versão02
+        //Users/gabriellacerda/GitHubGabrielLacerda/GCViewer
+        ///Users/gabriellacerda/GitHubGabrielLacerda/SuiteTestMiniProjects/OneRenameForTwoCaller/CalculatorVersion02
+        ///Users/gabriellacerda/GitHubGabrielLacerda/SuiteTestMiniProjects/NoRenameMethod/src/codeDestiny
+        ///Users/gabriellacerda/GitHubGabrielLacerda/CalculV2
+        ///Users/gabriellacerda/GitHubGabrielLacerda/ProjetoMercadinhoTestV2
+        ///Users/gabriellacerda/GitHubGabrielLacerda/ProjetoMercadinhoVersão02/src
+        ///Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForTwoCallersInClassRefact/src/CodeDestiny
+        Scanner pathProject02 = new Scanner(System.in);
+        System.out.print("Informe o caminho do src do projeto clonado:");
+        String pathhProject02 = pathProject02.nextLine();
+
+        mainFluxo01 main = new mainFluxo01();
+
+        finderPathsBinSrc.finderPathsSrcBin(pathhProject01);
+        main.pathSRCVersao01 = finderPathsBinSrc.getPathSRC();
+
+        main.pathBINVersao01 = finderPathsBinSrc.getPathBIN();
+
+        finderPathsBinSrc.finderPathsSrcBin(pathhProject02);
+        main.pathSRCVersao02 = finderPathsBinSrc.getPathSRC();
+        main.pathBINVersao02 = finderPathsBinSrc.getPathBIN();
+
+        String pathMethodVersion01 = FileSearcher.findFilePath("methodsVersion01.txt");
+        String pathMethodVersion02 = FileSearcher.findFilePath("methodsVersion02.txt");
+        String pathOmitedmethods = FileSearcher.findFilePath("omited_methods.txt");
+        String pathComunClasses = FileSearcher.findFilePath("comuns_classes.txt");
+        String pathScriptRandoopBat = FileSearcher.findFilePath("scriptRandoop.bat");
+
+        //System.out.println(main.getPathBINVersao01());
+        //System.out.println(pathComunClasses);
+        //1.0 - Pega as classes
+        ClassPathFindeeer.finderClassesPath(main.getPathBINVersao01(),pathComunClasses);
+
+        //2.0 - Pegar os caminhos dos métodos da versão 01
+        methodsFinder.finderMethodsPath(main.getPathSRCVersao01(),pathMethodVersion01);
+
+        //3.0 - Pegar os caminhos dos métodos da versão 02
+        methodsFinder.finderMethodsPath(main.getPathSRCVersao02(),pathMethodVersion02);
+
+        //4.0 - Filtra os métodos comuns
+        FiltroDeArquivos.filtroNotComunMethods(pathMethodVersion01,
+                pathMethodVersion02);
+
+        //Ignora os metodos que não comuns
+        randoopHandler.createComanderRandoop(main.getPathBINVersao01(),
+                pathComunClasses,pathOmitedmethods,main.getPathSRCVersao02());
+
+    }
+
+    public static boolean Flux01Handler() throws IOException {
         //Projeto versão01
         ///Users/gabriellacerda/GitHubGabrielLacerda/SuiteTestePIBICTool/OneRenameForTwoCaller/CodeOrigin
         ///Users/gabriellacerda/GitHubGabrielLacerda/Calculator
@@ -96,6 +160,7 @@ public class mainFluxo01 {
         randoopHandler.createComanderRandoop(main.getPathBINVersao01(),
                 pathComunClasses,pathOmitedmethods,main.getPathSRCVersao02());
 
+        return false;
     }
 
 }

@@ -17,6 +17,11 @@ import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.example.randoop.utilsRandoop.FileSearcher;
+import org.example.refactoringMiner.SourcePathFinder;
 import org.example.util.callerWaited;
 
 
@@ -118,19 +123,25 @@ public class methodVerifier {
     }
 
     public static void main(String[] args) {
-        //String javaFilePath = "/Users/gabriellacerda/GitHubGabrielLacerda/backup_Projects_test/versao02/RenameMethodExample2.0/calculadora.java";
-        //String methodName = "sum";
-//        handlerVerifier("/Users/gabriellacerda/GitHubGabrielLacerda/backup_Projects_test/versao02/RenameMethodExample2.0","calculadora.java",
-//                "soma");
-
+        String javaFilePath = SourcePathFinder.findClassInProject("Calculator", "/Users/gabriellacerda/GitHubGabrielLacerda/SuiteTestMiniProjects/OneRenameForTwoCallersInOtherClasses/Calculator");
+        System.out.println(javaFilePath);
+        String methodName = "add";
+        //handlerVerifier("/Users/gabriellacerda/GitHubGabrielLacerda/SuiteTestMiniProjects/OneRenameForTwoCallersInOtherClasses/Calculator/src/main/java/org/example/p1","MyObj.java",
+         //       "add");
+        handlerVerifier(javaFilePath,"",methodName);
     }
 
     public static  ArrayList<callerWaited> handlerVerifier(String path,String fileName, String methodName) {
-        pathRoot = path+ "/";
-        String fullPath = path + "/" + fileName;
-        verifyMethod(fullPath, methodName);
+
+        pathRoot = extractDirectoryFromPath(path)+"/";
+        //System.out.println(pathRoot);
+        //String fullPath = path + "/" + fileName;
+        System.out.println(path);
+        verifyMethod(path, methodName);
         for (String c : callers){
             String[] splitResult = c.split("#");
+            System.out.println(splitResult[1]);
+            System.out.println(splitResult[0]);
             callerWaited callerMethod = new callerWaited(splitResult[1], splitResult[0]);
             callersMethod.add(callerMethod);
         }
@@ -179,5 +190,31 @@ public class methodVerifier {
 
     public static ArrayList<callerWaited> getCallersMethod() {
         return callersMethod;
+    }
+
+    public static String removeFileName(String path) {
+        Pattern pattern = Pattern.compile("^(.*/)[^/]+$");
+        Matcher matcher = pattern.matcher(path);
+        if (matcher.find()) {
+            return matcher.group(1);
+        }
+        return path;
+    }
+    public static String extractClassName(String path) {
+        // captura qualquer coisa que não seja uma barra até encontrar um ponto (.)
+        Pattern pattern = Pattern.compile("([^/\\\\]+)\\.java$");
+        Matcher matcher = pattern.matcher(path);
+
+        if (matcher.find()) {
+            return matcher.group(1);  // Retorna o primeiro grupo de captura, que é o nome do arquivo sem a extensão
+        } else {
+            return "";
+        }
+    }
+
+    public static String extractDirectoryFromPath(String path) {
+        Path inputPath = Paths.get(path);
+        Path parentPath = inputPath.getParent(); // obtém o diretório pai do caminho completo
+        return parentPath != null ? parentPath.toString() : "";
     }
 }

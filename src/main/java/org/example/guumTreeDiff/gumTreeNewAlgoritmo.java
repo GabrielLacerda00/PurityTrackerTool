@@ -26,8 +26,8 @@ public class gumTreeNewAlgoritmo {
     private ArrayList<TempObject> updateInvocation = new ArrayList();
 
     public static void main(String[] args) throws Exception {
-        String pathDir01 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForMissingObjCallersInOtherClasses/CodeOrigin";
-        String pathDir02 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForMissingObjCallersInOtherClasses/CodeDestiny";
+        String pathDir01 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuiteTestMiniProjects/TEST/CodeOrigin/Calculator/src/main/java/org/example/p1";
+        String pathDir02 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuiteTestMiniProjects/TEST/CodeDestiny/Calculator/src/main/java/org/example/p1";
         gumTreeNewAlgoritmo gumTreeNewAlgoritmo = new gumTreeNewAlgoritmo(pathDir01, pathDir02);
         System.out.println(gumTreeNewAlgoritmo.getListaConvertida());;
     }

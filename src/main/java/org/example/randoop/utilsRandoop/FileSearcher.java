@@ -6,7 +6,6 @@ public class FileSearcher {
 
     public static String findFilePath(String fileName) {
         String projectDirectory = System.getProperty("user.dir"); // Diretório do projeto
-
         return searchFile(new File(projectDirectory), fileName);
     }
 
@@ -30,7 +29,7 @@ public class FileSearcher {
     }
 
     public static void main(String[] args) {
-        String fileName = "randoop-all-4.3.2.jar";
+        String fileName = "arquivoFiltrado.txt";
         String filePath = findFilePath(fileName);
 
         if (filePath != null) {

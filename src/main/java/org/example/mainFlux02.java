@@ -14,11 +14,11 @@ public class  mainFlux02 {
 
     public static void main(String[] args) throws Exception {
 
-        String pathDir01 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuiteTestePIBICTool/OneRenameForOneCaller/CodeOrigin/src";
-        String pathDir02 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuiteTestePIBICTool/OneRenameForOneCaller/CodeDestiny/src";
-        String urlGit = "https://github.com/GabrielLacerda00/SuiteTestePIBICTool.git";
-        String commit01 = "2088de9ec680801fdd40174e3263a551c5792aef";
-        String commit02 = "c6b8876147f2d13322c502f7ee7ee1b5377206bb";
+        String pathDir01 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuiteTestMiniProjects/OneRenameForThreeObjCallers/CodeOrigin/Calculator";
+        String pathDir02 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuiteTestMiniProjects/OneRenameForThreeObjCallers/CodeDestiny/Calculator";
+        String urlGit = "https://github.com/GabrielLacerda00/SuiteTestMiniProjects.git";
+        String commit01 = "c8a15b7d87f5aa6a860dffa158f247be5e8ae036";
+        String commit02 = "0c36729dafa7a98b54396c93bfd30bb96b13735c";
 
         RMinerHandlerCommits RMinerHandlerCommits = new RMinerHandlerCommits(pathDir01,pathDir02,urlGit,commit01,commit02);
         gumTreeNewAlgoritmo gumtTree = new gumTreeNewAlgoritmo(pathDir01,pathDir02);
@@ -27,6 +27,21 @@ public class  mainFlux02 {
             verifyTypeAndExecute(RMinerHandlerCommits,gumtTree);
         }
 
+    }
+
+    public static void fluxo02Handler() throws Exception {
+        String pathDir01 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuiteTestMiniProjects/OneRenameForMissingCaller/CodeOrigin/Calculator";
+        String pathDir02 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuiteTestMiniProjects/OneRenameForMissingCaller/CodeDestiny/Calculator";
+        String urlGit = "https://github.com/GabrielLacerda00/SuiteTestePIBICTool.git";
+        String commit01 = "e8b08c5e9979477eba41b2ede5c52280223f0abb";
+        String commit02 = "de9c4ad6ceefdaf9f1f8560fccebe727c2351f84";
+
+        RMinerHandlerCommits RMinerHandlerCommits = new RMinerHandlerCommits(pathDir01,pathDir02,urlGit,commit01,commit02);
+        gumTreeNewAlgoritmo gumtTree = new gumTreeNewAlgoritmo(pathDir01,pathDir02);
+
+        for (int i = 0; i < RMinerHandlerCommits.getrMinerObjectsArrayList().size(); i++) {
+            verifyTypeAndExecute(RMinerHandlerCommits,gumtTree);
+        }
     }
 
     public static void verifyTypeAndExecute(RMinerHandlerCommits RMinerHandlerCommits, gumTreeNewAlgoritmo gumtTree){

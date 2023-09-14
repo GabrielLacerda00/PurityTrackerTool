@@ -127,6 +127,7 @@ public class methodVerifierDestiny {
         public static  ArrayList<callerWaited> handlerVerifier(String path,String fileName, String methodName) {
             pathRoot = path+ "/";
             String fullPath = path + "/" + fileName;
+            System.out.println(fullPath);
             verifyMethod(fullPath, methodName);
             for (String c : callers){
                 String[] splitResult = c.split("#");

@@ -24,6 +24,7 @@ import java.util.regex.Pattern;
 import org.example.util.clearTempDirs;
 import org.example.util.methodVerifier;
 import org.example.util.methodVerifierDestiny;
+import org.example.refactoringMiner.SourcePathFinder;
 
 public class RMinerObjTEst {
 
@@ -42,11 +43,11 @@ public class RMinerObjTEst {
     private static ArrayList<objectOutputRefactMiner> rMinerObjectsArrayList = new ArrayList<>();
 
     public static void main(String[] args) throws Exception {
-        String pathDir01 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForMissingCaller/CodeOrigin";
-        String pathDir02 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuitTestsRenameMethod/OneRenameForMissingCaller/CodeDestiny";
-        String urlGit = "https://github.com/GabrielLacerda00/SuitTestsRenameMethod.git";
-        String commit01 = "9efa63633fbff505b84d8fba97d7a4292e7e5561";
-        String commit02 = "91e95a85850a61e81623386eeca2f495f9aec062";
+        String pathDir01 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuiteTestMiniProjects/OneRenameForMissingCaller/CodeOrigin/Calculator";
+        String pathDir02 = "/Users/gabriellacerda/GitHubGabrielLacerda/SuiteTestMiniProjects/OneRenameForMissingCaller/CodeDestiny/Calculator";
+        String urlGit = "https://github.com/GabrielLacerda00/SuiteTestMiniProjects.git";
+        String commit01 = "e8b08c5e9979477eba41b2ede5c52280223f0abb";
+        String commit02 = "de9c4ad6ceefdaf9f1f8560fccebe727c2351f84";
 
         RMinerHandlerCommits RMinerHandlerCommits = new RMinerHandlerCommits(pathDir01,pathDir02,urlGit,commit01,commit02);
 
@@ -80,9 +81,7 @@ public class RMinerObjTEst {
                 new RefactoringHandler() {
                     @Override
                     public void handle(String commitId, List<Refactoring> refactorings) {
-                        //System.out.println("Refactorings at " + commitId);
                         for (Refactoring ref : refactorings) {
-                            //System.out.println(ref.toJSON());
                             try {
                                 readJSON(ref);
                             } catch (IOException e) {
@@ -99,7 +98,7 @@ public class RMinerObjTEst {
 
     private static void readJSON(Refactoring ref) throws IOException {
 
-        //converto em String -> converto em JsonElement para trasnformar em um object.
+
         String jsonString = ref.toJSON();
         JsonElement jelement = new JsonParser().parse(jsonString);
         JsonObject ObjetoJson = jelement.getAsJsonObject();
@@ -109,28 +108,26 @@ public class RMinerObjTEst {
 
         versionOriginCode versionOriginCode = new versionOriginCode();
         if (ObjetoJson.has("leftSideLocations")) {
-            //essa função vai pegar tudo de leftSide e salvar em um array usa o forEach para transformar em um Element novamente.
             JsonArray leftSideLocations = ObjetoJson.getAsJsonArray("leftSideLocations");
             for (JsonElement locationElement : leftSideLocations) {
-                //System.out.println("leftSideLocation: ");
+
                 pegaElementosOrigin(locationElement,versionOriginCode);
             }
         }
 
         versionDestinyCode versionDestinyCode = new versionDestinyCode();
-        //System.out.println(versionOriginCode.getVersao01());
+
         if (ObjetoJson.has("rightSideLocations")) {
             JsonArray rightSideLocations = ObjetoJson.getAsJsonArray("rightSideLocations");
 
             for (JsonElement locationElement : rightSideLocations) {
-                //System.out.println("Right Side Location: ");
+
                 pegaElementosDestino(locationElement,versionDestinyCode, versionOriginCode);
             }
         }
 
         createAndAddObjectRMiner(versionOriginCode.getVersao01(),versionDestinyCode.getVersao02());
     }
-
 
     private static void pegaElementosOrigin(JsonElement meuJson,versionOriginCode versionOriginCode) throws IOException {
 
@@ -142,18 +139,19 @@ public class RMinerObjTEst {
         String file = meuObj.get("filePath").getAsString();
 
         methodVerifier.getCallersMethod().clear();
-        leftSideCallers leftSideCallerss = new leftSideCallers(methodVerifier.handlerVerifier(path01,extractFileName(file),metodoOrigem));
+
+        String pathhhh = SourcePathFinder.findClassInProject(path01, extract(file));
+        //System.out.println(pathhhh);
+        //System.out.println(file);
+        leftSideCallers leftSideCallerss = new leftSideCallers(methodVerifier.handlerVerifier(file,"",metodoOrigem));
 
         metodoOrigem = createMethodName(extractClassName(file),metodoOrigem);
 
         objVersion01 version01 = new objVersion01(type,linhaDeOrigem,metodoOrigem,leftSideCallerss.getLeftSideCallers());
-        //System.out.println(leftSideCallerss.getLeftSideCallers())
-        //System.out.println(version01);
         versionOriginCode.addInArray(version01);
     }
 
     private static void pegaElementosDestino(JsonElement meuJson,versionDestinyCode versionDestinyCode, versionOriginCode versionOriginCode) throws IOException {
-        //System.out.println(versionOriginCode.getVersao01());
 
         JsonObject meuObj = meuJson.getAsJsonObject();
 
@@ -164,8 +162,11 @@ public class RMinerObjTEst {
 
         methodVerifierDestiny.getCallersMethod().clear();
 
-        rightSideCallers rightSideCallerss = new rightSideCallers(methodVerifierDestiny.handlerVerifier(path02,extractFileName(file),metodoDestino));
-        //System.out.println(rightSideCallerss.getRightSideCallers());
+        String pathhhh = SourcePathFinder.findClassInProject(path02, extract(file));
+        //System.out.println(pathhhh);
+        //System.out.println(file);
+        rightSideCallers rightSideCallerss = new rightSideCallers(methodVerifierTest.handlerVerifier(file,"",metodoDestino));
+
         metodoDestino = createMethodName(extractClassName(file),metodoDestino);
 
         objVersion02 version02 = new objVersion02(type,linhaDeDestino,metodoDestino,rightSideCallerss.getRightSideCallers());
@@ -186,17 +187,14 @@ public class RMinerObjTEst {
         return result;
     }
 
-    public static String extractClassName(String className) {
-        String regex = "/([^/]+)\\.java";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(className);
-
+    private static String extractFileName(String path) {
+        Pattern pattern = Pattern.compile("[^/\\\\]+$");
+        Matcher matcher = pattern.matcher(path);
         if (matcher.find()) {
-            String classNameWithoutExtension = matcher.group(1);
-            return classNameWithoutExtension;
+            return matcher.group();
+        } else {
+            return "";
         }
-
-        return null; // Retorna null caso nenhum nome seja encontrado
     }
 
     public  ArrayList<objectOutputRefactMiner> getrMinerObjectsArrayList() {
@@ -219,14 +217,17 @@ public class RMinerObjTEst {
         return classeName+"."+methodName;
     }
 
-    private static String extractFileName(String path) {
-        Pattern pattern = Pattern.compile("[^/\\\\]+$");
-        Matcher matcher = pattern.matcher(path);
+    public static String extractClassName(String className) {
+        String regex = "/([^/]+)\\.java";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(className);
+
         if (matcher.find()) {
-            return matcher.group();
-        } else {
-            return "";
+            String classNameWithoutExtension = matcher.group(1);
+            return classNameWithoutExtension;
         }
+
+        return null;
     }
 
     public RMinerObjects getMinerObjects() {
@@ -239,5 +240,17 @@ public class RMinerObjTEst {
 
     public String getType(){
         return type;
+    }
+
+    private static String extract(String path) {
+        // captura qualquer coisa que não seja uma barra até encontrar um ponto (.)
+        Pattern pattern = Pattern.compile("([^/\\\\]+)\\.java$");
+        Matcher matcher = pattern.matcher(path);
+
+        if (matcher.find()) {
+            return matcher.group(1);
+        } else {
+            return "";
+        }
     }
 }
